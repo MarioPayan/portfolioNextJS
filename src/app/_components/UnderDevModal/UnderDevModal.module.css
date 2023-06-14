@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  padding: 15%;
+}
+
+.paper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: -webkit-fill-available;
+  max-width: 600px;
+  padding: 30px;
+  opacity: 0.9;
+  user-select: none;
+}
+
+.title {
+  font-weight: 700;
+}

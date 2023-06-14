@@ -1,0 +1,8 @@
+.copyRight {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 16px;
+  opacity: 0.35;
+  user-select: none;
+}

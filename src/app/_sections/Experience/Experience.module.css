@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  min-width: 290px;
+  padding: 16px;
+}
+
+.card_header {
+  display: flex;
+}
+
+.card_header_text {
+  width: 300px;
+}
+
+.card_background {
+  display: flex;
+  position: relative;
+  width: 140px;
+}
+
+.card_subtitle {
+  opacity: 0.5;
+}
+
+.card_divider {
+  padding: 0.25rem 1rem;
+}
+
+.card_list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.25rem;
+}
+
+.card_achievementIcon {
+  min-width: unset;
+  padding-right: 0.5rem;
+}
+
+.card_dateInfo {
+  align-self: center;
+  opacity: 0.5;
+}
+
+.card_date {
+  position: relative;
+  height: 100%;
+}
+
+.card_dateInfo {
+  align-self: center;
+  opacity: 0.5;
+}
+
+.card_dateDuration {
+  opacity: 0.6;
+  font-weight: 700;
+}
+
+.card_bottomText {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  bottom: -15px;
+}

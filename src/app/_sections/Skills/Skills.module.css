@@ -1,0 +1,214 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category_container {
+  max-height: 110px;
+  max-width: 225px;
+  overflow: hidden;
+  transition: all 0.6s ease-out;
+  margin: 12px;
+}
+
+.collapsed {
+  max-width: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.category {
+  display: flex;
+  width: fit-content;
+  position: relative;
+}
+
+.category_title {
+  display: unset;
+  position: absolute;
+  right: 7px;
+  bottom: 0;
+  opacity: 0.12;
+  filter: blur(0.5px);
+}
+
+.categoryIcon_paper {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 140px;
+  height: 110px;
+  margin: 12px;
+}
+
+.categoryIcon {
+  cursor: default;
+  width: 100%;
+}
+
+.categoryIcon_container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  color: rgba(0, 0, 0, 0.8);
+  height: 110px;
+  transition: transform 0.5s, box-shadow 1s;
+  transform: scale(1);
+}
+
+.categoryIcon_container:hover {
+  transform: scale(1.2);
+  width: 125px;
+}
+
+.categoryIcon_text {
+  display: flex;
+  align-self: center;
+  height: fit-content;
+  width: min-content;
+  letter-spacing: -0.8px;
+  line-height: 0.85;
+  font-weight: 600;
+}
+
+.categoryIcon_icon {
+  height: 50px;
+  width: auto;
+  z-index: 2;
+  padding-top: 0px;
+}
+
+.skillIcon {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: unset;
+  padding-left: 24px;
+  width: 225px;
+  gap: 8px;
+  height: 110px;
+  transition: transform 0.5s, box-shadow 1s;
+}
+
+.grow {
+  transform: scale(1.2);
+}
+
+.skillIcon:hover {
+  transform: scale(1.2);
+}
+
+.skillIcon_text {
+  height: fit-content;
+  width: min-content;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: unset;
+}
+
+.skillIcon_text_container {
+  display: flex;
+  align-self: center;
+}
+
+.skillIcon_icon {
+  height: 70px;
+  width: auto;
+  z-index: 2;
+  padding-top: 0px;
+}
+
+.skillIcon_icon_container {
+  position: relative;
+  height: 60px;
+  width: 60px;
+}
+
+.categoryIconBackground {
+  display: flex;
+  position: absolute;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  filter: blur(1.5px);
+  overflow: hidden;
+}
+
+.categoryIconBackground_container {
+  display: flex;
+}
+
+.categoryIconBackground_icon {
+  height: 100%;
+  width: auto;
+  opacity: 0.1;
+  margin-left: 20%;
+}
+
+@media (max-width: 900px) {
+  .container {
+    justify-content: center;
+  }
+
+  .skillIcon {
+    justify-content: center;
+    align-items: center;
+    padding-left: 0px;
+    width: 100px;
+    flex-direction: column;
+  }
+
+  .skillIcon_text {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .categoryIcon_paper {
+    width: 100%;
+  }
+
+  .categoryIcon_container:hover {
+    width: 100%;
+  }
+
+  .category_title {
+    display: none;
+  }
+
+  .category_container {
+    max-height: 110px;
+    max-width: 225px;
+    transition: max-width 0.6s ease-out, max-height 0.6s ease-out,
+      margin 0.6s ease-out;
+  }
+
+  .collapsed {
+    max-width: 0;
+    max-height: 0;
+    margin: 0;
+  }
+
+  .skillIcon:hover {
+    transform: scale(1.1);
+  }
+
+  .grow {
+    transform: scale(1.1);
+  }
+
+  .skillIcon_icon_container {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .categoryIcon_paper {
+    display: none;
+  }
+
+  .buttons {
+    display: none;
+  }
+}
