@@ -63,7 +63,7 @@ const Project: React.FC<ProjectProps> = ({project}) => (
         {project.description}
       </Typography>
 
-      <Box display='flex' gap={1} className={styles.iconBar}>
+      <Box className={styles.iconBar}>
         <InfinityCarousel>
           {project.stack.map((tech, index) =>
             (getDevIconSrc(tech) ? (
@@ -95,12 +95,7 @@ const Project: React.FC<ProjectProps> = ({project}) => (
         Visit
       </Button>
     </Box>
-    <Box
-      display='flex'
-      position='relative'
-      width={200}
-      height={200}
-      alignSelf='center'>
+    <Box className={styles.project_image_container}>
       <Image
         src={getAssetURL(project.image)}
         fill

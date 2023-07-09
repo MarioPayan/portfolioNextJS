@@ -4,7 +4,7 @@ import React, {createElement} from 'react'
 // NextJS
 import Image from 'next/image'
 // Data
-import DATA from '@/data/data'
+import DATA, {MODES} from '@/data/data'
 // Material UI
 import Box from '@mui/material/Box'
 import ButtonBase from '@mui/material/ButtonBase'
@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import WorkIcon from '@mui/icons-material/Work'
+import FormatQuote from '@mui/icons-material/FormatQuote'
 // Utils
 import {getIcon} from '@/utils/icons'
 import {openInNewTab} from '@/utils/misc'
@@ -39,11 +40,21 @@ const About: React.FC<AboutProps> = ({mode}) => {
           </Typography>
           <Typography>{DATA.PERSONAL.description[mode]}</Typography>
           <Box className={styles.inline}>
-            <WorkIcon color='secondary' />
-            <Typography>
-              {DATA.EXPERIENCE.sort(sortFrom)[0].position} At{' '}
-              {DATA.EXPERIENCE.sort(sortFrom)[0].where}
-            </Typography>
+            {mode === MODES.BUSINESS && (
+              <>
+                <WorkIcon color='secondary' />
+                <Typography>
+                  {DATA.EXPERIENCE.sort(sortFrom)[0].position} At{' '}
+                  {DATA.EXPERIENCE.sort(sortFrom)[0].where}
+                </Typography>
+              </>
+            )}
+            {mode === MODES.CHILL && (
+              <>
+                <FormatQuote color='secondary' />
+                <Typography>{DATA.PERSONAL.quote}</Typography>
+              </>
+            )}
           </Box>
           <Box className={styles.inline}>
             <LocationOnIcon color='secondary' />

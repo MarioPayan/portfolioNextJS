@@ -105,6 +105,14 @@
   margin: 0px !important;
 }
 
+.mode_container {
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 8px;
+}
+
 @media (max-width: 900px) {
   .card_tabs {
     justify-content: center;

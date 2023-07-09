@@ -180,7 +180,7 @@ const Skills: React.FC = () => {
     showedCategories.indexOf(category) !== -1
   return (
     <Box className={styles.container}>
-      <Box display='flex' width={1} justifyContent='center' gap={2}>
+      <Box className={styles.action_buttons}>
         {!isShowingAllCategories && (
           <Button
             variant='outlined'

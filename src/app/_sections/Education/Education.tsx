@@ -30,13 +30,10 @@ const Card: React.FC<EducationCardProps> = ({education}) => (
       )}, rgba(0,0,0,1) 80%, rgba(0,0,0,0.2) 95%)`,
     }}>
     <Box className={styles.card_header}>
-      <Typography variant='h5' width='fit-content'>
+      <Typography variant='h5' className={styles.card_title}>
         {education.position}
       </Typography>
-      <Typography
-        variant='subtitle1'
-        width='fit-content'
-        className={styles.card_subtitle}>
+      <Typography variant='subtitle1' className={styles.card_subtitle}>
         {education.where}
       </Typography>
     </Box>

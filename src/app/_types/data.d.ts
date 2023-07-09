@@ -4,6 +4,7 @@ interface Personal {
   name: string
   role: string
   url: string
+  quote: string
   location: string
   description: {[section in Mode]: string}
 }

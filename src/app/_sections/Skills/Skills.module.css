@@ -146,6 +146,13 @@
   margin-left: 20%;
 }
 
+.action_buttons {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 16px;
+}
+
 @media (max-width: 900px) {
   .container {
     justify-content: center;

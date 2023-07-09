@@ -113,7 +113,7 @@ const Head: React.FC<HeadProps> = ({
       </Box>
 
       {/* Modes */}
-      <Box display='flex' position='absolute' right={0} top={0} padding={1}>
+      <Box className={styles.mode_container}>
         <IconButton onClick={() => alternateMode()}>
           {createElement(changeExperienceIcon, {fontSize: 'large'})}
         </IconButton>

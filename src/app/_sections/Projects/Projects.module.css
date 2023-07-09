@@ -71,7 +71,55 @@
   line-height: 1.2;
 }
 
+.project_image_container {
+  display: flex;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  align-self: center;
+}
+
+.iconBar {
+  display: flex;
+  gap: 8px;
+}
+
 @media (max-width: 900px) {
+  .project {
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    height: 450px;
+    padding-left: 8px;
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 1) 0%,
+      transparent 40%
+    );
+  }
+}
+
+@media (max-width: 600px) {
+  .project {
+    flex-direction: row;
+    justify-content: unset;
+    height: 230px;
+    padding-left: 24px;
+    background: linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 40%
+    );
+  }
+}
+
+@media (max-width: 550px) {
+  .project_image_container {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 500px) {
   .project {
     flex-direction: column-reverse;
     justify-content: space-evenly;

@@ -55,6 +55,7 @@ const DATA: Data = {
     name: 'Mario Payan',
     role: 'Full Stack Tech Lead Software Developer',
     url: 'https://www.mariopayan.com/',
+    quote: 'The cake is a lie',
     location: 'Cali, Colombia',
     description: {
       BUSINESS: `Full Stack Tech Lead Software Developer with ${dateDiff(

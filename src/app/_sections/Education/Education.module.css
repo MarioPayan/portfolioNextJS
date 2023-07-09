@@ -39,7 +39,12 @@
   filter: blur(1px);
 }
 
+.card_title {
+  width: fit-content;
+}
+
 .card_subtitle {
+  width: fit-content;
   opacity: 0.5;
 }
 
