@@ -1,9 +1,15 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   min-height: 100vh;
+}
+
+.hiddenTitle {
+  position: absolute;
+  user-select: none;
+  opacity: 0;
+  top: -100px;
 }
 
 .container {

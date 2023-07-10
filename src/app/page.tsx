@@ -57,6 +57,9 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <h1 className={styles.hiddenTitle}>{DATA.PERSONAL.name}</h1>
+      <h2 className={styles.hiddenTitle}>{DATA.PERSONAL.name}</h2>
+      <h3 className={styles.hiddenTitle}>{DATA.PERSONAL.name}</h3>
       <Box className={styles.container}>
         <Head
           section={section}

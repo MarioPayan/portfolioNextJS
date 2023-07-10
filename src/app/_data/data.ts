@@ -57,6 +57,17 @@ const DATA: Data = {
     url: 'https://www.mariopayan.com/',
     quote: 'The cake is a lie',
     location: 'Cali, Colombia',
+    keywords: [
+      'Mario Payan',
+      'Mario',
+      'Payan',
+      'Mario A. Payan',
+      'Mario A. Payan',
+      'Software',
+      'Developer',
+      'Full Stack',
+      'Tech Lead',
+    ],
     description: {
       BUSINESS: `Full Stack Tech Lead Software Developer with ${dateDiff(
         '2017-10',

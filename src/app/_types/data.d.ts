@@ -6,6 +6,7 @@ interface Personal {
   url: string
   quote: string
   location: string
+  keywords: string[]
   description: {[section in Mode]: string}
 }
 
