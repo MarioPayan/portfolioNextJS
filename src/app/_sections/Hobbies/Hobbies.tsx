@@ -5,9 +5,9 @@ import React, {createElement} from 'react'
 import {Carousel} from '@/components'
 // Material UI
 import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
 // Utils
 import {openInNewTab} from '@/utils/misc'
 import {getIcon} from '@/utils/icons'

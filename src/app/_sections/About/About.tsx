@@ -8,11 +8,11 @@ import DATA, {MODES} from '@/data/data'
 // Material UI
 import Box from '@mui/material/Box'
 import ButtonBase from '@mui/material/ButtonBase'
+import FormatQuote from '@mui/icons-material/FormatQuote'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
 import WorkIcon from '@mui/icons-material/Work'
-import FormatQuote from '@mui/icons-material/FormatQuote'
 // Utils
 import {getIcon} from '@/utils/icons'
 import {openInNewTab} from '@/utils/misc'

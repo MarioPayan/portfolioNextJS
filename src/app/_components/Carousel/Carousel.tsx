@@ -11,6 +11,9 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import NavigateBefore from '@mui/icons-material/NavigateBefore'
 import NavigateNext from '@mui/icons-material/NavigateNext'
+// Utils
+import {randomSort} from '@/utils/misc'
+
 // Styles
 import styles from './Carousel.module.css'
 
@@ -19,7 +22,7 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
 
   useEffect(() => {
     if (random) {
-      setCarouselImages(images.sort(() => 0.5 - Math.random()))
+      setCarouselImages(images.sort(randomSort))
     }
   }, [images, random])
 

@@ -4,10 +4,10 @@ import DATA from '@/data/data'
 // Utils
 import images from '@/utils/images'
 // Material UI
-import CssBaseline from '@mui/material/CssBaseline'
-import ThemeProvider from '@mui/material/styles/ThemeProvider'
 import {StyledEngineProvider} from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
 import theme from '@/app/theme'
+import ThemeProvider from '@mui/material/styles/ThemeProvider'
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (

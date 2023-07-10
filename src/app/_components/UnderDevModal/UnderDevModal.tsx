@@ -2,8 +2,8 @@
 // React
 import {useState} from 'react'
 // Material UI
-import Modal from '@mui/material/Modal'
 import Box from '@mui/material/Box'
+import Modal from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 // Styles

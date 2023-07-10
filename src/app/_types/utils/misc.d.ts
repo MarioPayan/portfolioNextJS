@@ -9,3 +9,7 @@ interface GetKeyFromLabel {
 interface OpenInNewTab {
   (url: string): void
 }
+
+interface RandomSort {
+  (): number
+}

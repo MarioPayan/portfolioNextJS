@@ -8,11 +8,11 @@ import {Head, UnderDevModal, CopyRight} from '@/components'
 // Sections
 import {
   About,
-  Skills,
-  Experience,
-  Projects,
   Education,
-  Hobbies
+  Experience,
+  Hobbies,
+  Projects,
+  Skills
 } from '@/sections'
 // Data
 import DATA, {SECTIONS, MODES} from '@/data/data'

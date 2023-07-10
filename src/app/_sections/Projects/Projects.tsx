@@ -6,31 +6,19 @@ import Image from 'next/image'
 // Data
 import DATA from '@/data/data'
 // Material UI
+import {keyframes} from '@mui/system'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import {keyframes} from '@mui/system'
-import Paper from '@mui/material/Paper'
 import Lock from '@mui/icons-material/Lock'
+import Paper from '@mui/material/Paper'
 import styled from '@mui/system/styled'
 import Typography from '@mui/material/Typography'
 // Utils
 import {getAssetURL} from '@/utils/images'
 import {getDevIconSrc, getIcon} from '@/utils/icons'
+import {randomSort} from '@/utils/misc'
 // Styles
 import styles from './Projects.module.css'
-
-const Container: React.FC<ContainerProps> = ({children, offset, className}) => {
-  const animation = (offset: number) =>
-    keyframes`
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-100% - ${offset * 25}px)); }`
-
-  const StyledDiv = styled('div')({
-    animation: `${animation(offset)} 10s linear infinite`,
-  })
-
-  return <StyledDiv className={className}>{children}</StyledDiv>
-}
 
 const InfinityCarousel: React.FC<InfinityCarouselProps> = ({children}) => {
   const {repetition, offset} = useMemo(() => {
@@ -40,6 +28,26 @@ const InfinityCarousel: React.FC<InfinityCarouselProps> = ({children}) => {
     const offset = {0: 0, 1: -1, 2: 1, 4: 2, 6: -1}[remainder]
     return {repetition, offset}
   }, [children.length])
+
+  const Container: React.FC<ContainerProps> = ({
+    children,
+    offset,
+    className,
+  }) => {
+    const animation = (offset: number) =>
+      keyframes`
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-100% - ${offset * 25}px)); }`
+
+    const StyledDiv = styled('div')({
+      animation: `${animation(offset)} 10s linear infinite`,
+      '&:hover': {
+        // TODO: Fix this
+        animationPlayState: 'paused',
+      },
+    })
+    return <StyledDiv className={className}>{children}</StyledDiv>
+  }
 
   return (
     <Box className={styles.infinityCarousel}>
@@ -65,7 +73,7 @@ const Project: React.FC<ProjectProps> = ({project}) => (
 
       <Box className={styles.iconBar}>
         <InfinityCarousel>
-          {project.stack.map((tech, index) =>
+          {project.stack.sort(randomSort).map((tech, index) =>
             (getDevIconSrc(tech) ? (
               <Image
                 key={index}

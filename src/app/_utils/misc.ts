@@ -1,5 +1,10 @@
 export const getKeyFromLabel: GetKeyFromLabel = label =>
-  label.toLowerCase().split(' ').join('_').replace(/-/g, '_')
+  label
+    .toLowerCase()
+    .split(' ')
+    .join('_')
+    .replace(/-/g, '_')
+    .replace(/#/g, 'sharp')
 
 export const rbgToRgba: RbgToRgba = (rgbColor, alpha) => {
   const [r, g, b] = rgbColor
@@ -10,3 +15,5 @@ export const openInNewTab: OpenInNewTab = url => {
   const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
   if (newWindow) newWindow.opener = null
 }
+
+export const randomSort: RandomSort = () => 0.5 - Math.random()

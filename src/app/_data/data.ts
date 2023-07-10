@@ -291,7 +291,10 @@ const DATA: Data = {
       position: 'Tech-Lead Developer',
       rgbColor: rgbColors.experience.redux,
       image: '/images/jobs/redux.svg',
-      achievements: [],
+      achievements: [
+        'Led end-to-end software development lifecycle, taking full ownership of decision-making, architectural design, and UI/UX considerations',
+        'Directly engaged stakeholders, capturing business logic and delivering software solution that met expectations',
+      ],
     },
     {
       where: 'Deft',
