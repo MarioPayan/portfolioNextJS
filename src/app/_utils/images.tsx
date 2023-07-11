@@ -1,7 +1,7 @@
 import NextImage from 'next/image'
 import {useState} from 'react'
 
-export const image404 = 'images/404.jpg'
+export const image404 = '/images/404.jpg'
 
 export const images: Images = {
   get favicon() {
