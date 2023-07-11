@@ -1,8 +1,6 @@
 'use client'
 // React
 import React, {createElement} from 'react'
-// NextJS
-import Image from 'next/image'
 // Data
 import DATA, {MODES} from '@/data/data'
 // Material UI
@@ -17,7 +15,7 @@ import WorkIcon from '@mui/icons-material/Work'
 import {getIcon} from '@/utils/icons'
 import {openInNewTab} from '@/utils/misc'
 import {sortFrom} from '@/utils/dates'
-import images from '@/utils/images'
+import {Image, images} from '@/utils/images'
 // Styles
 import styles from './About.module.css'
 

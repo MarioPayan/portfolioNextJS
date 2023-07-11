@@ -1,8 +1,6 @@
 'use client'
 // React
 import {createElement, useEffect, useState} from 'react'
-// NextJS
-import Image from 'next/image'
 // Data
 import DATA, {SECTIONS, MODES} from '@/data/data'
 // Material UI
@@ -15,7 +13,7 @@ import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import Typography from '@mui/material/Typography'
 // Utils
-import images from '@/utils/images'
+import {Image, images} from '@/utils/images'
 import {getIcon} from '@/utils/icons'
 // Styles
 import styles from './Head.module.css'

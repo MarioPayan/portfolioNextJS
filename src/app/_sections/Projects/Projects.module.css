@@ -79,6 +79,10 @@
   align-self: center;
 }
 
+.project_image {
+  border-radius: 12px;
+}
+
 .iconBar {
   display: flex;
   gap: 8px;

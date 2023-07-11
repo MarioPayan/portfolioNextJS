@@ -1,8 +1,6 @@
 'use client'
 // React
 import React, {createElement, useEffect, useMemo, useState} from 'react'
-// NextJS
-import Image from 'next/image'
 // Data
 import DATA from '@/data/data'
 // Material UI
@@ -14,6 +12,7 @@ import Typography from '@mui/material/Typography'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 // Utils
+import {Image} from '@/utils/images'
 import {getDevIconSrc, getIcon} from '@/utils/icons'
 import {rbgToRgba} from '@/utils/misc'
 // Styles

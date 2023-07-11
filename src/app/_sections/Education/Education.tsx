@@ -1,6 +1,4 @@
 'use client'
-// NextJS
-import Image from 'next/image'
 // Data
 import DATA from '@/data/data'
 // Material UI
@@ -14,7 +12,7 @@ import Paper from '@mui/material/Paper'
 import StarRateIcon from '@mui/icons-material/StarRate'
 import Typography from '@mui/material/Typography'
 // Utils
-import {getAssetURL} from '@/utils/images'
+import {Image} from '@/utils/images'
 import {dateDiff, changeDateFormat} from '@/utils/dates'
 import {rbgToRgba} from '@/utils/misc'
 // Styles
@@ -62,7 +60,7 @@ const Card: React.FC<EducationCardProps> = ({education}) => (
       </Box>
     </Box>
     <Image
-      src={getAssetURL(education.image)}
+      src={education.image}
       alt={education.where}
       fill
       className={styles.card_backgroundImg}></Image>

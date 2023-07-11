@@ -2,7 +2,7 @@
 // Data
 import DATA from '@/data/data'
 // Utils
-import images from '@/utils/images'
+import {images} from '@/utils/images'
 // Material UI
 import {StyledEngineProvider} from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'

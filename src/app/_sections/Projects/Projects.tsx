@@ -1,8 +1,6 @@
 'use client'
 // React
 import React, {createElement, useMemo} from 'react'
-// NextJS
-import Image from 'next/image'
 // Data
 import DATA from '@/data/data'
 // Material UI
@@ -14,7 +12,7 @@ import Paper from '@mui/material/Paper'
 import styled from '@mui/system/styled'
 import Typography from '@mui/material/Typography'
 // Utils
-import {getAssetURL} from '@/utils/images'
+import {Image} from '@/utils/images'
 import {getDevIconSrc, getIcon} from '@/utils/icons'
 import {randomSort} from '@/utils/misc'
 // Styles
@@ -105,11 +103,11 @@ const Project: React.FC<ProjectProps> = ({project}) => (
     </Box>
     <Box className={styles.project_image_container}>
       <Image
-        src={getAssetURL(project.image)}
+        src={project.image}
         fill
         priority
         alt={project.label}
-        style={{borderRadius: '12px'}}/>
+        className={styles.project_image}/>
     </Box>
   </Paper>
 )

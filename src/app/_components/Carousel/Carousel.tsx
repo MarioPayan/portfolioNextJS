@@ -1,8 +1,6 @@
 // React
 import React, {useCallback, useEffect, useState} from 'react'
 import {flushSync} from 'react-dom'
-// NextJS
-import Image from 'next/image'
 // Embla
 import useEmblaCarousel, {EmblaOptionsType} from 'embla-carousel-react'
 import Autoplay, {AutoplayOptionsType} from 'embla-carousel-autoplay'
@@ -13,6 +11,7 @@ import NavigateBefore from '@mui/icons-material/NavigateBefore'
 import NavigateNext from '@mui/icons-material/NavigateNext'
 // Utils
 import {randomSort} from '@/utils/misc'
+import {Image} from '@/utils/images'
 
 // Styles
 import styles from './Carousel.module.css'
@@ -43,14 +42,6 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
   ])
 
   const TWEEN_FACTOR = 7 / (images.length + 1)
-  // TODO: Delete this
-  // const TWEEN_FACTOR = 2.5 for 2 images
-  // const TWEEN_FACTOR = 1.2 for 5 images
-  // const TWEEN_FACTOR = 0.8 for 10 images
-  // const TWEEN_FACTOR = 0.5 for 15 images
-  // const TWEEN_FACTOR = 0.25 for 35 images
-  // const TWEEN_FACTOR = 0.15 for 50 images
-  // const TWEEN_FACTOR = 0.1 for 67 images
 
   const onScroll = useCallback(() => {
     if (!emblaApi) return
