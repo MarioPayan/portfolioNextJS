@@ -11,7 +11,7 @@ import ConstructionIcon from '@mui/icons-material/Construction'
 import styles from './UnderDevModal.module.css'
 
 const UnderDevModal: React.FC = () => {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState<boolean>(true)
   const title = 'Under Development'
   const text = 'Welcome to my website! I appreciate your visit. While the site is currently under development, feel free to explore and check back anytime you\'d like'
 

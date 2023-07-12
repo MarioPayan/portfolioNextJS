@@ -100,7 +100,7 @@ const SkillStack: React.FC<SkillStackProps> = ({
   toggleShowedCategory,
   isCategoryShowed,
 }) => {
-  const [zoomedCategory, setZoomedCategory] = useState('')
+  const [zoomedCategory, setZoomedCategory] = useState<string>('')
 
   return (
     <Box className={styles.container}>
@@ -156,9 +156,9 @@ const Skills: React.FC = () => {
     []
   )
 
-  const [showedCategories, setShowedCategories] = useState(allCategories)
-  const [isShowingAllCategories, setIsShowingAllCategories] = useState(true)
-  const [isShowingNoCategories, setIsShowingNoCategories] = useState(false)
+  const [showedCategories, setShowedCategories] = useState<string[]>(allCategories)
+  const [isShowingAllCategories, setIsShowingAllCategories] = useState<boolean>(true)
+  const [isShowingNoCategories, setIsShowingNoCategories] = useState<boolean>(false)
 
   const toggleShowedCategory = (category: string) => {
     const categoryIndex = showedCategories.indexOf(category)

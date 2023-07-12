@@ -24,13 +24,15 @@ const Head: React.FC<HeadProps> = ({
   onChangeSection,
   onChangeMode,
 }) => {
-  const [tabSections, setTabSections] = useState(DATA.BUSINESS_SECTIONS)
-  const [tab, setTab] = useState(DATA.BUSINESS_SECTIONS[0].key)
-  const [coverImage, setCoverImage] = useState(images.businessCover)
-  const [changeExperienceIcon, setChangeExperienceIcon] = useState(
+  const [tabSections, setTabSections] = useState<Section[]>(
+    DATA.BUSINESS_SECTIONS
+  )
+  const [tab, setTab] = useState<string>(DATA.BUSINESS_SECTIONS[0].key)
+  const [coverImage, setCoverImage] = useState<string>(images.businessCover)
+  const [changeExperienceIcon, setChangeExperienceIcon] = useState<string>(
     getIcon(MODES.CHILL)
   )
-  const [animationTrigger, setAnimationTrigger] = useState(false)
+  const [animationTrigger, setAnimationTrigger] = useState<boolean>(false)
 
   useEffect(() => {
     const animationTime = animationTrigger ? 250 : 0

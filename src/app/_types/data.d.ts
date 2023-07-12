@@ -1,5 +1,10 @@
 type Mode = 'BUSINESS' | 'CHILL'
 
+interface Section {
+  label: string
+  key: string
+}
+
 interface Personal {
   name: string
   role: string
@@ -60,8 +65,8 @@ interface Project {
 
 interface Data {
   PERSONAL: Personal
-  BUSINESS_SECTIONS: {label: string; key: string}[]
-  CHILL_SECTIONS: {label: string; key: string}[]
+  BUSINESS_SECTIONS: Section[]
+  CHILL_SECTIONS: Section[]
   CONTACTS: {label: string; name: string; url: string; mode: Mode}[]
   TECH_SKILLS: SkillCategory[]
   SOFT_SKILLS: SkillCategory[]
