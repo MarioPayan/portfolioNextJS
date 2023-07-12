@@ -53,7 +53,7 @@ export enum MODES {
 const DATA: Data = {
   PERSONAL: {
     name: 'Mario Payan',
-    role: 'Full Stack Tech Lead Software Developer',
+    role: 'Full Stack Principal Software Developer',
     url: 'https://www.mariopayan.com/',
     quote: 'The cake is a lie',
     location: 'Cali, Colombia',
@@ -67,9 +67,10 @@ const DATA: Data = {
       'Developer',
       'Full Stack',
       'Tech Lead',
+      'Principal',
     ],
     description: {
-      BUSINESS: `Full Stack Tech Lead Software Developer with ${dateDiff(
+      BUSINESS: `Full Stack Principal Software Developer with ${dateDiff(
         '2017-10',
         '',
         true
@@ -288,7 +289,7 @@ const DATA: Data = {
       where: 'Redux',
       from: '2021-07',
       to: '',
-      position: 'Tech-Lead Developer',
+      position: 'Principal Engineer',
       rgbColor: rgbColors.experience.redux,
       image: '/images/jobs/redux.svg',
       achievements: [

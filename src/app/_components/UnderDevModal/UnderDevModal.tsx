@@ -6,6 +6,7 @@ import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
+import ConstructionIcon from '@mui/icons-material/Construction'
 // Styles
 import styles from './UnderDevModal.module.css'
 
@@ -22,7 +23,7 @@ const UnderDevModal: React.FC = () => {
       <Box>
         <Paper className={styles.paper}>
           <Typography variant='h4' color='primary' className={styles.title}>
-            {title}
+            <ConstructionIcon /> {title}
           </Typography>
           <Typography>{text}</Typography>
         </Paper>

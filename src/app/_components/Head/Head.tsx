@@ -30,21 +30,23 @@ const Head: React.FC<HeadProps> = ({
   const [changeExperienceIcon, setChangeExperienceIcon] = useState(
     getIcon(MODES.CHILL)
   )
+  const [animationTrigger, setAnimationTrigger] = useState(false)
 
   useEffect(() => {
+    const animationTime = animationTrigger ? 250 : 0
     if (mode === MODES.BUSINESS) {
-      setTabSections(DATA.BUSINESS_SECTIONS)
+      setTimeout(() => setTabSections(DATA.BUSINESS_SECTIONS), animationTime)
       const idx = DATA.BUSINESS_SECTIONS.findIndex(s => s.key === section)
       const defKey = DATA.BUSINESS_SECTIONS[0].key
       setTab(idx !== -1 ? DATA.BUSINESS_SECTIONS[idx].key : defKey)
-      setCoverImage(images.businessCover)
+      setTimeout(() => setCoverImage(images.businessCover), animationTime)
       setChangeExperienceIcon(getIcon(MODES.CHILL))
     } else if (mode === MODES.CHILL) {
-      setTabSections(DATA.CHILL_SECTIONS)
+      setTimeout(() => setTabSections(DATA.CHILL_SECTIONS), animationTime)
       const idx = DATA.CHILL_SECTIONS.findIndex(s => s.key === section)
       const defKey = DATA.CHILL_SECTIONS[0].key
       setTab(idx !== -1 ? DATA.CHILL_SECTIONS[idx].key : defKey)
-      setCoverImage(images.chillCover)
+      setTimeout(() => setCoverImage(images.chillCover), animationTime)
       setChangeExperienceIcon(getIcon(MODES.BUSINESS))
     } else {
       setTabSections([])
@@ -52,10 +54,11 @@ const Head: React.FC<HeadProps> = ({
       setCoverImage(images.notFound)
       setChangeExperienceIcon(getIcon(''))
     }
-  }, [section, mode])
+  }, [section, mode, animationTrigger])
 
   const alternateMode = () => {
     const newMode = mode === MODES.BUSINESS ? MODES.CHILL : MODES.BUSINESS
+    setAnimationTrigger(true)
     onChangeMode(newMode)
     onChangeSection(
       newMode === MODES.BUSINESS ? SECTIONS.ABOUT_ME_BUSINESS : SECTIONS.ABOUT_ME_CHILL
@@ -69,7 +72,9 @@ const Head: React.FC<HeadProps> = ({
         <Box className={styles.card_background_filter} />
         <Image
           src={coverImage}
-          className={styles.card_background_image}
+          className={`${styles.card_background_image} ${
+            animationTrigger ? styles.fade_animation : ''
+          }`}
           fill
           priority
           alt='Background'/>
@@ -79,7 +84,7 @@ const Head: React.FC<HeadProps> = ({
       <Box className={styles.card_profile}>
         <Box className={styles.card_profile_avatar}>
           <Box className={styles.card_profile_avatar_container}>
-            <Fade in={mode === MODES.BUSINESS} timeout={800}>
+            <Fade in={mode === MODES.BUSINESS} timeout={600}>
               <Avatar
                 src={images.profile}
                 className={styles.card_profile_avatar_container_img}
@@ -88,7 +93,7 @@ const Head: React.FC<HeadProps> = ({
             </Fade>
           </Box>
           <Box className={styles.card_profile_avatar_container}>
-            <Fade in={mode === MODES.CHILL} timeout={800}>
+            <Fade in={mode === MODES.CHILL} timeout={600}>
               <Avatar
                 src={images.profilePixel}
                 className={styles.card_profile_avatar_container_img}
@@ -131,7 +136,10 @@ const Head: React.FC<HeadProps> = ({
             setTab(tab)
             onChangeSection(tab)
           }}
-          className={styles.card_tabs_container}>
+          onAnimationEnd={() => setAnimationTrigger(false)}
+          className={`${styles.card_tabs_container} ${
+            animationTrigger ? styles.slide_animation : ''
+          }`}>
           {tabSections.map((tab, i) => (
             <Tab
               disableRipple

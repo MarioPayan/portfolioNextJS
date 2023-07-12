@@ -9,6 +9,7 @@ import Button from '@mui/material/Button'
 import ButtonBase from '@mui/material/ButtonBase'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 // Utils
@@ -207,6 +208,7 @@ const Skills: React.FC = () => {
         skillStack={DATA.TECH_SKILLS}
         toggleShowedCategory={toggleShowedCategory}
         isCategoryShowed={isCategoryShowed}/>
+      <Divider variant='middle' className={styles.divider} />
       <SkillStack
         skillStack={DATA.SOFT_SKILLS}
         toggleShowedCategory={toggleShowedCategory}

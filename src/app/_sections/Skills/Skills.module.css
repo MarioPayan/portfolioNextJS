@@ -153,6 +153,11 @@
   gap: 16px;
 }
 
+.divider {
+  width: -webkit-fill-available;
+  margin: 16px 10%;
+}
+
 @media (max-width: 900px) {
   .container {
     justify-content: center;
@@ -173,10 +178,15 @@
 
   .categoryIcon_paper {
     width: 100%;
+    height: fit-content;
+    padding: 8px 0px;
   }
 
-  .categoryIcon_container:hover {
-    width: 100%;
+  .categoryIcon_container {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
   }
 
   .category_title {
