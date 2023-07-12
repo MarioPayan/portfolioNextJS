@@ -1,6 +1,7 @@
-import Head from '@/components/Head/Head'
+import {Head, metadata} from '@/components/Metadata'
 import Carousel from '@/components/Carousel/Carousel'
-import UnderDevModal from '@/components/UnderDevModal/UnderDevModal'
 import CopyRight from '@/components/CopyRight/CopyRight'
+import Header from '@/components/Header/Header'
+import UnderDevModal from '@/components/UnderDevModal/UnderDevModal'
 
-export {Head, Carousel, UnderDevModal, CopyRight}
+export {Head, metadata, Header, Carousel, UnderDevModal, CopyRight}

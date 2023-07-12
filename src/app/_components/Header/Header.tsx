@@ -16,9 +16,9 @@ import Typography from '@mui/material/Typography'
 import {Image, images} from '@/utils/images'
 import {getIcon} from '@/utils/icons'
 // Styles
-import styles from './Head.module.css'
+import styles from './Header.module.css'
 
-const Head: React.FC<HeadProps> = ({
+const Header: React.FC<HeadProps> = ({
   section,
   mode,
   onChangeSection,
@@ -167,4 +167,4 @@ const Head: React.FC<HeadProps> = ({
   )
 }
 
-export default Head
+export default Header
