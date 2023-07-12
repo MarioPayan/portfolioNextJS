@@ -122,6 +122,7 @@ const Head: React.FC<HeadProps> = ({
         <IconButton onClick={() => alternateMode()}>
           {createElement(changeExperienceIcon, {
             fontSize: 'large',
+            color: 'primary',
             className: styles.mode_icon,
           })}
         </IconButton>
