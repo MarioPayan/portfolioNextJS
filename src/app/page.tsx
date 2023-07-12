@@ -2,10 +2,9 @@
 // React
 import {useEffect, useState} from 'react'
 // NextJS
-import NextHead from 'next/head'
 import {useSearchParams} from 'next/navigation'
 // Components
-import {Header, Head, UnderDevModal, CopyRight} from '@/components'
+import {Header, UnderDevModal, CopyRight} from '@/components'
 // Sections
 import {
   About,
@@ -82,9 +81,6 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <NextHead>
-        <Head />
-      </NextHead>
       <h1 className={styles.hiddenTitle}>{DATA.PERSONAL.name}</h1>
       <h2 className={styles.hiddenTitle}>{DATA.PERSONAL.name}</h2>
       <h3 className={styles.hiddenTitle}>{DATA.PERSONAL.name}</h3>

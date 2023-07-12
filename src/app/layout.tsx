@@ -1,24 +1,15 @@
-'use client'
-// Components
-import {Head} from '@/components'
 // Material UI
-import {StyledEngineProvider} from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
-import theme from '@/app/theme'
-import ThemeProvider from '@mui/material/styles/ThemeProvider'
+import MuiWrapper from '@/components/MuiWrapper'
+import {metadata as appMetadata} from '@/components'
+
+export const metadata = appMetadata
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <html lang='en'>
-          <head>
-            <Head />
-          </head>
-          <body suppressHydrationWarning>{children}</body>
-        </html>
-      </ThemeProvider>
-    </StyledEngineProvider>
+    <MuiWrapper>
+      <html lang='en'>
+        <body suppressHydrationWarning>{children}</body>
+      </html>
+    </MuiWrapper>
   )
 }

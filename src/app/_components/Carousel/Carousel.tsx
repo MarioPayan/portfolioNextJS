@@ -1,3 +1,4 @@
+'use client'
 // React
 import React, {useCallback, useEffect, useState} from 'react'
 import {flushSync} from 'react-dom'

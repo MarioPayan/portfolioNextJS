@@ -3,6 +3,9 @@
 import {Nunito} from 'next/font/google'
 // Material UI
 import createTheme from '@mui/material/styles/createTheme'
+import {StyledEngineProvider} from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import ThemeProvider from '@mui/material/styles/ThemeProvider'
 
 const nunito = Nunito({
   weight: ['200', '300', '400', '500', '600', '700'],
@@ -46,4 +49,13 @@ const theme = createTheme({
   },
 })
 
-export default theme
+const MuiWrapper = ({children}: {children: React.ReactNode}) => (
+  <StyledEngineProvider injectFirst>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  </StyledEngineProvider>
+)
+
+export default MuiWrapper
