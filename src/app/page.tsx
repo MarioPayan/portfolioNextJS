@@ -1,10 +1,8 @@
 'use client'
 // React
-import {useEffect, useState} from 'react'
-// NextJS
-import {useSearchParams} from 'next/navigation'
+import {Suspense, useState} from 'react'
 // Components
-import {Header, UnderDevModal, CopyRight} from '@/components'
+import {Header, UnderDevModal, CopyRight, QueryParams} from '@/components'
 // Sections
 import {
   About,
@@ -21,40 +19,10 @@ import Box from '@mui/material/Box'
 // Styles
 import styles from '@/app/page.module.css'
 
-export default function Home() {
+const Home = () => {
   const [section, setSection] = useState<SECTIONS>(SECTIONS.ABOUT_ME_BUSINESS)
   const [mode, setMode] = useState<MODES>(MODES.BUSINESS)
   const [swipeAnimation, setSwipeAnimation] = useState<-1 | 0 | 1>(0)
-  const searchParams = useSearchParams()
-
-  useEffect(() => {
-    const urlMode = searchParams.get('mode')?.toUpperCase()
-    const urlSection = searchParams.get('section')?.toUpperCase()
-
-    if (
-      !urlSection && urlMode && Object.values(MODES).includes(urlMode as MODES)
-    ) {
-      setMode(urlMode as MODES)
-      if (!urlSection) {
-        if (urlMode === MODES.BUSINESS) {
-          setSection(SECTIONS.ABOUT_ME_BUSINESS)
-        } else if (urlMode === MODES.CHILL) {
-          setSection(SECTIONS.ABOUT_ME_CHILL)
-        }
-      }
-    }
-    if (
-      urlSection && Object.values(SECTIONS).includes(urlSection as SECTIONS)
-    ) {
-      setSection(urlSection as SECTIONS)
-      if (DATA.BUSINESS_SECTIONS.map(s => s.key).includes(urlSection)) {
-        setMode(MODES.BUSINESS)
-      }
-      if (DATA.CHILL_SECTIONS.map(s => s.key).includes(urlSection)) {
-        setMode(MODES.CHILL)
-      }
-    }
-  }, [searchParams])
 
   const onChangeSection: OnChangeSection = newSection => {
     const sectionKeys = [
@@ -117,6 +85,11 @@ export default function Home() {
       </Box>
       <UnderDevModal />
       <CopyRight />
+      <Suspense fallback={<></>}>
+        <QueryParams setMode={setMode} setSection={setSection} />
+      </Suspense>
     </main>
   )
 }
+
+export default Home
