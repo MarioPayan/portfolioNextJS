@@ -13,6 +13,8 @@ interface Personal {
   location: string
   keywords: string[]
   description: {[section in Mode]: string}
+  meta_description: string
+  meta_title: string
 }
 
 interface Skill {

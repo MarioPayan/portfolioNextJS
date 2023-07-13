@@ -11,8 +11,8 @@ const images = {
 
 const metadata: Metadata = {
   metadataBase: DATA.PERSONAL.url as any,
-  title: DATA.PERSONAL.name,
-  description: DATA.PERSONAL.description.BUSINESS,
+  title: DATA.PERSONAL.meta_title,
+  description: DATA.PERSONAL.meta_description,
   generator: DATA.PERSONAL.name,
   applicationName: DATA.PERSONAL.name,
   keywords: DATA.PERSONAL.keywords.join(', '),
@@ -29,8 +29,8 @@ const metadata: Metadata = {
   },
 
   openGraph: {
-    title: DATA.PERSONAL.name,
-    description: DATA.PERSONAL.description.BUSINESS,
+    title: DATA.PERSONAL.meta_title,
+    description: DATA.PERSONAL.meta_description,
     url: DATA.PERSONAL.url,
     emails:
       DATA.CONTACTS.find(c => c.label.toLowerCase() === 'email')?.name || '',
@@ -53,8 +53,8 @@ const metadata: Metadata = {
   twitter: {
     site: DATA.PERSONAL.name,
     card: 'summary_large_image',
-    title: DATA.PERSONAL.name,
-    description: DATA.PERSONAL.description.BUSINESS,
+    title: DATA.PERSONAL.meta_title,
+    description: DATA.PERSONAL.meta_description,
     creator: DATA.PERSONAL.name,
     images: [images.profilePixel],
   },

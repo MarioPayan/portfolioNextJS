@@ -62,13 +62,15 @@ const DATA: Data = {
       'Mario',
       'Payan',
       'Mario A. Payan',
-      'Mario A. Payan',
       'Software',
       'Developer',
       'Full Stack',
       'Tech Lead',
       'Principal',
     ],
+    meta_description:
+      'I\'m Mario Payan! A Full Stack Principal Software Developer, empirical musician, hardcore gamer, adventurous explorer, geek guy, and a random person. ¯\\_(ツ)_/¯',
+    meta_title: 'Mario Payan | Full Stack Principal Software Developer',
     description: {
       BUSINESS: `Full Stack Principal Software Developer with ${dateDiff(
         '2017-10',

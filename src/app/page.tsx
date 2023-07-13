@@ -49,9 +49,9 @@ const Home = () => {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.hiddenTitle}>{DATA.PERSONAL.name}</h1>
-      <h2 className={styles.hiddenTitle}>{DATA.PERSONAL.name}</h2>
-      <h3 className={styles.hiddenTitle}>{DATA.PERSONAL.name}</h3>
+      <h1 className={styles.hiddenTitle}>{DATA.PERSONAL.meta_title}</h1>
+      <h2 className={styles.hiddenTitle}>{DATA.PERSONAL.meta_title}</h2>
+      <h3 className={styles.hiddenTitle}>{DATA.PERSONAL.meta_title}</h3>
       <Box className={styles.container}>
         <Header
           section={section}
