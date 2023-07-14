@@ -29,9 +29,7 @@ const Header: React.FC<HeadProps> = ({
   )
   const [tab, setTab] = useState<string>(DATA.BUSINESS_SECTIONS[0].key)
   const [coverImage, setCoverImage] = useState<string>(images.businessCover)
-  const [changeExperienceIcon, setChangeExperienceIcon] = useState<string>(
-    getIcon(MODES.CHILL)
-  )
+  const [changingExperience, setChangingExperience] = useState<boolean>(false)
   const [animationTrigger, setAnimationTrigger] = useState<boolean>(false)
 
   useEffect(() => {
@@ -42,19 +40,16 @@ const Header: React.FC<HeadProps> = ({
       const defKey = DATA.BUSINESS_SECTIONS[0].key
       setTab(idx !== -1 ? DATA.BUSINESS_SECTIONS[idx].key : defKey)
       setTimeout(() => setCoverImage(images.businessCover), animationTime)
-      setChangeExperienceIcon(getIcon(MODES.CHILL))
     } else if (mode === MODES.CHILL) {
       setTimeout(() => setTabSections(DATA.CHILL_SECTIONS), animationTime)
       const idx = DATA.CHILL_SECTIONS.findIndex(s => s.key === section)
       const defKey = DATA.CHILL_SECTIONS[0].key
       setTab(idx !== -1 ? DATA.CHILL_SECTIONS[idx].key : defKey)
       setTimeout(() => setCoverImage(images.chillCover), animationTime)
-      setChangeExperienceIcon(getIcon(MODES.BUSINESS))
     } else {
       setTabSections([])
       setTab('')
       setCoverImage(images.notFound)
-      setChangeExperienceIcon(getIcon(''))
     }
   }, [section, mode, animationTrigger])
 
@@ -65,6 +60,7 @@ const Header: React.FC<HeadProps> = ({
     onChangeSection(
       newMode === MODES.BUSINESS ? SECTIONS.ABOUT_ME_BUSINESS : SECTIONS.ABOUT_ME_CHILL
     )
+    setChangingExperience(true)
   }
 
   return (
@@ -119,8 +115,11 @@ const Header: React.FC<HeadProps> = ({
 
       {/* Modes */}
       <Box className={styles.mode_container}>
-        <IconButton onClick={() => alternateMode()}>
-          {createElement(changeExperienceIcon, {
+        <IconButton
+          onClick={() => alternateMode()}
+          className={`${changingExperience ? styles.rotate_animation : ''}`}
+          onAnimationEnd={() => setChangingExperience(false)}>
+          {createElement(getIcon('alternate'), {
             fontSize: 'large',
             color: 'primary',
             className: styles.mode_icon,
