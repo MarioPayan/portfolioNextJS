@@ -4,8 +4,8 @@ const getDevIconURL: GetDevIconURL = url =>
   `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${url}`
 
 import BugReport from '@mui/icons-material/BugReport'
-import Business from '@mui/icons-material/Business'
 import Code from '@mui/icons-material/Code'
+import ConstructionIcon from '@mui/icons-material/Construction'
 import Email from '@mui/icons-material/Email'
 import Engineering from '@mui/icons-material/Engineering'
 import Facebook from '@mui/icons-material/Facebook'
@@ -15,7 +15,6 @@ import Instagram from '@mui/icons-material/Instagram'
 import IntegrationInstructions from '@mui/icons-material/IntegrationInstructions'
 import LaptopChromebook from '@mui/icons-material/LaptopChromebook'
 import LinkedIn from '@mui/icons-material/LinkedIn'
-import Loop from '@mui/icons-material/Loop'
 import Movie from '@mui/icons-material/Movie'
 import Moving from '@mui/icons-material/Moving'
 import MusicNote from '@mui/icons-material/MusicNote'
@@ -40,7 +39,6 @@ const icons: Icons = {
   experience: Moving,
   projects: Work,
   education: School,
-  alternate: Loop,
   about_me_chill: Person,
   music: MusicNote,
   traveling: TwoWheeler,
@@ -82,6 +80,9 @@ const icons: Icons = {
   problem_solving: Engineering,
   teamwork: Group,
   willingness_to_learn: SelfImprovement,
+
+  // Misc
+  under_development: ConstructionIcon,
 }
 
 const devIcons: DevIcons = {

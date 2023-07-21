@@ -1,6 +1,8 @@
 'use client'
 // React
 import {createElement, useEffect, useState} from 'react'
+// NextJS
+import {useRouter} from 'next/navigation'
 // Data
 import DATA, {SECTIONS, MODES} from '@/data/data'
 // Material UI
@@ -8,6 +10,8 @@ import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Fade from '@mui/material/Fade'
+import GTranslateIcon from '@mui/icons-material/GTranslate'
+import LoopIcon from '@mui/icons-material/Loop'
 import IconButton from '@mui/material/IconButton'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
@@ -29,8 +33,11 @@ const Header: React.FC<HeadProps> = ({
   )
   const [tab, setTab] = useState<string>(DATA.BUSINESS_SECTIONS[0].key)
   const [coverImage, setCoverImage] = useState<string>(images.businessCover)
-  const [changingExperience, setChangingExperience] = useState<boolean>(false)
+  const [changingMode, setChangingMode] = useState<boolean>(false)
+  const [changingLanguage, setChangingLanguage] = useState<boolean>(false)
   const [animationTrigger, setAnimationTrigger] = useState<boolean>(false)
+
+  const router = useRouter()
 
   useEffect(() => {
     const animationTime = animationTrigger ? 250 : 0
@@ -53,14 +60,20 @@ const Header: React.FC<HeadProps> = ({
     }
   }, [section, mode, animationTrigger])
 
-  const alternateMode = () => {
+  const changeMode = () => {
     const newMode = mode === MODES.BUSINESS ? MODES.CHILL : MODES.BUSINESS
     setAnimationTrigger(true)
     onChangeMode(newMode)
     onChangeSection(
       newMode === MODES.BUSINESS ? SECTIONS.ABOUT_ME_BUSINESS : SECTIONS.ABOUT_ME_CHILL
     )
-    setChangingExperience(true)
+    setChangingMode(true)
+  }
+
+  const changeLanguage = () => {
+    // TODO: Change language
+    router.push('/es')
+    setChangingLanguage(true)
   }
 
   return (
@@ -116,14 +129,20 @@ const Header: React.FC<HeadProps> = ({
       {/* Modes */}
       <Box className={styles.mode_container}>
         <IconButton
-          onClick={() => alternateMode()}
-          className={`${changingExperience ? styles.rotate_animation : ''}`}
-          onAnimationEnd={() => setChangingExperience(false)}>
-          {createElement(getIcon('alternate'), {
-            fontSize: 'large',
-            color: 'primary',
-            className: styles.mode_icon,
-          })}
+          onClick={() => changeMode()}
+          className={`${changingMode ? styles.rotate_animation : ''}`}
+          onAnimationEnd={() => setChangingMode(false)}>
+          <LoopIcon
+            fontSize='large'
+            color='primary'
+            className={styles.mode_icon}/>
+        </IconButton>
+        <IconButton
+          onClick={() => changeLanguage()}
+          className={`${changingLanguage ? styles.flip_animation : ''}`}
+          onAnimationEnd={() => setChangingLanguage(false)}
+          sx={{display: 'none'}}>
+          <GTranslateIcon fontSize='large' color='primary' />
         </IconButton>
       </Box>
 

@@ -2,7 +2,7 @@
 // React
 import {Suspense, useState} from 'react'
 // Components
-import {Header, UnderDevModal, CopyRight, QueryParams} from '@/components'
+import {Header, Modal, CopyRight, QueryParams} from '@/components'
 // Sections
 import {
   About,
@@ -13,13 +13,13 @@ import {
   Skills
 } from '@/sections'
 // Data
-import DATA, {SECTIONS, MODES} from '@/data/data'
+import DATA, {SECTIONS, MODES, MISC} from '@/data/data'
 // Material UI
 import Box from '@mui/material/Box'
 // Styles
 import styles from '@/app/page.module.css'
 
-const Home = () => {
+const Home: React.FC = () => {
   const [section, setSection] = useState<SECTIONS>(SECTIONS.ABOUT_ME_BUSINESS)
   const [mode, setMode] = useState<MODES>(MODES.BUSINESS)
   const [swipeAnimation, setSwipeAnimation] = useState<-1 | 0 | 1>(0)
@@ -83,7 +83,8 @@ const Home = () => {
           {section === SECTIONS.RANDOM && <Hobbies section={DATA.RANDOM} />}
         </Box>
       </Box>
-      <UnderDevModal />
+      <Modal {...(MISC.underDevelopment as any as ModalProps)} />
+      {false && <Modal {...(MISC.workInProgress as any as ModalProps)} />}
       <CopyRight />
       <Suspense fallback={<></>}>
         <QueryParams setMode={setMode} setSection={setSection} />

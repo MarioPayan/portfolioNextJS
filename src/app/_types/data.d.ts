@@ -65,6 +65,10 @@ interface Project {
   link?: string
 }
 
+interface Misc {
+  [key: string]: string | {[key: string]: string}
+}
+
 interface Data {
   PERSONAL: Personal
   BUSINESS_SECTIONS: Section[]

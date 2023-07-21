@@ -50,6 +50,26 @@ export enum MODES {
   CHILL = 'CHILL',
 }
 
+export enum LANGUAGES {
+  EN = 'EN',
+  ES = 'ES',
+}
+
+export const MISC: Misc = {
+  underDevelopment: {
+    icon: 'under_development',
+    title: 'Under development',
+    description:
+      'Welcome to my website! I appreciate your visit. While the site is currently under development, feel free to explore and check back anytime you\'d like',
+  },
+  workInProgress: {
+    icon: 'under_development',
+    title: 'Work in progress',
+    description:
+      'This section is currently under development. Please check back soon!',
+  },
+}
+
 const DATA: Data = {
   PERSONAL: {
     name: 'Mario Payan',
