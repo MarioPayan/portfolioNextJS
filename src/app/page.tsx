@@ -1,8 +1,8 @@
 'use client'
 // React
-import {Suspense, useState} from 'react'
+import {Suspense, useState, useContext, useEffect} from 'react'
 // Components
-import {Header, Modal, CopyRight, QueryParams} from '@/components'
+import {Header, Modal, CopyRight, QueryParams, LangContext} from '@/components'
 // Sections
 import {
   About,
@@ -13,13 +13,21 @@ import {
   Skills
 } from '@/sections'
 // Data
-import DATA, {SECTIONS, MODES, MISC} from '@/data/data'
+import DATA, {SECTIONS, MODES, MISC, LANGUAGES} from '@/data/data'
 // Material UI
 import Box from '@mui/material/Box'
 // Styles
 import styles from '@/app/page.module.css'
 
-const Home: React.FC = () => {
+const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
+  const {language, setLanguage} = useContext(LangContext)
+
+  // TODO: Work in progress
+  console.log(language)
+  useEffect(() => {
+    setLanguage(urlLanguage as LANGUAGES)
+  }, [urlLanguage, setLanguage])
+
   const [section, setSection] = useState<SECTIONS>(SECTIONS.ABOUT_ME_BUSINESS)
   const [mode, setMode] = useState<MODES>(MODES.BUSINESS)
   const [swipeAnimation, setSwipeAnimation] = useState<-1 | 0 | 1>(0)
@@ -83,8 +91,8 @@ const Home: React.FC = () => {
           {section === SECTIONS.RANDOM && <Hobbies section={DATA.RANDOM} />}
         </Box>
       </Box>
-      <Modal {...(MISC.underDevelopment as any as ModalProps)} />
-      {false && <Modal {...(MISC.workInProgress as any as ModalProps)} />}
+      <Modal {...(MISC.underDevelopment as unknown as ModalProps)} />
+      {false && <Modal {...(MISC.workInProgress as unknown as ModalProps)} />}
       <CopyRight />
       <Suspense fallback={<></>}>
         <QueryParams setMode={setMode} setSection={setSection} />

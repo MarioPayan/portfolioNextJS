@@ -10,7 +10,7 @@ const images = {
 }
 
 const metadata: Metadata = {
-  metadataBase: DATA.PERSONAL.url as any,
+  metadataBase: DATA.PERSONAL.url as unknown as URL,
   title: DATA.PERSONAL.meta_title,
   description: DATA.PERSONAL.meta_description,
   generator: DATA.PERSONAL.name,

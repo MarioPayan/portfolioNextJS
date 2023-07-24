@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // i18n: { TODO: enable NextJS fix it
-  //   locales: ['en', 'es'],
-  //   defaultLocale: 'en',
-  //   localeDetection: false,
-  // },
+  i18n: {
+    locales: ['en', 'es'],
+    defaultLocale: 'en',
+    localeDetection: true,
+  },
   trailingSlash: true,
 }
 

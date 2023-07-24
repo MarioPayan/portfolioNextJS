@@ -1,4 +1,4 @@
-type Icon = any // TODO: typeof QuestionMark
+type Icon = any
 
 interface GetDevIconURL {
   (url: string): string

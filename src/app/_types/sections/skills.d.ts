@@ -10,7 +10,7 @@ interface SkillStackProps {
 }
 
 interface CategoryIconBackgroundProps {
-  Icon: any // TODO: typeof QuestionMark
+  Icon: Icon
 }
 
 interface CategoryIconCardProps {

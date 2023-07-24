@@ -1,9 +1,13 @@
 'use client'
+// React
+import {createContext, useState} from 'react'
 // NextJS
 import {Nunito} from 'next/font/google'
+// Data
+import {LANGUAGES} from '@/data/data'
 // Material UI
-import createTheme from '@mui/material/styles/createTheme'
 import {StyledEngineProvider} from '@mui/material/styles'
+import createTheme from '@mui/material/styles/createTheme'
 import CssBaseline from '@mui/material/CssBaseline'
 import ThemeProvider from '@mui/material/styles/ThemeProvider'
 
@@ -49,13 +53,28 @@ const theme = createTheme({
   },
 })
 
-const MuiWrapper = ({children}: {children: React.ReactNode}) => (
-  <StyledEngineProvider injectFirst>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </ThemeProvider>
-  </StyledEngineProvider>
-)
+export const LangContext = createContext<{
+  language: LANGUAGES
+  setLanguage: (language: LANGUAGES) => void
+    }>({
+      language: LANGUAGES.EN,
+      // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+      setLanguage: (language: LANGUAGES) => {},
+    })
 
-export default MuiWrapper
+const LayoutWrapper: React.FC<{children: React.ReactNode}> = ({children}) => {
+  const [language, setLanguage] = useState<LANGUAGES>(LANGUAGES.EN)
+
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <LangContext.Provider value={{language, setLanguage}}>
+          <CssBaseline />
+          {children}
+        </LangContext.Provider>
+      </ThemeProvider>
+    </StyledEngineProvider>
+  )
+}
+
+export default LayoutWrapper
