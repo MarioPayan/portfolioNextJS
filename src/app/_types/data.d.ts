@@ -17,13 +17,25 @@ interface Personal {
   meta_title: string
 }
 
-interface Skill {
+interface TechSkill {
   title: string
 }
 
-interface SkillCategory {
+interface SoftSkill extends TechSkill {
+  key: string
+}
+
+interface TechSkillCategory {
+  key: string
   title: string
-  skills: Skill[]
+  skills: TechSkill[]
+  rgbColor: [number, number, number]
+}
+
+interface SoftSkillCategory {
+  key: string
+  title: string
+  skills: SoftSkill[]
   rgbColor: [number, number, number]
 }
 
@@ -74,8 +86,8 @@ interface Data {
   BUSINESS_SECTIONS: Section[]
   CHILL_SECTIONS: Section[]
   CONTACTS: {label: string; name: string; url: string; mode: Mode}[]
-  TECH_SKILLS: SkillCategory[]
-  SOFT_SKILLS: SkillCategory[]
+  TECH_SKILLS: TechSkillCategory[]
+  SOFT_SKILLS: SoftSkillCategory[]
   EXPERIENCE: Experience[]
   EDUCATION: Education[]
   PROJECTS: Project[]

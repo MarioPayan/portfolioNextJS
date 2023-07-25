@@ -2,7 +2,7 @@
 // React
 import {Suspense, useState, useContext, useEffect} from 'react'
 // Components
-import {Header, Modal, CopyRight, QueryParams, LangContext} from '@/components'
+import {Header, Modal, CopyRight, QueryParams, DataContext} from '@/components'
 // Sections
 import {
   About,
@@ -12,18 +12,16 @@ import {
   Projects,
   Skills
 } from '@/sections'
-// Data
-import DATA, {SECTIONS, MODES, MISC, LANGUAGES} from '@/data/data'
+import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
 // Material UI
 import Box from '@mui/material/Box'
 // Styles
 import styles from '@/app/page.module.css'
 
 const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
-  const {language, setLanguage} = useContext(LangContext)
+  const {data, misc, setLanguage} = useContext(DataContext)
 
   // TODO: Work in progress
-  console.log(language)
   useEffect(() => {
     setLanguage(urlLanguage as LANGUAGES)
   }, [urlLanguage, setLanguage])
@@ -34,8 +32,8 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
 
   const onChangeSection: OnChangeSection = newSection => {
     const sectionKeys = [
-      ...DATA.BUSINESS_SECTIONS.map(s => s.key),
-      ...DATA.CHILL_SECTIONS.map(s => s.key),
+      ...data.BUSINESS_SECTIONS.map(s => s.key),
+      ...data.CHILL_SECTIONS.map(s => s.key),
     ]
     const newSectionIdx = sectionKeys.findIndex(s => s === newSection)
     const currentSectionIdx = sectionKeys.findIndex(s => s === section)
@@ -57,9 +55,9 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.hiddenTitle}>{DATA.PERSONAL.meta_title}</h1>
-      <h2 className={styles.hiddenTitle}>{DATA.PERSONAL.meta_title}</h2>
-      <h3 className={styles.hiddenTitle}>{DATA.PERSONAL.meta_title}</h3>
+      <h1 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h1>
+      <h2 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h2>
+      <h3 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h3>
       <Box className={styles.container}>
         <Header
           section={section}
@@ -79,20 +77,20 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
           {section === SECTIONS.EDUCATION && <Education />}
           {/* Chill sections */}
           {section === SECTIONS.ABOUT_ME_CHILL && <About mode={MODES.CHILL} />}
-          {section === SECTIONS.MUSIC && <Hobbies section={DATA.MUSIC} />}
+          {section === SECTIONS.MUSIC && <Hobbies section={data.MUSIC} />}
           {section === SECTIONS.TRAVELING && (
-            <Hobbies section={DATA.TRAVELING} />
+            <Hobbies section={data.TRAVELING} />
           )}
-          {section === SECTIONS.DOGS && <Hobbies section={DATA.DOGS} />}
-          {section === SECTIONS.GEEK && <Hobbies section={DATA.GEEK} />}
-          {section === SECTIONS.ROLES && <Hobbies section={DATA.ROLES} />}
-          {section === SECTIONS.FILMS && <Hobbies section={DATA.FILMS} />}
-          {section === SECTIONS.SPORTS && <Hobbies section={DATA.SPORTS} />}
-          {section === SECTIONS.RANDOM && <Hobbies section={DATA.RANDOM} />}
+          {section === SECTIONS.DOGS && <Hobbies section={data.DOGS} />}
+          {section === SECTIONS.GEEK && <Hobbies section={data.GEEK} />}
+          {section === SECTIONS.ROLES && <Hobbies section={data.ROLES} />}
+          {section === SECTIONS.FILMS && <Hobbies section={data.FILMS} />}
+          {section === SECTIONS.SPORTS && <Hobbies section={data.SPORTS} />}
+          {section === SECTIONS.RANDOM && <Hobbies section={data.RANDOM} />}
         </Box>
       </Box>
-      <Modal {...(MISC.underDevelopment as unknown as ModalProps)} />
-      {false && <Modal {...(MISC.workInProgress as unknown as ModalProps)} />}
+      <Modal {...(misc.underDevelopment as unknown as ModalProps)} />
+      {false && <Modal {...(misc.workInProgress as unknown as ModalProps)} />}
       <CopyRight />
       <Suspense fallback={<></>}>
         <QueryParams setMode={setMode} setSection={setSection} />

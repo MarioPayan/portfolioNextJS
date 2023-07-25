@@ -1,5 +1,5 @@
-Work In Progress
-Language button
+Remember WIP message
+Clean or update queryParams
 
 Skills:
 Improve colors

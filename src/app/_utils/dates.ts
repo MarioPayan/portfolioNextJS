@@ -18,13 +18,18 @@ export const dateDiff: DateDiff = (dateA, dateB, onlyYears = false) => {
   return `${timeDiff}`
 }
 
-export const changeDateFormat: ChangeDateFormat = date => {
+export const changeDateFormat: ChangeDateFormat = (date, language = 'es') => {
   // From AAAA-MM to Month Year
   // EG: 2000-01 Jan 2000
   const [year, month] = date.split('-')
 
+  const format = {
+    en: 'en-US',
+    es: 'es-CO',
+  }[language.toLowerCase()]
+
   return `${new Date(parseInt(year), parseInt(month) - 1).toLocaleString(
-    'en-US',
+    format,
     {month: 'short'}
   )} ${year}`
 }

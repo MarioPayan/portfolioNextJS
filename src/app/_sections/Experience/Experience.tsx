@@ -1,6 +1,8 @@
 'use client'
-// Data
-import DATA from '@/data/data'
+// React
+import {useContext} from 'react'
+// Components
+import {DataContext} from '@/components'
 // Material UI
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
@@ -18,61 +20,71 @@ import {rbgToRgba} from '@/utils/misc'
 // Styles
 import styles from './Experience.module.css'
 
-const Card: React.FC<ExperienceCardProps> = ({experience}) => (
-  <Paper
-    className={styles.card}
-    sx={{
-      background: `linear-gradient(-15deg, ${rbgToRgba(
-        experience.rgbColor,
-        0.7
-      )}, transparent 80%, rgba(0,0,0,0.2) 95%)`,
-    }}>
-    <Box className={styles.card_header}>
-      <Box className={styles.card_header_text}>
-        <Typography variant='h5'>{experience.position}</Typography>
-        <Typography variant='subtitle1' className={styles.card_subtitle}>
-          {experience.where}
-        </Typography>
-      </Box>
-      <Box className={styles.card_background}>
-        <Image src={experience.image} alt='company' fill />
-      </Box>
-    </Box>
-    <Box className={styles.card_divider}>
-      <Divider />
-    </Box>
-    <List dense className={styles.card_list}>
-      {experience.achievements.map((achievement: string, index: number) => (
-        <ListItem key={index} disablePadding disableGutters>
-          <ListItemIcon className={styles.card_achievementIcon}>
-            <StarRateIcon />
-          </ListItemIcon>
-          <ListItemText primary={achievement} />
-        </ListItem>
-      ))}
-    </List>
-    <Box className={styles.card_date}>
-      <Box className={styles.card_bottomText}>
-        <Typography variant='subtitle2' className={styles.card_dateInfo}>
-          {`${changeDateFormat(experience.from)} - \
-          ${experience.to ? changeDateFormat(experience.to) : 'present'}`}
-        </Typography>
-        <Typography variant='subtitle1' className={styles.card_dateDuration}>
-          {dateDiff(experience.from, experience.to || '')}
-        </Typography>
-      </Box>
-    </Box>
-  </Paper>
-)
+const Card: React.FC<ExperienceCardProps> = ({experience}) => {
+  const {language} = useContext(DataContext)
 
-const Experience: React.FC = () => (
-  <Box className={styles.container}>
-    {DATA.EXPERIENCE.sort(sortFrom).map(
-      (experience: Experience, index: number) => (
-        <Card key={index} experience={experience} />
-      )
-    )}
-  </Box>
-)
+  return (
+    <Paper
+      className={styles.card}
+      sx={{
+        background: `linear-gradient(-15deg, ${rbgToRgba(
+          experience.rgbColor,
+          0.7
+        )}, transparent 80%, rgba(0,0,0,0.2) 95%)`,
+      }}>
+      <Box className={styles.card_header}>
+        <Box className={styles.card_header_text}>
+          <Typography variant='h5'>{experience.position}</Typography>
+          <Typography variant='subtitle1' className={styles.card_subtitle}>
+            {experience.where}
+          </Typography>
+        </Box>
+        <Box className={styles.card_background}>
+          <Image src={experience.image} alt='company' fill />
+        </Box>
+      </Box>
+      <Box className={styles.card_divider}>
+        <Divider />
+      </Box>
+      <List dense className={styles.card_list}>
+        {experience.achievements.map((achievement: string, index: number) => (
+          <ListItem key={index} disablePadding disableGutters>
+            <ListItemIcon className={styles.card_achievementIcon}>
+              <StarRateIcon />
+            </ListItemIcon>
+            <ListItemText primary={achievement} />
+          </ListItem>
+        ))}
+      </List>
+      <Box className={styles.card_date}>
+        <Box className={styles.card_bottomText}>
+          <Typography variant='subtitle2' className={styles.card_dateInfo}>
+            {`${changeDateFormat(experience.from, language)} - \
+            ${
+    experience.to ? changeDateFormat(experience.to, language) : 'present'
+    }`}
+          </Typography>
+          <Typography variant='subtitle1' className={styles.card_dateDuration}>
+            {dateDiff(experience.from, experience.to || '')}
+          </Typography>
+        </Box>
+      </Box>
+    </Paper>
+  )
+}
+
+const Experience: React.FC = () => {
+  const {data} = useContext(DataContext)
+
+  return (
+    <Box className={styles.container}>
+      {data.EXPERIENCE.sort(sortFrom).map(
+        (experience: Experience, index: number) => (
+          <Card key={index} experience={experience} />
+        )
+      )}
+    </Box>
+  )
+}
 
 export default Experience

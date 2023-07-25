@@ -1,10 +1,10 @@
 'use client'
 // React
-import {createContext, useState} from 'react'
+import {createContext, useEffect, useState} from 'react'
 // NextJS
 import {Nunito} from 'next/font/google'
 // Data
-import {LANGUAGES} from '@/data/data'
+import Data, {LANGUAGES, Misc} from '@/data/data'
 // Material UI
 import {StyledEngineProvider} from '@mui/material/styles'
 import createTheme from '@mui/material/styles/createTheme'
@@ -53,25 +53,36 @@ const theme = createTheme({
   },
 })
 
-export const LangContext = createContext<{
+export const DataContext = createContext<{
   language: LANGUAGES
   setLanguage: (language: LANGUAGES) => void
+  data: Data
+  misc: Misc
     }>({
       language: LANGUAGES.EN,
       // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
       setLanguage: (language: LANGUAGES) => {},
+      data: Data(LANGUAGES.EN),
+      misc: Misc(LANGUAGES.EN),
     })
 
 const LayoutWrapper: React.FC<{children: React.ReactNode}> = ({children}) => {
   const [language, setLanguage] = useState<LANGUAGES>(LANGUAGES.EN)
+  const [data, setData] = useState<Data>(Data(LANGUAGES.EN))
+  const [misc, setMisc] = useState<Misc>(Misc(LANGUAGES.EN))
+
+  useEffect(() => {
+    setData(Data(language))
+    setMisc(Misc(language))
+  }, [language])
 
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-        <LangContext.Provider value={{language, setLanguage}}>
+        <DataContext.Provider value={{data, misc, language, setLanguage}}>
           <CssBaseline />
           {children}
-        </LangContext.Provider>
+        </DataContext.Provider>
       </ThemeProvider>
     </StyledEngineProvider>
   )

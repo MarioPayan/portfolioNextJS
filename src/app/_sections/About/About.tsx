@@ -1,8 +1,8 @@
 'use client'
 // React
-import React, {createElement} from 'react'
+import React, {createElement, useContext} from 'react'
 // Data
-import DATA, {MODES} from '@/data/data'
+import {MODES} from '@/data/data'
 // Material UI
 import Box from '@mui/material/Box'
 import ButtonBase from '@mui/material/ButtonBase'
@@ -18,12 +18,14 @@ import {sortFrom} from '@/utils/dates'
 import {Image, images} from '@/utils/images'
 // Styles
 import styles from './About.module.css'
+import {DataContext} from '@/components/LayoutWrapper'
 
 const Inline: React.FC<InlineProps> = ({children}) => (
   <Box className={styles.inline}>{children}</Box>
 )
 
 const About: React.FC<AboutProps> = ({mode}) => {
+  const {data, misc} = useContext(DataContext)
   const profileImages = {
     BUSINESS: images.profileNoBG,
     CHILL: images.profileChillNoBG,
@@ -34,35 +36,36 @@ const About: React.FC<AboutProps> = ({mode}) => {
       <Paper className={styles.container}>
         <Box className={styles.info}>
           <Typography variant='h4' color='primary' className={styles.title}>
-            Hi! I&apos;m {DATA.PERSONAL.name}
+            {`${misc.intro} ${data.PERSONAL.name}`}
           </Typography>
-          <Typography>{DATA.PERSONAL.description[mode]}</Typography>
+          <Typography>{data.PERSONAL.description[mode]}</Typography>
           <Box className={styles.inline}>
             {mode === MODES.BUSINESS && (
               <>
                 <WorkIcon color='secondary' />
                 <Typography>
-                  {DATA.EXPERIENCE.sort(sortFrom)[0].position} At{' '}
-                  {DATA.EXPERIENCE.sort(sortFrom)[0].where}
+                  {`${data.EXPERIENCE.sort(sortFrom)[0].position} ${misc.at} ${
+                    data.EXPERIENCE.sort(sortFrom)[0].where
+                  }`}
                 </Typography>
               </>
             )}
             {mode === MODES.CHILL && (
               <>
                 <FormatQuote color='secondary' />
-                <Typography>{DATA.PERSONAL.quote}</Typography>
+                <Typography>{data.PERSONAL.quote}</Typography>
               </>
             )}
           </Box>
           <Box className={styles.inline}>
             <LocationOnIcon color='secondary' />
-            <Typography>{DATA.PERSONAL.location}</Typography>
+            <Typography>{data.PERSONAL.location}</Typography>
           </Box>
 
           <Typography variant='h5' className={styles.title}>
-            Contact
+            {`${misc.contact}`}
           </Typography>
-          {DATA.CONTACTS.filter(c => c.mode === mode).map((contact, index) => (
+          {data.CONTACTS.filter(c => c.mode === mode).map((contact, index) => (
             <Box className={styles.inline} key={index}>
               <ButtonBase
                 onClick={() => openInNewTab(contact.url)}

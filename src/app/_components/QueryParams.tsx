@@ -1,13 +1,16 @@
 'use client'
 // React
-import {useEffect} from 'react'
+import {useEffect, useContext} from 'react'
 // NextJS
 import {useSearchParams} from 'next/navigation'
+// Components
+import {DataContext} from '@/components'
 // Data
-import DATA, {SECTIONS, MODES} from '@/data/data'
+import {SECTIONS, MODES} from '@/data/data'
 
 const QueryParams: React.FC<QueryParamsProps> = ({setMode, setSection}) => {
   const searchParams = useSearchParams()
+  const {data} = useContext(DataContext)
 
   useEffect(() => {
     const urlMode = searchParams.get('mode')?.toUpperCase()
@@ -17,10 +20,10 @@ const QueryParams: React.FC<QueryParamsProps> = ({setMode, setSection}) => {
       urlSection && Object.values(SECTIONS).includes(urlSection as SECTIONS)
     ) {
       setSection(urlSection as SECTIONS)
-      if (DATA.BUSINESS_SECTIONS.map(s => s.key).includes(urlSection)) {
+      if (data.BUSINESS_SECTIONS.map(s => s.key).includes(urlSection)) {
         setMode(MODES.BUSINESS)
       }
-      if (DATA.CHILL_SECTIONS.map(s => s.key).includes(urlSection)) {
+      if (data.CHILL_SECTIONS.map(s => s.key).includes(urlSection)) {
         setMode(MODES.CHILL)
       }
     } else if (
@@ -35,7 +38,7 @@ const QueryParams: React.FC<QueryParamsProps> = ({setMode, setSection}) => {
         }
       }
     }
-  }, [searchParams, setMode, setSection])
+  }, [data, searchParams, setMode, setSection])
 
   return <></>
 }

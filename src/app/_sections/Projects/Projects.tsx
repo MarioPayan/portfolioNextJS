@@ -1,8 +1,8 @@
 'use client'
 // React
-import React, {createElement, useMemo} from 'react'
-// Data
-import DATA from '@/data/data'
+import React, {createElement, useMemo, useContext} from 'react'
+// Components
+import {DataContext} from '@/components'
 // Material UI
 import {keyframes} from '@mui/system'
 import Box from '@mui/material/Box'
@@ -59,66 +59,74 @@ const InfinityCarousel: React.FC<InfinityCarouselProps> = ({children}) => {
   )
 }
 
-const Project: React.FC<ProjectProps> = ({project}) => (
-  <Paper className={styles.project}>
-    <Box className={styles.project_info}>
-      <Typography variant='h5' className={styles.project_text}>
-        {project.label}
-      </Typography>
-      <Typography variant='body1' className={styles.project_text}>
-        {project.description}
-      </Typography>
+const Project: React.FC<ProjectProps> = ({project}) => {
+  const {misc} = useContext(DataContext)
 
-      <Box className={styles.iconBar}>
-        <InfinityCarousel>
-          {project.stack.sort(randomSort).map((tech, index) =>
-            (getDevIconSrc(tech) ? (
-              <Image
-                key={index}
-                src={getDevIconSrc(tech)}
-                title={tech}
-                alt={tech}
-                height={20}
-                width={20}
-                className={styles.infinityCarousel_icon}></Image>
-            ) : (
-              createElement(getIcon(tech), {
-                title: tech,
-                className: styles.infinityCarousel_icon,
-                key: index,
-              })
-            ))
-          )}
-        </InfinityCarousel>
+  return (
+    <Paper className={styles.project}>
+      <Box className={styles.project_info}>
+        <Typography variant='h5' className={styles.project_text}>
+          {project.label}
+        </Typography>
+        <Typography variant='body1' className={styles.project_text}>
+          {project.description}
+        </Typography>
+
+        <Box className={styles.iconBar}>
+          <InfinityCarousel>
+            {project.stack.sort(randomSort).map((tech, index) =>
+              (getDevIconSrc(tech) ? (
+                <Image
+                  key={index}
+                  src={getDevIconSrc(tech)}
+                  title={tech}
+                  alt={tech}
+                  height={20}
+                  width={20}
+                  className={styles.infinityCarousel_icon}></Image>
+              ) : (
+                createElement(getIcon(tech), {
+                  title: tech,
+                  className: styles.infinityCarousel_icon,
+                  key: index,
+                })
+              ))
+            )}
+          </InfinityCarousel>
+        </Box>
+        <Button
+          variant='contained'
+          disabled={!project.link}
+          endIcon={!project.link ? <Lock /> : null}
+          onClick={() => {
+            window.open(project.link, '_blank', 'noopener,noreferrer')
+          }}>
+          {`${misc.visit}`}
+        </Button>
       </Box>
-      <Button
-        variant='contained'
-        disabled={!project.link}
-        endIcon={!project.link ? <Lock /> : null}
-        onClick={() => {
-          window.open(project.link, '_blank', 'noopener,noreferrer')
-        }}>
-        Visit
-      </Button>
-    </Box>
-    <Box className={styles.project_image_container}>
-      <Image
-        src={project.image}
-        fill
-        priority
-        alt={project.label}
-        className={styles.project_image}/>
-    </Box>
-  </Paper>
-)
+      <Box className={styles.project_image_container}>
+        <Image
+          src={project.image}
+          fill
+          priority
+          alt={project.label}
+          className={styles.project_image}/>
+      </Box>
+    </Paper>
+  )
+}
 
-const Projects: React.FC = () => (
-  <Box className={styles.container}>
-    {DATA.PROJECTS.map((project, index) => (
-      <Project key={index} project={project} />
-    ))}
-  </Box>
-)
+const Projects: React.FC = () => {
+  const {data} = useContext(DataContext)
+
+  return (
+    <Box className={styles.container}>
+      {data.PROJECTS.map((project, index) => (
+        <Project key={index} project={project} />
+      ))}
+    </Box>
+  )
+}
 
 export default Projects
 

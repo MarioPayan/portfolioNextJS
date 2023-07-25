@@ -1,10 +1,10 @@
 'use client'
 // React
-import {createElement, useEffect, useState} from 'react'
+import {createElement, useEffect, useState, useContext} from 'react'
 // NextJS
 import {useRouter} from 'next/navigation'
 // Data
-import DATA, {SECTIONS, MODES} from '@/data/data'
+import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
 // Material UI
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
@@ -21,6 +21,7 @@ import {Image, images} from '@/utils/images'
 import {getIcon} from '@/utils/icons'
 // Styles
 import styles from './Header.module.css'
+import {DataContext} from '@/components/LayoutWrapper'
 
 const Header: React.FC<HeadProps> = ({
   section,
@@ -28,10 +29,11 @@ const Header: React.FC<HeadProps> = ({
   onChangeSection,
   onChangeMode,
 }) => {
+  const {data, language} = useContext(DataContext)
   const [tabSections, setTabSections] = useState<Section[]>(
-    DATA.BUSINESS_SECTIONS
+    data.BUSINESS_SECTIONS
   )
-  const [tab, setTab] = useState<string>(DATA.BUSINESS_SECTIONS[0].key)
+  const [tab, setTab] = useState<string>(data.BUSINESS_SECTIONS[0].key)
   const [coverImage, setCoverImage] = useState<string>(images.businessCover)
   const [changingMode, setChangingMode] = useState<boolean>(false)
   const [changingLanguage, setChangingLanguage] = useState<boolean>(false)
@@ -42,23 +44,23 @@ const Header: React.FC<HeadProps> = ({
   useEffect(() => {
     const animationTime = animationTrigger ? 250 : 0
     if (mode === MODES.BUSINESS) {
-      setTimeout(() => setTabSections(DATA.BUSINESS_SECTIONS), animationTime)
-      const idx = DATA.BUSINESS_SECTIONS.findIndex(s => s.key === section)
-      const defKey = DATA.BUSINESS_SECTIONS[0].key
-      setTab(idx !== -1 ? DATA.BUSINESS_SECTIONS[idx].key : defKey)
+      setTimeout(() => setTabSections(data.BUSINESS_SECTIONS), animationTime)
+      const idx = data.BUSINESS_SECTIONS.findIndex(s => s.key === section)
+      const defKey = data.BUSINESS_SECTIONS[0].key
+      setTab(idx !== -1 ? data.BUSINESS_SECTIONS[idx].key : defKey)
       setTimeout(() => setCoverImage(images.businessCover), animationTime)
     } else if (mode === MODES.CHILL) {
-      setTimeout(() => setTabSections(DATA.CHILL_SECTIONS), animationTime)
-      const idx = DATA.CHILL_SECTIONS.findIndex(s => s.key === section)
-      const defKey = DATA.CHILL_SECTIONS[0].key
-      setTab(idx !== -1 ? DATA.CHILL_SECTIONS[idx].key : defKey)
+      setTimeout(() => setTabSections(data.CHILL_SECTIONS), animationTime)
+      const idx = data.CHILL_SECTIONS.findIndex(s => s.key === section)
+      const defKey = data.CHILL_SECTIONS[0].key
+      setTab(idx !== -1 ? data.CHILL_SECTIONS[idx].key : defKey)
       setTimeout(() => setCoverImage(images.chillCover), animationTime)
     } else {
       setTabSections([])
       setTab('')
       setCoverImage(images.notFound)
     }
-  }, [section, mode, animationTrigger])
+  }, [data, section, mode, animationTrigger])
 
   const changeMode = () => {
     const newMode = mode === MODES.BUSINESS ? MODES.CHILL : MODES.BUSINESS
@@ -71,9 +73,13 @@ const Header: React.FC<HeadProps> = ({
   }
 
   const changeLanguage = () => {
-    // TODO: Change language
-    router.push('/es')
     setChangingLanguage(true)
+    const queryParams = '?mode=' + mode + '&section=' + section
+    if (language === LANGUAGES.ES) {
+      router.push(`/${LANGUAGES.EN.toLowerCase()}/${queryParams}`)
+    } else if (language === LANGUAGES.EN) {
+      router.push(`/${LANGUAGES.ES.toLowerCase()}/${queryParams}`)
+    }
   }
 
   return (
@@ -99,7 +105,7 @@ const Header: React.FC<HeadProps> = ({
               <Avatar
                 src={images.profile}
                 className={styles.card_profile_avatar_container_img}
-                alt={DATA.PERSONAL.name}
+                alt={data.PERSONAL.name}
                 variant='circular'/>
             </Fade>
           </Box>
@@ -108,20 +114,20 @@ const Header: React.FC<HeadProps> = ({
               <Avatar
                 src={images.profilePixel}
                 className={styles.card_profile_avatar_container_img}
-                alt={DATA.PERSONAL.name}
+                alt={data.PERSONAL.name}
                 variant='circular'/>
             </Fade>
           </Box>
         </Box>
         <Box className={styles.card_profile_text}>
           <Typography variant='h4' color='whitesmoke'>
-            {DATA.PERSONAL.name}
+            {data.PERSONAL.name}
           </Typography>
           <Typography
             variant='h5'
             color='whitesmoke'
             className={styles.card_profile_text_role}>
-            {DATA.PERSONAL.role}
+            {data.PERSONAL.role}
           </Typography>
         </Box>
       </Box>
@@ -140,8 +146,7 @@ const Header: React.FC<HeadProps> = ({
         <IconButton
           onClick={() => changeLanguage()}
           className={`${changingLanguage ? styles.flip_animation : ''}`}
-          onAnimationEnd={() => setChangingLanguage(false)}
-          sx={{display: 'none'}}>
+          onAnimationEnd={() => setChangingLanguage(false)}>
           <GTranslateIcon fontSize='large' color='primary' />
         </IconButton>
       </Box>

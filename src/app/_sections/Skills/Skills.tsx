@@ -1,8 +1,14 @@
 'use client'
 // React
-import React, {createElement, useEffect, useMemo, useState} from 'react'
-// Data
-import DATA from '@/data/data'
+import React, {
+  createElement,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
+} from 'react'
+// Components
+import {DataContext} from '@/components'
 // Material UI
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -13,8 +19,8 @@ import Divider from '@mui/material/Divider'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 // Utils
-import {Image} from '@/utils/images'
 import {getDevIconSrc, getIcon} from '@/utils/icons'
+import {Image} from '@/utils/images'
 import {rbgToRgba} from '@/utils/misc'
 // Styles
 import styles from './Skills.module.css'
@@ -23,9 +29,12 @@ const SkillIconCard: React.FC<SkillIconCardProps> = ({skill, grow = false}) => (
   <Box className={`${styles.skillIcon} ${grow ? styles.grow : ''}`}>
     <Box className={styles.skillIcon_icon_container}>
       {getDevIconSrc(skill.title) ? (
-        <Image src={getDevIconSrc(skill.title)} alt={skill.title} fill></Image>
+        <Image
+          src={getDevIconSrc(skill.key || skill.title)}
+          alt={skill.title}
+          fill></Image>
       ) : (
-        createElement(getIcon(skill.title), {
+        createElement(getIcon(skill.key || skill.title), {
           className: styles.skillIcon_icon,
         })
       )}
@@ -63,13 +72,13 @@ const CategoryIconCard: React.FC<CategoryIconCardProps> = ({
         onClick={onClick}
         disableTouchRipple>
         <Box className={styles.categoryIcon_container}>
-          {getDevIconSrc(category.title) ? (
+          {getDevIconSrc(category.key) ? (
             <Image
-              src={getDevIconSrc(category.title)}
+              src={getDevIconSrc(category.key)}
               alt={category.title}
               fill></Image>
           ) : (
-            createElement(getIcon(category.title), {
+            createElement(getIcon(category.key), {
               className: styles.categoryIcon_icon,
             })
           )}
@@ -105,19 +114,19 @@ const SkillStack: React.FC<SkillStackProps> = ({
   return (
     <Box className={styles.container}>
       {skillStack.map((category, cIndex) => (
-        // Each child in a list should have a unique "key" prop.
+        // TODO: Each child in a list should have a unique "key" prop.
         <>
           <CategoryIconCard
             category={category}
             key={cIndex}
-            onHover={() => setZoomedCategory(category.title)}
+            onHover={() => setZoomedCategory(category.key)}
             onLeave={() => setZoomedCategory('')}
-            onClick={() => toggleShowedCategory(category.title)}/>
+            onClick={() => toggleShowedCategory(category.key)}/>
           {category.skills.map((skill, sIndex) => (
             <Box
               key={`${cIndex}-${sIndex}`}
               className={` ${styles.category_container} ${
-                isCategoryShowed(category.title) ? '' : styles.collapsed
+                isCategoryShowed(category.key) ? '' : styles.collapsed
               }`}>
               <Paper
                 className={styles.category}
@@ -127,10 +136,10 @@ const SkillStack: React.FC<SkillStackProps> = ({
                     0.7
                   )}, rgba(0,0,0,0) 70%, rgba(0,0,0,0.2) 95%)`,
                 }}>
-                <CategoryIconBackground Icon={getIcon(category.title)} />
+                <CategoryIconBackground Icon={getIcon(category.key)} />
                 <SkillIconCard
                   skill={skill}
-                  grow={category.title === zoomedCategory}/>
+                  grow={category.key === zoomedCategory}/>
                 <Typography
                   className={styles.category_title}
                   variant='subtitle1'
@@ -148,12 +157,13 @@ const SkillStack: React.FC<SkillStackProps> = ({
 }
 
 const Skills: React.FC = () => {
+  const {data, misc} = useContext(DataContext)
   const allCategories = useMemo(
     () => [
-      ...DATA.TECH_SKILLS.map(category => category.title),
-      ...DATA.SOFT_SKILLS.map(category => category.title),
+      ...data.TECH_SKILLS.map(category => category.key),
+      ...data.SOFT_SKILLS.map(category => category.key),
     ],
-    []
+    [data]
   )
 
   const [showedCategories, setShowedCategories] = useState<string[]>(allCategories)
@@ -189,7 +199,7 @@ const Skills: React.FC = () => {
             className={styles.buttons}
             startIcon={<UnfoldMoreIcon />}
             onClick={() => setShowedCategories(allCategories)}>
-            Show All
+            {`${misc.show_all}`}
           </Button>
         )}
         {!isShowingNoCategories && (
@@ -200,17 +210,17 @@ const Skills: React.FC = () => {
             className={styles.buttons}
             startIcon={<UnfoldLessIcon />}
             onClick={() => setShowedCategories([])}>
-            Hide All
+            {`${misc.hide_all}`}
           </Button>
         )}
       </Box>
       <SkillStack
-        skillStack={DATA.TECH_SKILLS}
+        skillStack={data.TECH_SKILLS}
         toggleShowedCategory={toggleShowedCategory}
         isCategoryShowed={isCategoryShowed}/>
       <Divider variant='middle' className={styles.divider} />
       <SkillStack
-        skillStack={DATA.SOFT_SKILLS}
+        skillStack={data.SOFT_SKILLS}
         toggleShowedCategory={toggleShowedCategory}
         isCategoryShowed={isCategoryShowed}/>
     </Box>

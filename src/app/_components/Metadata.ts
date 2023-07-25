@@ -1,7 +1,7 @@
 // NextJS
 import {Metadata} from 'next'
 // Data
-import DATA from '@/data/data'
+import Data from '@/data/data'
 
 const images = {
   favicon: '/images/favicon.png',
@@ -9,17 +9,19 @@ const images = {
   profile: '/images/profile_LQ.jpg',
 }
 
+const data = Data()
+
 const metadata: Metadata = {
-  metadataBase: DATA.PERSONAL.url as unknown as URL,
-  title: DATA.PERSONAL.meta_title,
-  description: DATA.PERSONAL.meta_description,
-  generator: DATA.PERSONAL.name,
-  applicationName: DATA.PERSONAL.name,
-  keywords: DATA.PERSONAL.keywords.join(', '),
-  authors: [{name: DATA.PERSONAL.name, url: DATA.PERSONAL.url}],
+  metadataBase: data.PERSONAL.url as unknown as URL,
+  title: data.PERSONAL.meta_title,
+  description: data.PERSONAL.meta_description,
+  generator: data.PERSONAL.name,
+  applicationName: data.PERSONAL.name,
+  keywords: data.PERSONAL.keywords.join(', '),
+  authors: [{name: data.PERSONAL.name, url: data.PERSONAL.url}],
   colorScheme: 'dark',
-  creator: DATA.PERSONAL.name,
-  publisher: DATA.PERSONAL.name,
+  creator: data.PERSONAL.name,
+  publisher: data.PERSONAL.name,
   themeColor: 'black',
 
   icons: {
@@ -29,13 +31,13 @@ const metadata: Metadata = {
   },
 
   openGraph: {
-    title: DATA.PERSONAL.meta_title,
-    description: DATA.PERSONAL.meta_description,
-    url: DATA.PERSONAL.url,
+    title: data.PERSONAL.meta_title,
+    description: data.PERSONAL.meta_description,
+    url: data.PERSONAL.url,
     emails:
-      DATA.CONTACTS.find(c => c.label.toLowerCase() === 'email')?.name || '',
+      data.CONTACTS.find(c => c.label.toLowerCase() === 'email')?.name || '',
     type: 'website',
-    siteName: DATA.PERSONAL.name,
+    siteName: data.PERSONAL.name,
     images: [
       {
         url: images.profilePixel,
@@ -51,11 +53,11 @@ const metadata: Metadata = {
   },
 
   twitter: {
-    site: DATA.PERSONAL.name,
+    site: data.PERSONAL.name,
     card: 'summary_large_image',
-    title: DATA.PERSONAL.meta_title,
-    description: DATA.PERSONAL.meta_description,
-    creator: DATA.PERSONAL.name,
+    title: data.PERSONAL.meta_title,
+    description: data.PERSONAL.meta_description,
+    creator: data.PERSONAL.name,
     images: [images.profilePixel],
   },
 

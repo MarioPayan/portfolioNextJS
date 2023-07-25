@@ -3,5 +3,5 @@ interface DateDiff {
 }
 
 interface ChangeDateFormat {
-  (date: string): string
+  (date: string, language?: string): string
 }

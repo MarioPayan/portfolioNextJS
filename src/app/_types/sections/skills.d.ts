@@ -4,7 +4,7 @@ interface SkillIconCardProps {
 }
 
 interface SkillStackProps {
-  skillStack: SkillCategory[]
+  skillStack: TechSkillCategory[] | TechSkillCategory[]
   toggleShowedCategory: (category: string) => void
   isCategoryShowed: (category: string) => boolean
 }
@@ -14,7 +14,7 @@ interface CategoryIconBackgroundProps {
 }
 
 interface CategoryIconCardProps {
-  category: SkillCategory
+  category: TechSkillCategory | SoftSkillCategory
   onHover: () => void
   onLeave: () => void
   onClick: () => void
