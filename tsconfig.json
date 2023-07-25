@@ -21,9 +21,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/components": ["./src/app/_components"],
       "@/components/*": ["./src/app/_components/*"],
-      "@/sections": ["./src/app/_sections"],
       "@/sections/*": ["./src/app/_sections/*"],
       "@/utils/*": ["./src/app/_utils/*"],
       "@/data/*": ["./src/app/_data/*"]

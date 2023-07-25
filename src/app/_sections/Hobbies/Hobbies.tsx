@@ -2,7 +2,7 @@
 // React
 import React, {createElement} from 'react'
 // Components
-import {Carousel} from '@/components'
+import Carousel from '@/components/Carousel/Carousel'
 // Material UI
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'

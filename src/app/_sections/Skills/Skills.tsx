@@ -8,7 +8,7 @@ import React, {
   useState
 } from 'react'
 // Components
-import {DataContext} from '@/components'
+import {DataContext} from '@/components/LayoutWrapper'
 // Material UI
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'

@@ -2,16 +2,19 @@
 // React
 import {Suspense, useState, useContext, useEffect} from 'react'
 // Components
-import {Header, Modal, CopyRight, QueryParams, DataContext} from '@/components'
+import {DataContext} from '@/components/LayoutWrapper'
+import CopyRight from '@/components/CopyRight/CopyRight'
+import Header from '@/components/Header/Header'
+import Modal from '@/components/Modal/Modal'
+import QueryParams from '@/components/QueryParams'
 // Sections
-import {
-  About,
-  Education,
-  Experience,
-  Hobbies,
-  Projects,
-  Skills
-} from '@/sections'
+import About from '@/sections/About/About'
+import Education from '@/sections/Education/Education'
+import Experience from '@/sections/Experience/Experience'
+import Hobbies from '@/sections/Hobbies/Hobbies'
+import Projects from '@/sections/Projects/Projects'
+import Skills from '@/sections/Skills/Skills'
+// Data
 import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
 // Material UI
 import Box from '@mui/material/Box'
@@ -21,14 +24,13 @@ import styles from '@/app/page.module.css'
 const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
   const {data, misc, setLanguage} = useContext(DataContext)
 
-  // TODO: Work in progress
-  useEffect(() => {
-    setLanguage(urlLanguage as LANGUAGES)
-  }, [urlLanguage, setLanguage])
-
   const [section, setSection] = useState<SECTIONS>(SECTIONS.ABOUT_ME_BUSINESS)
   const [mode, setMode] = useState<MODES>(MODES.BUSINESS)
   const [swipeAnimation, setSwipeAnimation] = useState<-1 | 0 | 1>(0)
+
+  useEffect(() => {
+    setLanguage(urlLanguage as LANGUAGES)
+  }, [urlLanguage, setLanguage])
 
   const onChangeSection: OnChangeSection = newSection => {
     const sectionKeys = [

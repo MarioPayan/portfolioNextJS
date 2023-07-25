@@ -17,3 +17,6 @@ export const openInNewTab: OpenInNewTab = url => {
 }
 
 export const randomSort: RandomSort = () => 0.5 - Math.random()
+
+export const getQueryParamsStr: GetQueryParamsStr = ({mode, section}) =>
+  '?mode=' + (mode as string).toLowerCase() + '&section=' + (section as string).toLowerCase()

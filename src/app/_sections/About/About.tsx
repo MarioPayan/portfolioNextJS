@@ -1,6 +1,8 @@
 'use client'
 // React
 import React, {createElement, useContext} from 'react'
+// Components
+import {DataContext} from '@/components/LayoutWrapper'
 // Data
 import {MODES} from '@/data/data'
 // Material UI
@@ -18,7 +20,6 @@ import {sortFrom} from '@/utils/dates'
 import {Image, images} from '@/utils/images'
 // Styles
 import styles from './About.module.css'
-import {DataContext} from '@/components/LayoutWrapper'
 
 const Inline: React.FC<InlineProps> = ({children}) => (
   <Box className={styles.inline}>{children}</Box>

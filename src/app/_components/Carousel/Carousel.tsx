@@ -13,7 +13,6 @@ import NavigateNext from '@mui/icons-material/NavigateNext'
 // Utils
 import {randomSort} from '@/utils/misc'
 import {Image} from '@/utils/images'
-
 // Styles
 import styles from './Carousel.module.css'
 

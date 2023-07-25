@@ -2,7 +2,7 @@
 // React
 import {useContext} from 'react'
 // Components
-import {DataContext} from '@/components'
+import {DataContext} from '@/components/LayoutWrapper'
 // Material UI
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'

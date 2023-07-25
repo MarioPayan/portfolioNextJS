@@ -1,5 +1,5 @@
 // Material UI
-import {metadata as appMetadata} from '@/components'
+import appMetadata from '@/components/Metadata'
 import MuiWrapper from '@/components/LayoutWrapper'
 
 export const metadata = appMetadata

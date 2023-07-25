@@ -3,6 +3,8 @@
 import {createElement, useEffect, useState, useContext} from 'react'
 // NextJS
 import {useRouter} from 'next/navigation'
+// Components
+import {DataContext} from '@/components/LayoutWrapper'
 // Data
 import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
 // Material UI
@@ -17,11 +19,11 @@ import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import Typography from '@mui/material/Typography'
 // Utils
-import {Image, images} from '@/utils/images'
 import {getIcon} from '@/utils/icons'
+import {Image, images} from '@/utils/images'
+import {getQueryParamsStr} from '@/utils/misc'
 // Styles
 import styles from './Header.module.css'
-import {DataContext} from '@/components/LayoutWrapper'
 
 const Header: React.FC<HeadProps> = ({
   section,
@@ -74,11 +76,11 @@ const Header: React.FC<HeadProps> = ({
 
   const changeLanguage = () => {
     setChangingLanguage(true)
-    const queryParams = '?mode=' + mode + '&section=' + section
+    const queryParams = getQueryParamsStr({mode, section})
     if (language === LANGUAGES.ES) {
-      router.push(`/${LANGUAGES.EN.toLowerCase()}/${queryParams}`)
+      router.replace(`/${LANGUAGES.EN.toLowerCase()}/${queryParams}`)
     } else if (language === LANGUAGES.EN) {
-      router.push(`/${LANGUAGES.ES.toLowerCase()}/${queryParams}`)
+      router.replace(`/${LANGUAGES.ES.toLowerCase()}/${queryParams}`)
     }
   }
 

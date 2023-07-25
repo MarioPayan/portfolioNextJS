@@ -2,7 +2,7 @@
 // React
 import React, {createElement, useMemo, useContext} from 'react'
 // Components
-import {DataContext} from '@/components'
+import {DataContext} from '@/components/LayoutWrapper'
 // Material UI
 import {keyframes} from '@mui/system'
 import Box from '@mui/material/Box'
@@ -12,8 +12,8 @@ import Paper from '@mui/material/Paper'
 import styled from '@mui/system/styled'
 import Typography from '@mui/material/Typography'
 // Utils
-import {Image} from '@/utils/images'
 import {getDevIconSrc, getIcon} from '@/utils/icons'
+import {Image} from '@/utils/images'
 import {randomSort} from '@/utils/misc'
 // Styles
 import styles from './Projects.module.css'

@@ -4,7 +4,7 @@ import {useEffect, useContext} from 'react'
 // NextJS
 import {useSearchParams} from 'next/navigation'
 // Components
-import {DataContext} from '@/components'
+import {DataContext} from '@/components/LayoutWrapper'
 // Data
 import {SECTIONS, MODES} from '@/data/data'
 
