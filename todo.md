@@ -1,12 +1,9 @@
 Remember WIP message
 Clean or update queryParams
+SASS
 
 Skills:
 Improve colors
-
-
-About:
-https://minimals.cc/dashboard/user (profile)
 
 /* Turning the previous code into a css class
     Having in mind that:
@@ -21,5 +18,4 @@ md, medium: 900px
 lg, large: 1200px
 xl, extra-large: 1536px
 
-Languages
 Test in Opera

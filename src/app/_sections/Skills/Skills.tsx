@@ -199,7 +199,7 @@ const Skills: React.FC = () => {
             className={styles.buttons}
             startIcon={<UnfoldMoreIcon />}
             onClick={() => setShowedCategories(allCategories)}>
-            {`${misc.show_all}`}
+            {`${misc.showAll}`}
           </Button>
         )}
         {!isShowingNoCategories && (
@@ -210,7 +210,7 @@ const Skills: React.FC = () => {
             className={styles.buttons}
             startIcon={<UnfoldLessIcon />}
             onClick={() => setShowedCategories([])}>
-            {`${misc.hide_all}`}
+            {`${misc.hideAll}`}
           </Button>
         )}
       </Box>

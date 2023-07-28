@@ -73,11 +73,12 @@ export const Misc = (language: LANGUAGES = LANGUAGES.EN): Misc => ({
       ES: 'Esta sección está actualmente en desarrollo. ¡Por favor, vuelve pronto!',
     }[language],
   },
-  show_all: {EN: 'Show all', ES: 'Mostrar todo'}[language],
-  hide_all: {EN: 'Hide all', ES: 'Ocultar todo'}[language],
+  showAll: {EN: 'Show all', ES: 'Mostrar todo'}[language],
+  hideAll: {EN: 'Hide all', ES: 'Ocultar todo'}[language],
   at: {EN: 'at', ES: 'en'}[language],
   contact: {EN: 'Contact', ES: 'Contacto'}[language],
   visit: {EN: 'Visit', ES: 'Visitar'}[language],
+  goBackHome: {EN: 'Go back home', ES: 'Volver al inicio'}[language],
 })
 
 const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
@@ -88,7 +89,10 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       ES: 'Desarrollador de Software Principal Full Stack',
     }[language],
     url: 'https://www.mariopayan.com/',
-    quote: {EN: 'The cake is a lie', ES: 'TODO'}[language],
+    quote: {
+      EN: 'The cake is a lie',
+      ES: 'La libertad subjetiva es la ignorancia de las causas que nos determinan',
+    }[language],
     location: 'Cali, Colombia',
     keywords: [
       'Mario Payan',
@@ -1188,8 +1192,10 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
   },
 
   FILMS: {
-    title: {EN: 'Roles', ES: 'Roles'}[language],
-    description: {EN: 'Films', ES: 'Películas'}[language],
+    title: {EN: 'Films', ES: 'Películas'}[language],
+    description: {EN: 'TODO: Add description', ES: 'TODO: añadir descripción'}[
+      language
+    ],
     sections: [
       {
         title: {EN: 'Movies', ES: 'Películas'}[language],

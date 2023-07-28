@@ -2,7 +2,7 @@
 import NextImage from 'next/image'
 import {useState} from 'react'
 
-export const image404 = '/images/404.jpg'
+export const image404 = '/images/404.png'
 
 export const images: Images = {
   get favicon() {
@@ -30,7 +30,7 @@ export const images: Images = {
     return '/images/cover_chill.jpg'
   },
   get notFound() {
-    return '/images/404.jpg'
+    return image404
   },
 }
 

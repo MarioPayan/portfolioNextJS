@@ -1,15 +1,16 @@
-// Material UI
+// Metadata
 import appMetadata from '@/components/Metadata'
-import MuiWrapper from '@/components/LayoutWrapper'
+// Wrapper
+import LayoutWrapper from '@/components/LayoutWrapper'
 
 export const metadata = appMetadata
 
 const RootLayout: React.FC<{children: React.ReactNode}> = ({children}) => (
-  <MuiWrapper>
+  <LayoutWrapper>
     <html lang='en'>
       <body suppressHydrationWarning>{children}</body>
     </html>
-  </MuiWrapper>
+  </LayoutWrapper>
 )
 
 export default RootLayout

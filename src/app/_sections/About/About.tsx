@@ -54,7 +54,7 @@ const About: React.FC<AboutProps> = ({mode}) => {
             {mode === MODES.CHILL && (
               <>
                 <FormatQuote color='secondary' />
-                <Typography>{data.PERSONAL.quote}</Typography>
+                <Typography>{`"${data.PERSONAL.quote}"`}</Typography>
               </>
             )}
           </Box>

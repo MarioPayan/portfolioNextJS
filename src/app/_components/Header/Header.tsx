@@ -12,8 +12,8 @@ import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Fade from '@mui/material/Fade'
-import GTranslateIcon from '@mui/icons-material/GTranslate'
-import LoopIcon from '@mui/icons-material/Loop'
+import TranslateIcon from '@mui/icons-material/Translate'
+import TheaterComedyIcon from '@mui/icons-material/TheaterComedy'
 import IconButton from '@mui/material/IconButton'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
@@ -140,7 +140,7 @@ const Header: React.FC<HeadProps> = ({
           onClick={() => changeMode()}
           className={`${changingMode ? styles.rotate_animation : ''}`}
           onAnimationEnd={() => setChangingMode(false)}>
-          <LoopIcon
+          <TheaterComedyIcon
             fontSize='large'
             color='primary'
             className={styles.mode_icon}/>
@@ -149,7 +149,7 @@ const Header: React.FC<HeadProps> = ({
           onClick={() => changeLanguage()}
           className={`${changingLanguage ? styles.flip_animation : ''}`}
           onAnimationEnd={() => setChangingLanguage(false)}>
-          <GTranslateIcon fontSize='large' color='primary' />
+          <TranslateIcon fontSize='large' color='primary' />
         </IconButton>
       </Box>
 
