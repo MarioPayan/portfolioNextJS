@@ -8,13 +8,23 @@ import {DataContext} from '@/components/LayoutWrapper'
 // Data
 import {SECTIONS, MODES} from '@/data/data'
 
-const QueryParams: React.FC<QueryParamsProps> = ({setMode, setSection}) => {
+enum QUERY_PARAMS {
+  MODE = 'mode',
+  SECTION = 'section',
+}
+
+const QueryParams: React.FC<QueryParamsProps> = ({
+  mode,
+  setMode,
+  section,
+  setSection,
+}) => {
   const searchParams = useSearchParams()
   const {data} = useContext(DataContext)
 
   useEffect(() => {
-    const urlMode = searchParams.get('mode')?.toUpperCase()
-    const urlSection = searchParams.get('section')?.toUpperCase()
+    const urlMode = searchParams.get(QUERY_PARAMS.MODE)?.toUpperCase()
+    const urlSection = searchParams.get(QUERY_PARAMS.SECTION)?.toUpperCase()
 
     if (
       urlSection && Object.values(SECTIONS).includes(urlSection as SECTIONS)
@@ -39,6 +49,15 @@ const QueryParams: React.FC<QueryParamsProps> = ({setMode, setSection}) => {
       }
     }
   }, [data, searchParams, setMode, setSection])
+
+  useEffect(() => {
+    // TODO: Bad practices, NextJS 13 doesn't support updating the URL on the client side
+    const currentURL = window.location.href.split('?')[0]
+    const newMode = mode.toLowerCase()
+    const newSection = section.toLowerCase()
+    const newURL = `${currentURL}?${QUERY_PARAMS.MODE}=${newMode}&${QUERY_PARAMS.SECTION}=${newSection}`
+    window.history.replaceState(null, '', newURL)
+  }, [mode, section])
 
   return <></>
 }

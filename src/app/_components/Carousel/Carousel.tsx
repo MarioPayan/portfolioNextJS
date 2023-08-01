@@ -123,7 +123,7 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
         <Box className={styles.arrow_container}>
           <Box className={styles.arrow_background}></Box>
           <IconButton onClick={scrollPrev} disableRipple size='large'>
-            <NavigateBefore color='secondary' />
+            <NavigateBefore className={styles.arrow} />
           </IconButton>
         </Box>
       </Box>
@@ -131,7 +131,7 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
         <Box className={styles.arrow_container}>
           <Box className={styles.arrow_background}></Box>
           <IconButton onClick={scrollNext} disableRipple size='large'>
-            <NavigateNext color='secondary' />
+            <NavigateNext className={styles.arrow} />
           </IconButton>
         </Box>
       </Box>

@@ -1,5 +1,4 @@
 Remember WIP message
-Clean or update queryParams
 SASS
 
 Skills:

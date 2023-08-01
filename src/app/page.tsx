@@ -92,10 +92,13 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
         </Box>
       </Box>
       <Modal {...(misc.underDevelopment as unknown as ModalProps)} />
-      {false && <Modal {...(misc.workInProgress as unknown as ModalProps)} />}
       <CopyRight />
       <Suspense fallback={<></>}>
-        <QueryParams setMode={setMode} setSection={setSection} />
+        <QueryParams
+          mode={mode}
+          setMode={setMode}
+          section={section}
+          setSection={setSection}/>
       </Suspense>
     </main>
   )

@@ -96,3 +96,10 @@
   background-color: rgba(0, 0, 0, 0.5);
   filter: blur(30px);
 }
+
+.arrow {
+  color: #00bcd4;
+  stroke: black;
+  stroke-width: 0.2;
+  font-size: 25px;
+}

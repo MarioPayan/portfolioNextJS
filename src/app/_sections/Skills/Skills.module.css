@@ -103,7 +103,7 @@
   width: min-content;
   font-weight: 600;
   font-size: 19px;
-  line-height: unset;
+  line-height: 1.25;
 }
 
 .skillIcon_text_container {
