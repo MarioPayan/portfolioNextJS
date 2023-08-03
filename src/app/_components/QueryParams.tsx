@@ -7,6 +7,8 @@ import {useSearchParams} from 'next/navigation'
 import {DataContext} from '@/components/LayoutWrapper'
 // Data
 import {SECTIONS, MODES} from '@/data/data'
+// Utils
+import {getCookie, COOKIES} from '@/utils/cookies'
 
 enum QUERY_PARAMS {
   MODE = 'mode',
@@ -23,30 +25,35 @@ const QueryParams: React.FC<QueryParamsProps> = ({
   const {data} = useContext(DataContext)
 
   useEffect(() => {
-    const urlMode = searchParams.get(QUERY_PARAMS.MODE)?.toUpperCase()
-    const urlSection = searchParams.get(QUERY_PARAMS.SECTION)?.toUpperCase()
-
-    if (
-      urlSection && Object.values(SECTIONS).includes(urlSection as SECTIONS)
-    ) {
-      setSection(urlSection as SECTIONS)
-      if (data.BUSINESS_SECTIONS.map(s => s.key).includes(urlSection)) {
-        setMode(MODES.BUSINESS)
-      }
-      if (data.CHILL_SECTIONS.map(s => s.key).includes(urlSection)) {
-        setMode(MODES.CHILL)
-      }
-    } else if (
-      !urlSection && urlMode && Object.values(MODES).includes(urlMode as MODES)
-    ) {
-      setMode(urlMode as MODES)
-      if (!urlSection) {
-        if (urlMode === MODES.BUSINESS) {
+    const setExperience = (mode: MODES, section: SECTIONS) => {
+      if (section && Object.values(SECTIONS).includes(section)) {
+        if (data.BUSINESS_SECTIONS.map(s => s.key).includes(section)) {
+          setMode(MODES.BUSINESS)
+        }
+        if (data.CHILL_SECTIONS.map(s => s.key).includes(section)) {
+          setMode(MODES.CHILL)
+        }
+        setSection(section)
+      } else if (!section && mode && Object.values(MODES).includes(mode)) {
+        setMode(mode)
+        if (mode === MODES.BUSINESS) {
           setSection(SECTIONS.ABOUT_ME_BUSINESS)
-        } else if (urlMode === MODES.CHILL) {
+        } else if (mode === MODES.CHILL) {
           setSection(SECTIONS.ABOUT_ME_CHILL)
         }
       }
+    }
+
+    const urlMode = searchParams.get(QUERY_PARAMS.MODE)?.toUpperCase()
+    const urlSection = searchParams.get(QUERY_PARAMS.SECTION)?.toUpperCase()
+
+    const modeCookie = getCookie(COOKIES.MODE)
+    const sectionCookie = getCookie(COOKIES.SECTION)
+
+    if (!urlMode && !urlSection) {
+      setExperience(modeCookie as MODES, sectionCookie as SECTIONS)
+    } else if (urlMode || urlSection) {
+      setExperience(urlMode as MODES, urlSection as SECTIONS)
     }
   }, [data, searchParams, setMode, setSection])
 

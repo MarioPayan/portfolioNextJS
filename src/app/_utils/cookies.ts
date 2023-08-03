@@ -7,10 +7,10 @@ export enum COOKIES {
 
 // TODO: Bad practices, NextJS 13 doesn't support SSR cookies
 
-export const getCookie = (key: string): string =>
+export const getCookie: GetCookie = key =>
   Object.fromEntries(
     document.cookie.split(';').map(cookie => cookie.trim().split('='))
   )[key] || ''
 
-export const setCookie = (key: string, value: string): string =>
+export const setCookie: SetCookie = (key, value = 'true') =>
   (document.cookie = `${key}=${value}`)

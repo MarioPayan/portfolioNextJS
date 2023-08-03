@@ -19,24 +19,34 @@ import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
 // Material UI
 import Box from '@mui/material/Box'
 // Utils
-import {getCookie, COOKIES, setCookie} from '@/utils/cookies'
+import {getCookie, setCookie, COOKIES} from '@/utils/cookies'
 // Styles
 import styles from '@/app/page.module.css'
 
 const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
   const {data, misc, setLanguage} = useContext(DataContext)
 
-  const [section, setSection] = useState<SECTIONS>(SECTIONS.ABOUT_ME_BUSINESS)
-  const [mode, setMode] = useState<MODES>(MODES.BUSINESS)
+  const defaultSection = SECTIONS.ABOUT_ME_BUSINESS
+  const defaultMode = MODES.BUSINESS
+  const [section, setSection] = useState<SECTIONS>(defaultSection)
+  const [mode, setMode] = useState<MODES>(defaultMode)
   const [showWIP, setShowWIP] = useState<boolean>(false)
   const [swipeAnimation, setSwipeAnimation] = useState<-1 | 0 | 1>(0)
 
   useEffect(() => {
     setLanguage(urlLanguage as LANGUAGES)
+
     const cookieKey = {EN: COOKIES.WIP_EN, ES: COOKIES.WIP_ES}[urlLanguage]
     setShowWIP(!getCookie(cookieKey))
-    setCookie(cookieKey, 'true')
+    setCookie(cookieKey)
   }, [urlLanguage, setLanguage])
+
+  useEffect(() => {
+    if (mode !== defaultMode && section !== defaultSection) {
+      setCookie(COOKIES.MODE, mode)
+      setCookie(COOKIES.SECTION, section)
+    }
+  }, [mode, section, defaultMode, defaultSection])
 
   const onChangeSection: OnChangeSection = newSection => {
     const sectionKeys = [
