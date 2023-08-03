@@ -12,6 +12,9 @@
   align-items: center;
   gap: 15px;
   width: 100%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: stretch;
   max-width: 600px;
   padding: 30px;
   opacity: 0.9;

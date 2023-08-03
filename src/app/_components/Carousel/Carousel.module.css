@@ -92,6 +92,9 @@
 .arrow_background {
   width: 100%;
   height: 100%;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  height: stretch;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
   filter: blur(30px);

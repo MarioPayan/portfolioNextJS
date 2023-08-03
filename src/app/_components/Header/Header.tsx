@@ -79,7 +79,7 @@ const Header: React.FC<HeadProps> = ({
     const queryParams = getQueryParamsStr({mode, section})
     if (language === LANGUAGES.ES) {
       router.replace(`/${LANGUAGES.EN.toLowerCase()}/${queryParams}`)
-    } else if (language === LANGUAGES.EN) {
+    } else if (language === LANGUAGES.EN || !language) {
       router.replace(`/${LANGUAGES.ES.toLowerCase()}/${queryParams}`)
     }
   }
