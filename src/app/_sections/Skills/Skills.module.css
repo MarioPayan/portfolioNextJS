@@ -154,7 +154,7 @@
 }
 
 .divider {
-  width: -webkit-fill-available;
+  width: 100%;
   margin: 16px 10%;
 }
 

@@ -18,6 +18,8 @@ import Skills from '@/sections/Skills/Skills'
 import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
 // Material UI
 import Box from '@mui/material/Box'
+// Utils
+import {getCookie, COOKIES, setCookie} from '@/utils/cookies'
 // Styles
 import styles from '@/app/page.module.css'
 
@@ -26,10 +28,14 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
 
   const [section, setSection] = useState<SECTIONS>(SECTIONS.ABOUT_ME_BUSINESS)
   const [mode, setMode] = useState<MODES>(MODES.BUSINESS)
+  const [showWIP, setShowWIP] = useState<boolean>(false)
   const [swipeAnimation, setSwipeAnimation] = useState<-1 | 0 | 1>(0)
 
   useEffect(() => {
     setLanguage(urlLanguage as LANGUAGES)
+    const cookieKey = {EN: COOKIES.WIP_EN, ES: COOKIES.WIP_ES}[urlLanguage]
+    setShowWIP(!getCookie(cookieKey))
+    setCookie(cookieKey, 'true')
   }, [urlLanguage, setLanguage])
 
   const onChangeSection: OnChangeSection = newSection => {
@@ -91,7 +97,9 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
           {section === SECTIONS.RANDOM && <Hobbies section={data.RANDOM} />}
         </Box>
       </Box>
-      <Modal {...(misc.underDevelopment as unknown as ModalProps)} />
+      {showWIP && (
+        <Modal {...(misc.underDevelopment as unknown as ModalProps)} />
+      )}
       <CopyRight />
       <Suspense fallback={<></>}>
         <QueryParams
