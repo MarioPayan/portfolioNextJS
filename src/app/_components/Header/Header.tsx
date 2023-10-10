@@ -3,6 +3,7 @@
 import {createElement, useEffect, useState, useContext} from 'react'
 // NextJS
 import {useRouter} from 'next/navigation'
+import Link from 'next/link'
 // Components
 import {DataContext} from '@/components/LayoutWrapper'
 // Data
@@ -11,6 +12,7 @@ import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
+import EventIcon from '@mui/icons-material/Event'
 import Fade from '@mui/material/Fade'
 import TranslateIcon from '@mui/icons-material/Translate'
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy'
@@ -24,6 +26,7 @@ import {Image, images} from '@/utils/images'
 import {getQueryParamsStr} from '@/utils/misc'
 // Styles
 import styles from './Header.module.css'
+
 
 const Header: React.FC<HeadProps> = ({
   section,
@@ -151,6 +154,11 @@ const Header: React.FC<HeadProps> = ({
           onAnimationEnd={() => setChangingLanguage(false)}>
           <TranslateIcon fontSize='large' color='primary' />
         </IconButton>
+        <Link href='/agenda'>
+          <IconButton>
+            <EventIcon fontSize='large' color='primary' />
+          </IconButton>
+        </Link>
       </Box>
 
       {/* Tabs */}
