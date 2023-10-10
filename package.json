@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/lab": "^5.0.0-alpha.134",
     "@mui/material": "^5.13.5",
+    "@vercel/analytics": "^1.1.0",
     "embla-carousel-autoplay": "^8.0.0-rc07",
     "embla-carousel-react": "^8.0.0-rc07",
     "next": "13.4.12",
