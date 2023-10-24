@@ -15,12 +15,7 @@ enum QUERY_PARAMS {
   SECTION = 'section',
 }
 
-const QueryParams: React.FC<QueryParamsProps> = ({
-  mode,
-  setMode,
-  section,
-  setSection,
-}) => {
+const QueryParams: React.FC<QueryParamsProps> = ({mode, setMode, section, setSection}) => {
   const searchParams = useSearchParams()
   const {data} = useContext(DataContext)
 

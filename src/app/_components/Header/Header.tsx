@@ -27,17 +27,9 @@ import {getQueryParamsStr} from '@/utils/misc'
 // Styles
 import styles from './Header.module.css'
 
-
-const Header: React.FC<HeadProps> = ({
-  section,
-  mode,
-  onChangeSection,
-  onChangeMode,
-}) => {
+const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMode}) => {
   const {data, language} = useContext(DataContext)
-  const [tabSections, setTabSections] = useState<Section[]>(
-    data.BUSINESS_SECTIONS
-  )
+  const [tabSections, setTabSections] = useState<Section[]>(data.BUSINESS_SECTIONS)
   const [tab, setTab] = useState<string>(data.BUSINESS_SECTIONS[0].key)
   const [coverImage, setCoverImage] = useState<string>(images.businessCover)
   const [changingMode, setChangingMode] = useState<boolean>(false)
@@ -71,9 +63,7 @@ const Header: React.FC<HeadProps> = ({
     const newMode = mode === MODES.BUSINESS ? MODES.CHILL : MODES.BUSINESS
     setAnimationTrigger(true)
     onChangeMode(newMode)
-    onChangeSection(
-      newMode === MODES.BUSINESS ? SECTIONS.ABOUT_ME_BUSINESS : SECTIONS.ABOUT_ME_CHILL
-    )
+    onChangeSection(newMode === MODES.BUSINESS ? SECTIONS.ABOUT_ME_BUSINESS : SECTIONS.ABOUT_ME_CHILL)
     setChangingMode(true)
   }
 
@@ -94,12 +84,11 @@ const Header: React.FC<HeadProps> = ({
         <Box className={styles.card_background_filter} />
         <Image
           src={coverImage}
-          className={`${styles.card_background_image} ${
-            animationTrigger ? styles.fade_animation : ''
-          }`}
+          className={`${styles.card_background_image} ${animationTrigger ? styles.fade_animation : ''}`}
           fill
           priority
-          alt='Background'/>
+          alt='Background'
+        />
       </Box>
 
       {/* Profile */}
@@ -111,7 +100,8 @@ const Header: React.FC<HeadProps> = ({
                 src={images.profile}
                 className={styles.card_profile_avatar_container_img}
                 alt={data.PERSONAL.name}
-                variant='circular'/>
+                variant='circular'
+              />
             </Fade>
           </Box>
           <Box className={styles.card_profile_avatar_container}>
@@ -120,7 +110,8 @@ const Header: React.FC<HeadProps> = ({
                 src={images.profilePixel}
                 className={styles.card_profile_avatar_container_img}
                 alt={data.PERSONAL.name}
-                variant='circular'/>
+                variant='circular'
+              />
             </Fade>
           </Box>
         </Box>
@@ -128,10 +119,7 @@ const Header: React.FC<HeadProps> = ({
           <Typography variant='h4' color='whitesmoke'>
             {data.PERSONAL.name}
           </Typography>
-          <Typography
-            variant='h5'
-            color='whitesmoke'
-            className={styles.card_profile_text_role}>
+          <Typography variant='h5' color='whitesmoke' className={styles.card_profile_text_role}>
             {data.PERSONAL.role}
           </Typography>
         </Box>
@@ -143,10 +131,7 @@ const Header: React.FC<HeadProps> = ({
           onClick={() => changeMode()}
           className={`${changingMode ? styles.rotate_animation : ''}`}
           onAnimationEnd={() => setChangingMode(false)}>
-          <TheaterComedyIcon
-            fontSize='large'
-            color='primary'
-            className={styles.mode_icon}/>
+          <TheaterComedyIcon fontSize='large' color='primary' className={styles.mode_icon} />
         </IconButton>
         <IconButton
           onClick={() => changeLanguage()}
@@ -173,18 +158,14 @@ const Header: React.FC<HeadProps> = ({
             onChangeSection(tab)
           }}
           onAnimationEnd={() => setAnimationTrigger(false)}
-          className={`${styles.card_tabs_container} ${
-            animationTrigger ? styles.slide_animation : ''
-          }`}>
+          className={`${styles.card_tabs_container} ${animationTrigger ? styles.slide_animation : ''}`}>
           {tabSections.map((tab, i) => (
             <Tab
               disableRipple
               key={i}
               value={tab.key}
               label={
-                <Typography
-                  textTransform='capitalize'
-                  className={styles.card_tabs_label}>
+                <Typography textTransform='capitalize' className={styles.card_tabs_label}>
                   {tab.label}
                 </Typography>
               }
@@ -192,7 +173,8 @@ const Header: React.FC<HeadProps> = ({
                 className: styles.card_tabs_tab_icon,
               })}
               iconPosition='start'
-              className={styles.card_tabs_tab}/>
+              className={styles.card_tabs_tab}
+            />
           ))}
         </Tabs>
       </Box>

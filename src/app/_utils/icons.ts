@@ -1,7 +1,6 @@
 import {getKeyFromLabel} from '@/utils/misc'
 
-const getDevIconURL: GetDevIconURL = url =>
-  `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${url}`
+const getDevIconURL: GetDevIconURL = url => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${url}`
 
 import BugReport from '@mui/icons-material/BugReport'
 import Code from '@mui/icons-material/Code'
@@ -125,8 +124,6 @@ const devIcons: DevIcons = {
   vuforia: '/images/icons/vuforia.png',
 }
 
-export const getIcon: GetIcon = label =>
-  icons[getKeyFromLabel(label)] || QuestionMark
+export const getIcon: GetIcon = label => icons[getKeyFromLabel(label)] || QuestionMark
 
-export const getDevIconSrc: GetDevIconSrc = label =>
-  devIcons[getKeyFromLabel(label)]
+export const getDevIconSrc: GetDevIconSrc = label => devIcons[getKeyFromLabel(label)]

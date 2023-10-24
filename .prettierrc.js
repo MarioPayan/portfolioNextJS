@@ -1,5 +1,5 @@
 const prettierConfig = {
-  printWidth: 80,
+  printWidth: 120,
   tabWidth: 2,
   useTabs: false,
   semi: false,
@@ -10,6 +10,7 @@ const prettierConfig = {
   bracketSameLine: true,
   bracketSpacing: false,
   arrowParens: "avoid",
+  singleAttributePerLine: false,
 }
 
 module.exports = prettierConfig

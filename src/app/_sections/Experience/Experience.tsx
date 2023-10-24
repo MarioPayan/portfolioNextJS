@@ -29,7 +29,7 @@ const Card: React.FC<ExperienceCardProps> = ({experience}) => {
       sx={{
         background: `linear-gradient(-15deg, ${rbgToRgba(
           experience.rgbColor,
-          0.7
+          0.7,
         )}, transparent 80%, rgba(0,0,0,0.2) 95%)`,
       }}>
       <Box className={styles.card_header}>
@@ -60,9 +60,7 @@ const Card: React.FC<ExperienceCardProps> = ({experience}) => {
         <Box className={styles.card_bottomText}>
           <Typography variant='subtitle2' className={styles.card_dateInfo}>
             {`${changeDateFormat(experience.from, language)} - \
-            ${
-    experience.to ? changeDateFormat(experience.to, language) : 'present'
-    }`}
+            ${experience.to ? changeDateFormat(experience.to, language) : 'present'}`}
           </Typography>
           <Typography variant='subtitle1' className={styles.card_dateDuration}>
             {dateDiff(experience.from, experience.to || '')}
@@ -78,11 +76,9 @@ const Experience: React.FC = () => {
 
   return (
     <Box className={styles.container}>
-      {data.EXPERIENCE.sort(sortFrom).map(
-        (experience: Experience, index: number) => (
-          <Card key={index} experience={experience} />
-        )
-      )}
+      {data.EXPERIENCE.sort(sortFrom).map((experience: Experience, index: number) => (
+        <Card key={index} experience={experience} />
+      ))}
     </Box>
   )
 }

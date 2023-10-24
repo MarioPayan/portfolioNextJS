@@ -29,7 +29,7 @@ const Card: React.FC<EducationCardProps> = ({education}) => {
       sx={{
         background: `linear-gradient(-15deg, ${rbgToRgba(
           education.rgbColor,
-          0.7
+          0.7,
         )}, rgba(0,0,0,1) 80%, rgba(0,0,0,0.2) 95%)`,
       }}>
       <Box className={styles.card_header}>
@@ -57,36 +57,27 @@ const Card: React.FC<EducationCardProps> = ({education}) => {
         <Box className={styles.card_bottomText}>
           <Typography variant='subtitle2' className={styles.card_dateInfo}>
             {`${changeDateFormat(education.from, language)} - \
-            ${
-    education.to ? changeDateFormat(education.to, language) : 'present'
-    }`}
+            ${education.to ? changeDateFormat(education.to, language) : 'present'}`}
           </Typography>
           <Typography variant='subtitle1' className={styles.card_dateDuration}>
             {dateDiff(education.from, education.to || '')}
           </Typography>
         </Box>
       </Box>
-      <Image
-        src={education.image}
-        alt={education.where}
-        fill
-        className={styles.card_backgroundImg}></Image>
+      <Image src={education.image} alt={education.where} fill className={styles.card_backgroundImg}></Image>
     </Paper>
   )
 }
 
 const Education: React.FC = () => {
   const {data} = useContext(DataContext)
-  const sortFrom = (a: Education, b: Education): number =>
-    new Date(b.from).getTime() - new Date(a.from).getTime()
+  const sortFrom = (a: Education, b: Education): number => new Date(b.from).getTime() - new Date(a.from).getTime()
 
   return (
     <Box className={styles.container}>
-      {data.EDUCATION.sort(sortFrom).map(
-        (education: Education, index: number) => (
-          <Card key={index} education={education} />
-        )
-      )}
+      {data.EDUCATION.sort(sortFrom).map((education: Education, index: number) => (
+        <Card key={index} education={education} />
+      ))}
     </Box>
   )
 }

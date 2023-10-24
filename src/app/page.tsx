@@ -49,10 +49,7 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
   }, [mode, section, defaultMode, defaultSection])
 
   const onChangeSection: OnChangeSection = newSection => {
-    const sectionKeys = [
-      ...data.BUSINESS_SECTIONS.map(s => s.key),
-      ...data.CHILL_SECTIONS.map(s => s.key),
-    ]
+    const sectionKeys = [...data.BUSINESS_SECTIONS.map(s => s.key), ...data.CHILL_SECTIONS.map(s => s.key)]
     const newSectionIdx = sectionKeys.findIndex(s => s === newSection)
     const currentSectionIdx = sectionKeys.findIndex(s => s === section)
     const goLeft = newSectionIdx > currentSectionIdx
@@ -77,18 +74,10 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
       <h2 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h2>
       <h3 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h3>
       <Box className={styles.container}>
-        <Header
-          section={section}
-          onChangeSection={onChangeSection}
-          mode={mode}
-          onChangeMode={setMode}/>
-        <Box
-          className={getSwipeAnimation()}
-          onAnimationEnd={() => setSwipeAnimation(0)}>
+        <Header section={section} onChangeSection={onChangeSection} mode={mode} onChangeMode={setMode} />
+        <Box className={getSwipeAnimation()} onAnimationEnd={() => setSwipeAnimation(0)}>
           {/* Business sections */}
-          {section === SECTIONS.ABOUT_ME_BUSINESS && (
-            <About mode={MODES.BUSINESS} />
-          )}
+          {section === SECTIONS.ABOUT_ME_BUSINESS && <About mode={MODES.BUSINESS} />}
           {section === SECTIONS.SKILLS && <Skills />}
           {section === SECTIONS.EXPERIENCE && <Experience />}
           {section === SECTIONS.PROJECTS && <Projects />}
@@ -96,9 +85,7 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
           {/* Chill sections */}
           {section === SECTIONS.ABOUT_ME_CHILL && <About mode={MODES.CHILL} />}
           {section === SECTIONS.MUSIC && <Hobbies section={data.MUSIC} />}
-          {section === SECTIONS.TRAVELING && (
-            <Hobbies section={data.TRAVELING} />
-          )}
+          {section === SECTIONS.TRAVELING && <Hobbies section={data.TRAVELING} />}
           {section === SECTIONS.DOGS && <Hobbies section={data.DOGS} />}
           {section === SECTIONS.GEEK && <Hobbies section={data.GEEK} />}
           {section === SECTIONS.ROLES && <Hobbies section={data.ROLES} />}
@@ -107,16 +94,10 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
           {section === SECTIONS.RANDOM && <Hobbies section={data.RANDOM} />}
         </Box>
       </Box>
-      {showWIP && (
-        <Modal {...(misc.underDevelopment as unknown as ModalProps)} />
-      )}
+      {showWIP && <Modal {...(misc.underDevelopment as unknown as ModalProps)} />}
       <CopyRight />
       <Suspense fallback={<></>}>
-        <QueryParams
-          mode={mode}
-          setMode={setMode}
-          section={section}
-          setSection={setSection}/>
+        <QueryParams mode={mode} setMode={setMode} section={section} setSection={setSection} />
       </Suspense>
     </main>
   )

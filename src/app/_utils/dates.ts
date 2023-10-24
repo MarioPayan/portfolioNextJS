@@ -1,10 +1,7 @@
 export const dateDiff: DateDiff = (dateA, dateB, onlyYears = false) => {
-  const getTime = (date: string): number =>
-    (date ? new Date(date).getTime() : new Date().getTime())
+  const getTime = (date: string): number => (date ? new Date(date).getTime() : new Date().getTime())
 
-  const daysDiff = Math.floor(
-    (getTime(dateB) - getTime(dateA)) / (1000 * 60 * 60 * 24)
-  )
+  const daysDiff = Math.floor((getTime(dateB) - getTime(dateA)) / (1000 * 60 * 60 * 24))
   let timeDiff = 'Just started'
   const years = Math.floor(daysDiff / 365)
   const yearsDiff = years >= 1 ? `${years} ${years === 1 ? 'year' : 'years'}` : ''
@@ -28,10 +25,7 @@ export const changeDateFormat: ChangeDateFormat = (date, language = 'es') => {
     es: 'es-CO',
   }[language.toLowerCase()]
 
-  return `${new Date(parseInt(year), parseInt(month) - 1).toLocaleString(
-    format,
-    {month: 'short'}
-  )} ${year}`
+  return `${new Date(parseInt(year), parseInt(month) - 1).toLocaleString(format, {month: 'short'})} ${year}`
 }
 
 export const sortFrom = (a: Experience, b: Experience): number =>

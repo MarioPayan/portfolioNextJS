@@ -37,9 +37,7 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
   }
 
   const [tweenValues, setTweenValues] = useState<number[]>([])
-  const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [
-    Autoplay(autoPlayOptions),
-  ])
+  const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions, [Autoplay(autoPlayOptions)])
 
   const TWEEN_FACTOR = 7 / (images.length + 1)
 
@@ -74,14 +72,8 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
     emblaApi.on('reInit', onScroll)
   }, [emblaApi, onScroll])
 
-  const scrollPrev = useCallback(
-    () => emblaApi && emblaApi.scrollPrev(),
-    [emblaApi]
-  )
-  const scrollNext = useCallback(
-    () => emblaApi && emblaApi.scrollNext(),
-    [emblaApi]
-  )
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi])
 
   return (
     <Box className={styles.container}>
@@ -104,14 +96,16 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
                       height={300}
                       priority={true}
                       className={`${styles.embla__slide__img} ${styles.embla__parallax__img} ${styles.frontImage}`}
-                      alt='photo'/>
+                      alt='photo'
+                    />
                     <Image
                       src={image}
                       fill
                       quality={1}
                       priority={true}
                       className={`${styles.embla__slide__img} ${styles.embla__parallax__img} ${styles.backgroundImage}`}
-                      alt='background photo'/>
+                      alt='background photo'
+                    />
                   </div>
                 </div>
               </div>

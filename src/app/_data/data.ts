@@ -56,12 +56,12 @@ export enum LANGUAGES {
 }
 
 export const Misc = (language: LANGUAGES = LANGUAGES.EN): Misc => ({
-  intro: {EN: 'Hi, I\'m', ES: 'Hola, soy'}[language],
+  intro: {EN: "Hi, I'm", ES: 'Hola, soy'}[language],
   underDevelopment: {
     icon: 'under_development',
     title: {EN: 'Under development', ES: 'En desarrollo'}[language],
     description: {
-      EN: 'Welcome to my website! I appreciate your visit. While the site is currently under development, feel free to explore and check back anytime you\'d like',
+      EN: "Welcome to my website! I appreciate your visit. While the site is currently under development, feel free to explore and check back anytime you'd like",
       ES: '¡Bienvenido a mi sitio web! Aprecio tu visita. Aunque el sitio está actualmente en desarrollo, siéntete libre de explorar y vuelve cuando quieras',
     }[language],
   },
@@ -106,21 +106,21 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       'Principal',
     ],
     meta_description:
-      'I\'m Mario Payan! A Full Stack Principal Software Developer, empirical musician, hardcore gamer, adventurous explorer, geek guy, and a random person. ¯\\_(ツ)_/¯',
+      "I'm Mario Payan! A Full Stack Principal Software Developer, empirical musician, hardcore gamer, adventurous explorer, geek guy, and a random person. ¯\\_(ツ)_/¯",
     meta_title: 'Mario Payan | Full Stack Principal Software Developer',
     description: {
       BUSINESS: {
         EN: `Full Stack Principal Software Developer with ${dateDiff(
           '2017-10',
           '',
-          true
+          true,
         )} of experience with focus on software development, \
           algorithms design, software as a service and clean code. \
           Challenge driven, always willing to learn, passionate about new technologies, teamwork and code writing`,
         ES: `Desarrollador de Software Principal Full Stack con ${dateDiff(
           '2017-10',
           '',
-          true
+          true,
         )} de experiencia con enfoque en desarrollo de software, \
           diseño de algoritmos, software como servicio y código limpio. \
           Motivado por desafíos, siempre dispuesto a aprender, apasionado por las nuevas tecnologías, \
@@ -218,17 +218,13 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
     },
     {
       key: 'Front End Frameworks',
-      title: {EN: 'Front End Frameworks', ES: 'Frameworks de Front End'}[
-        language
-      ],
+      title: {EN: 'Front End Frameworks', ES: 'Frameworks de Front End'}[language],
       skills: [{title: 'React'}, {title: 'NextJS'}, {title: 'AngularJS'}],
       rgbColor: rgbColors.techSkill.frontEndFrameworks,
     },
     {
       key: 'Back End Frameworks',
-      title: {EN: 'Back End Frameworks', ES: 'Frameworks de Back End'}[
-        language
-      ],
+      title: {EN: 'Back End Frameworks', ES: 'Frameworks de Back End'}[language],
       skills: [{title: 'Django'}, {title: 'Django REST'}],
       rgbColor: rgbColors.techSkill.backEndFrameworks,
     },
@@ -255,12 +251,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
     {
       key: 'Version Control',
       title: {EN: 'Version Control', ES: 'Control de Versiones'}[language],
-      skills: [
-        {title: 'Git'},
-        {title: 'GitHub'},
-        {title: 'GitLab'},
-        {title: 'BitBucket'},
-      ],
+      skills: [{title: 'Git'}, {title: 'GitHub'}, {title: 'GitLab'}, {title: 'BitBucket'}],
       rgbColor: rgbColors.techSkill.versionControl,
     },
     {
@@ -272,13 +263,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
     {
       key: 'Testing',
       title: {EN: 'Testing', ES: 'Pruebas'}[language],
-      skills: [
-        {title: 'Cypress'},
-        {title: 'Jasmine'},
-        {title: 'Puppeteer'},
-        {title: 'Appium'},
-        {title: 'Selenium'},
-      ],
+      skills: [{title: 'Cypress'}, {title: 'Jasmine'}, {title: 'Puppeteer'}, {title: 'Appium'}, {title: 'Selenium'}],
       rgbColor: rgbColors.techSkill.testing,
     },
     {
@@ -296,9 +281,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       skills: [
         {
           key: 'Willingness to Learn',
-          title: {EN: 'Willingness to Learn', ES: 'Disposición para aprender'}[
-            language
-          ],
+          title: {EN: 'Willingness to Learn', ES: 'Disposición para aprender'}[language],
         },
         {
           key: 'Proactivity',
@@ -313,9 +296,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       skills: [
         {
           key: 'Problem solving',
-          title: {EN: 'Problem solving', ES: 'Resolución de problemas'}[
-            language
-          ],
+          title: {EN: 'Problem solving', ES: 'Resolución de problemas'}[language],
         },
         {
           key: 'Clean Code',
@@ -376,9 +357,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       where: 'Alert Logic',
       from: '2017-10',
       to: '2018-11',
-      position: {EN: 'Back-End Developer', ES: 'Desarrollador Back-End'}[
-        language
-      ],
+      position: {EN: 'Back-End Developer', ES: 'Desarrollador Back-End'}[language],
       rgbColor: rgbColors.experience.alertLogic,
       image: '/images/jobs/alert_logic.svg',
       achievements: [
@@ -400,9 +379,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       where: 'Alert Logic',
       from: '2018-11',
       to: '2019-11',
-      position: {EN: 'Full-Stack Developer', ES: 'Desarrollador Full-Stack'}[
-        language
-      ],
+      position: {EN: 'Full-Stack Developer', ES: 'Desarrollador Full-Stack'}[language],
       rgbColor: rgbColors.experience.alertLogic,
       image: '/images/jobs/alert_logic.svg',
       achievements: [
@@ -464,9 +441,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       where: 'Deft',
       from: '2020-01',
       to: '',
-      position: {EN: 'Co-founder & Teacher', ES: 'Cofundador y Profesor'}[
-        language
-      ],
+      position: {EN: 'Co-founder & Teacher', ES: 'Cofundador y Profesor'}[language],
       rgbColor: rgbColors.experience.deft,
       image: '/images/jobs/deft.png',
       achievements: [
@@ -558,18 +533,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
         ES: 'Un sitio web creado para disfrute personal y para mostrar proyectos',
       }[language],
       image: '/images/profile_pixel.png',
-      stack: [
-        'React',
-        'NextJS',
-        'TypeScript',
-        'Material UI',
-        'Flexbox',
-        'HTML5',
-        'CSS3',
-        'SASS',
-        'Git',
-        'GitHub',
-      ],
+      stack: ['React', 'NextJS', 'TypeScript', 'Material UI', 'Flexbox', 'HTML5', 'CSS3', 'SASS', 'Git', 'GitHub'],
       link: 'https://www.mariopayan.com/',
     },
     {
@@ -593,25 +557,13 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       // link: 'https://deftsoluciones.com/',
     },
     {
-      label: {EN: 'Alert Logic web app', ES: 'Aplicación web de Alert Logic'}[
-        language
-      ],
+      label: {EN: 'Alert Logic web app', ES: 'Aplicación web de Alert Logic'}[language],
       description: {
         EN: 'A Web app for Alert Logic customers',
         ES: 'Una aplicación web para clientes de Alert Logic',
       }[language],
       image: '/images/projects/alert_logic_web.png',
-      stack: [
-        'jQuery',
-        'AngularJS',
-        'Bootstrap',
-        'PHP',
-        'HTML5',
-        'CSS3',
-        'Git',
-        'GitHub',
-        'PostgreSQL',
-      ],
+      stack: ['jQuery', 'AngularJS', 'Bootstrap', 'PHP', 'HTML5', 'CSS3', 'Git', 'GitHub', 'PostgreSQL'],
       // link: 'https://alertlogic.com/',
     },
     {
@@ -628,9 +580,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       link: 'https://play.google.com/store/apps/details?id=com.alertlogic.secalert',
     },
     {
-      label: {EN: 'Placa y Cédula (Android)', ES: 'Placa y Cédula (Android)'}[
-        language
-      ],
+      label: {EN: 'Placa y Cédula (Android)', ES: 'Placa y Cédula (Android)'}[language],
       description: {
         EN: 'An Android app to determine when individuals can go outside during the pandemic situation in Colombia',
         ES: 'Una aplicación de Android para determinar cuándo las personas pueden salir durante la situación de pandemia en Colombia',
@@ -674,25 +624,13 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       link: 'https://placa-y-cedula.herokuapp.com/',
     },
     {
-      label: {EN: 'SVG Learning Tool', ES: 'Herramienta de Aprendizaje SVG'}[
-        language
-      ],
+      label: {EN: 'SVG Learning Tool', ES: 'Herramienta de Aprendizaje SVG'}[language],
       description: {
         EN: 'A simple tool created during free time to help others understand how SVG works',
         ES: 'Una herramienta sencilla creada durante el tiempo libre para ayudar a otros a entender cómo funciona SVG',
       }[language],
       image: '/images/projects/svg.png',
-      stack: [
-        'React',
-        'Javascript',
-        'HTML5',
-        'CSS3',
-        'SASS',
-        'Git',
-        'GitHub',
-        'Typescript',
-        'Material UI',
-      ],
+      stack: ['React', 'Javascript', 'HTML5', 'CSS3', 'SASS', 'Git', 'GitHub', 'Typescript', 'Material UI'],
       link: 'https://mariopayan.github.io/SvgLearningTool/',
     },
     {
@@ -705,17 +643,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
         ES: 'Responsable de dar soporte y mantener varios servicios internos en Alert Logic',
       }[language],
       image: '/images/projects/alert_logic_heimdall.jpg',
-      stack: [
-        'AngularJS',
-        'Bootstrap',
-        'PHP',
-        'Chef',
-        'Linux',
-        'Bash',
-        'Git',
-        'GitHub',
-        'PostgreSQL',
-      ],
+      stack: ['AngularJS', 'Bootstrap', 'PHP', 'Chef', 'Linux', 'Bash', 'Git', 'GitHub', 'PostgreSQL'],
       // link: 'https://alertlogic.com/',
     },
   ],
@@ -723,7 +651,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
   MUSIC: {
     title: {EN: 'Music', ES: 'Música'}[language],
     description: {
-      EN: 'I have been an empirical musician since the age of 14, exploring various instruments and genres. Although I don\'t dedicate myself to it full-time, I find great joy in creating and sharing my music',
+      EN: "I have been an empirical musician since the age of 14, exploring various instruments and genres. Although I don't dedicate myself to it full-time, I find great joy in creating and sharing my music",
       ES: 'He sido músico empírico desde los 14 años, explorando varios instrumentos y géneros. Aunque no me dedico a ello a tiempo completo, encuentro gran alegría en crear y compartir mi música',
     }[language],
     sections: [
@@ -830,13 +758,10 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       {
         title: 'K&R',
         description: {
-          EN: 'During my early days of learning to play and sing, I embarked on a small project with a friend. Although we didn\'t collaborate extensively, we managed to record a few covers together. Looking back, I hope those recordings never see the light of day again',
+          EN: "During my early days of learning to play and sing, I embarked on a small project with a friend. Although we didn't collaborate extensively, we managed to record a few covers together. Looking back, I hope those recordings never see the light of day again",
           ES: 'Durante mis primeros días de aprendizaje para tocar y cantar, embarqué en un pequeño proyecto con un amigo. Aunque no colaboramos extensamente, logramos grabar algunas covers juntos. Mirando hacia atrás, espero que esas grabaciones nunca vuelvan a ver la luz del día',
         }[language],
-        images: [
-          '/images/hobbies/music/kyr/img_1.jpg',
-          '/images/hobbies/music/kyr/img_2.jpg',
-        ],
+        images: ['/images/hobbies/music/kyr/img_1.jpg', '/images/hobbies/music/kyr/img_2.jpg'],
       },
     ],
   },
@@ -930,7 +855,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
   DOGS: {
     title: {EN: 'Dogs', ES: 'Perros'}[language],
     description: {
-      EN: 'Seeing a dog and resisting the urge to pet it is a challenge I often struggle with. That\'s why this aspect becomes essential when describing myself – my unwavering love for dogs and my innate desire to shower them with affection',
+      EN: "Seeing a dog and resisting the urge to pet it is a challenge I often struggle with. That's why this aspect becomes essential when describing myself – my unwavering love for dogs and my innate desire to shower them with affection",
       ES: 'Ver un perro y resistir el impulso de acariciarlo es un desafío con el que a menudo lucho. Por eso este aspecto se vuelve esencial al describirme: mi amor inquebrantable por los perros y mi deseo innato de colmarlos de afecto',
     }[language],
     sections: [
@@ -996,7 +921,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
   GEEK: {
     title: {EN: 'Geek', ES: 'Friki'}[language],
     description: {
-      EN: 'I\'m a fan of many geeky things, including technology, games, geopolitics, philosophy, and more. I have a deep curiosity and enjoy expanding my knowledge in various fields',
+      EN: "I'm a fan of many geeky things, including technology, games, geopolitics, philosophy, and more. I have a deep curiosity and enjoy expanding my knowledge in various fields",
       ES: 'Soy fan de muchas cosas frikis, incluyendo tecnología, juegos, geopolítica, filosofía, y más. Tengo una profunda curiosidad y disfruto expandiendo mis conocimientos en varios campos',
     }[language],
     sections: [
@@ -1041,7 +966,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
   SPORTS: {
     title: {EN: 'Sports', ES: 'Deportes'}[language],
     description: {
-      EN: 'While I\'m not a fan of watching sports, I thoroughly enjoy participating in them. I have engaged in various sports throughout my life and continue to seek opportunities to try new ones',
+      EN: "While I'm not a fan of watching sports, I thoroughly enjoy participating in them. I have engaged in various sports throughout my life and continue to seek opportunities to try new ones",
       ES: 'Aunque no me gusta ver deportes, disfruto mucho participando en ellos. He practicado varios deportes a lo largo de mi vida y continúo buscando oportunidades para probar nuevos',
     }[language],
     sections: [
@@ -1064,15 +989,12 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
           EN: 'Cycling has been a significant part of my life since my university days. I would hop on my bike and embark on thrilling adventures, exploring new places no matter how far they were. The freedom, the sense of exploration, and the joy of pedaling through picturesque landscapes made cycling an exhilarating experience',
           ES: 'El ciclismo ha sido una parte significativa de mi vida desde mis días universitarios. Subiría a mi bicicleta y me embarcaría en emocionantes aventuras, explorando nuevos lugares sin importar cuán lejos estuvieran. La libertad, el sentido de la exploración y la alegría de pedalear por paisajes pintorescos hicieron del ciclismo una experiencia emocionante',
         }[language],
-        images: [
-          '/images/hobbies/sports/cycling/img_1.jpg',
-          '/images/hobbies/sports/cycling/img_2.jpg',
-        ],
+        images: ['/images/hobbies/sports/cycling/img_1.jpg', '/images/hobbies/sports/cycling/img_2.jpg'],
       },
       {
         title: {EN: 'Paintball', ES: 'Paintball'}[language],
         description: {
-          EN: 'As a fan of war games, paintball has become a thrilling activity for me. I love immersing myself in strategic battles, utilizing the tactics and strategies I\'ve learned from games. The adrenaline rush, the teamwork, and the competitive spirit make paintball an incredibly exciting and immersive sport',
+          EN: "As a fan of war games, paintball has become a thrilling activity for me. I love immersing myself in strategic battles, utilizing the tactics and strategies I've learned from games. The adrenaline rush, the teamwork, and the competitive spirit make paintball an incredibly exciting and immersive sport",
           ES: 'Como fan de los juegos de guerra, el paintball se ha convertido en una actividad emocionante para mí. Me encanta sumergirme en batallas estratégicas, utilizando las tácticas y estrategias que he aprendido de los juegos. La adrenalina, el trabajo en equipo y el espíritu competitivo hacen del paintball un deporte increíblemente emocionante e inmersivo',
         }[language],
         images: [
@@ -1098,15 +1020,12 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
           EN: 'Skateboarding was once my greatest passion during my school days. I spent countless hours with my friends, honing our skills and practicing tricks. The skateboarding community, the exhilaration of nailing a new trick, and the creative expression through freestyle maneuvers made skateboarding an unforgettable part of my life',
           ES: 'Patineta fue una vez mi mayor pasión durante mis días escolares. Pasé innumerables horas con mis amigos, perfeccionando nuestras habilidades y practicando trucos. La comunidad de skate, la emoción de clavar un nuevo truco y la expresión creativa a través de maniobras de estilo libre hicieron del skateboarding una parte inolvidable de mi vida',
         }[language],
-        images: [
-          '/images/hobbies/sports/skate_boarding/img_1.jpg',
-          '/images/hobbies/sports/skate_boarding/img_2.jpg',
-        ],
+        images: ['/images/hobbies/sports/skate_boarding/img_1.jpg', '/images/hobbies/sports/skate_boarding/img_2.jpg'],
       },
       {
         title: {EN: 'Soccer', ES: 'Fútbol'}[language],
         description: {
-          EN: 'Although I\'m not particularly skilled at soccer, it has become a beloved sport among my friends. I engage in soccer primarily to spend quality time with them, enjoying friendly matches and bonding over shared experiences on the field. The camaraderie, laughter, and shared memories make playing soccer a cherished part of my social life',
+          EN: "Although I'm not particularly skilled at soccer, it has become a beloved sport among my friends. I engage in soccer primarily to spend quality time with them, enjoying friendly matches and bonding over shared experiences on the field. The camaraderie, laughter, and shared memories make playing soccer a cherished part of my social life",
           ES: 'Aunque no soy particularmente habilidoso en el fútbol, se ha convertido en un deporte querido entre mis amigos. Me involucro en el fútbol principalmente para pasar tiempo de calidad con ellos, disfrutando de partidos amistosos y compartiendo experiencias en el campo. La camaradería, la risa y los recuerdos compartidos hacen que jugar al fútbol sea una parte apreciada de mi vida social',
         }[language],
         images: [
@@ -1153,9 +1072,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
 
   ROLES: {
     title: {EN: 'Roles', ES: 'Roles'}[language],
-    description: {EN: 'TODO: Add description', ES: 'TODO: Añadir descripción'}[
-      language
-    ],
+    description: {EN: 'TODO: Add description', ES: 'TODO: Añadir descripción'}[language],
     sections: [
       {
         title: {EN: 'Short films', ES: 'Cortometrajes'}[language],
@@ -1193,14 +1110,12 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
 
   FILMS: {
     title: {EN: 'Films', ES: 'Películas'}[language],
-    description: {EN: 'TODO: Add description', ES: 'TODO: añadir descripción'}[
-      language
-    ],
+    description: {EN: 'TODO: Add description', ES: 'TODO: añadir descripción'}[language],
     sections: [
       {
         title: {EN: 'Movies', ES: 'Películas'}[language],
         description: {
-          EN: 'Although I\'m not a devoted movie watcher, I can appreciate the power of a well-crafted film. While some movies may follow familiar narrative structures like the Hero\'s journey, there are always exceptional films that captivate me with their thought-provoking stories, unique perspectives, and the ability to challenge my thinking',
+          EN: "Although I'm not a devoted movie watcher, I can appreciate the power of a well-crafted film. While some movies may follow familiar narrative structures like the Hero's journey, there are always exceptional films that captivate me with their thought-provoking stories, unique perspectives, and the ability to challenge my thinking",
           ES: 'Aunque no soy un ávido espectador de películas, puedo apreciar el poder de una película bien hecha. Mientras que algunas películas pueden seguir estructuras narrativas familiares como el viaje del héroe, siempre hay películas excepcionales que me cautivan con sus historias que hacen pensar, perspectivas únicas y la capacidad de desafiar mi forma de pensar',
         }[language],
         images: ['/images/hobbies/films/movies/img_1.jpeg'],
@@ -1234,7 +1149,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       {
         title: {EN: 'Anime', ES: 'Anime'}[language],
         description: {
-          EN: 'Anime made a profound impact on me from a young age with its distinctive storytelling and diverse range of topics. The narratives were often different from what I was accustomed to, and that\'s what drew me in. The versatility of anime, spanning genres from fantasy and sci-fi to slice of life, allows me to explore captivating worlds and encounter thought-provoking themes',
+          EN: "Anime made a profound impact on me from a young age with its distinctive storytelling and diverse range of topics. The narratives were often different from what I was accustomed to, and that's what drew me in. The versatility of anime, spanning genres from fantasy and sci-fi to slice of life, allows me to explore captivating worlds and encounter thought-provoking themes",
           ES: 'El anime tuvo un profundo impacto en mí desde una edad temprana con su narrativa distintiva y su diversa gama de temas. Las narrativas a menudo eran diferentes a lo que estaba acostumbrado, y eso es lo que me atrajo. La versatilidad del anime, que abarca géneros desde la fantasía y la ciencia ficción hasta la vida cotidiana, me permite explorar mundos cautivadores y encontrar temas que invitan a la reflexión',
         }[language],
         images: [

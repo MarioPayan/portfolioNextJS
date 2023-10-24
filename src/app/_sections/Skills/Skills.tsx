@@ -1,12 +1,6 @@
 'use client'
 // React
-import React, {
-  createElement,
-  useContext,
-  useEffect,
-  useMemo,
-  useState
-} from 'react'
+import React, {createElement, useContext, useEffect, useMemo, useState} from 'react'
 // Components
 import {DataContext} from '@/components/LayoutWrapper'
 // Material UI
@@ -29,10 +23,7 @@ const SkillIconCard: React.FC<SkillIconCardProps> = ({skill, grow = false}) => (
   <Box className={`${styles.skillIcon} ${grow ? styles.grow : ''}`}>
     <Box className={styles.skillIcon_icon_container}>
       {getDevIconSrc(skill.title) ? (
-        <Image
-          src={getDevIconSrc(skill.key || skill.title)}
-          alt={skill.title}
-          fill></Image>
+        <Image src={getDevIconSrc(skill.key || skill.title)} alt={skill.title} fill></Image>
       ) : (
         createElement(getIcon(skill.key || skill.title), {
           className: styles.skillIcon_icon,
@@ -40,22 +31,14 @@ const SkillIconCard: React.FC<SkillIconCardProps> = ({skill, grow = false}) => (
       )}
     </Box>
     <Box className={styles.skillIcon_text_container}>
-      <Typography
-        variant='h6'
-        className={styles.skillIcon_text}
-        textTransform='capitalize'>
+      <Typography variant='h6' className={styles.skillIcon_text} textTransform='capitalize'>
         {skill.title}
       </Typography>
     </Box>
   </Box>
 )
 
-const CategoryIconCard: React.FC<CategoryIconCardProps> = ({
-  category,
-  onHover,
-  onLeave,
-  onClick,
-}) => {
+const CategoryIconCard: React.FC<CategoryIconCardProps> = ({category, onHover, onLeave, onClick}) => {
   const categoryBackgroundColor = rbgToRgba(category.rgbColor, 0.7)
   return (
     <Paper
@@ -73,19 +56,13 @@ const CategoryIconCard: React.FC<CategoryIconCardProps> = ({
         disableTouchRipple>
         <Box className={styles.categoryIcon_container}>
           {getDevIconSrc(category.key) ? (
-            <Image
-              src={getDevIconSrc(category.key)}
-              alt={category.title}
-              fill></Image>
+            <Image src={getDevIconSrc(category.key)} alt={category.title} fill></Image>
           ) : (
             createElement(getIcon(category.key), {
               className: styles.categoryIcon_icon,
             })
           )}
-          <Typography
-            variant='h6'
-            className={styles.categoryIcon_text}
-            textTransform='capitalize'>
+          <Typography variant='h6' className={styles.categoryIcon_text} textTransform='capitalize'>
             {category.title}
           </Typography>
         </Box>
@@ -94,9 +71,7 @@ const CategoryIconCard: React.FC<CategoryIconCardProps> = ({
   )
 }
 
-const CategoryIconBackground: React.FC<CategoryIconBackgroundProps> = ({
-  Icon,
-}) => (
+const CategoryIconBackground: React.FC<CategoryIconBackgroundProps> = ({Icon}) => (
   <Box className={styles.categoryIconBackground}>
     <Box className={styles.categoryIconBackground_container}>
       <Icon className={styles.categoryIconBackground_icon} />
@@ -104,11 +79,7 @@ const CategoryIconBackground: React.FC<CategoryIconBackgroundProps> = ({
   </Box>
 )
 
-const SkillStack: React.FC<SkillStackProps> = ({
-  skillStack,
-  toggleShowedCategory,
-  isCategoryShowed,
-}) => {
+const SkillStack: React.FC<SkillStackProps> = ({skillStack, toggleShowedCategory, isCategoryShowed}) => {
   const [zoomedCategory, setZoomedCategory] = useState<string>('')
 
   return (
@@ -121,30 +92,23 @@ const SkillStack: React.FC<SkillStackProps> = ({
             key={cIndex}
             onHover={() => setZoomedCategory(category.key)}
             onLeave={() => setZoomedCategory('')}
-            onClick={() => toggleShowedCategory(category.key)}/>
+            onClick={() => toggleShowedCategory(category.key)}
+          />
           {category.skills.map((skill, sIndex) => (
             <Box
               key={`${cIndex}-${sIndex}`}
-              className={` ${styles.category_container} ${
-                isCategoryShowed(category.key) ? '' : styles.collapsed
-              }`}>
+              className={` ${styles.category_container} ${isCategoryShowed(category.key) ? '' : styles.collapsed}`}>
               <Paper
                 className={styles.category}
                 sx={{
                   background: `linear-gradient(70deg, ${rbgToRgba(
                     category.rgbColor,
-                    0.7
+                    0.7,
                   )}, rgba(0,0,0,0) 70%, rgba(0,0,0,0.2) 95%)`,
                 }}>
                 <CategoryIconBackground Icon={getIcon(category.key)} />
-                <SkillIconCard
-                  skill={skill}
-                  grow={category.key === zoomedCategory}/>
-                <Typography
-                  className={styles.category_title}
-                  variant='subtitle1'
-                  textTransform='capitalize'
-                  noWrap>
+                <SkillIconCard skill={skill} grow={category.key === zoomedCategory} />
+                <Typography className={styles.category_title} variant='subtitle1' textTransform='capitalize' noWrap>
                   {category.title}
                 </Typography>
               </Paper>
@@ -159,11 +123,8 @@ const SkillStack: React.FC<SkillStackProps> = ({
 const Skills: React.FC = () => {
   const {data, misc} = useContext(DataContext)
   const allCategories = useMemo(
-    () => [
-      ...data.TECH_SKILLS.map(category => category.key),
-      ...data.SOFT_SKILLS.map(category => category.key),
-    ],
-    [data]
+    () => [...data.TECH_SKILLS.map(category => category.key), ...data.SOFT_SKILLS.map(category => category.key)],
+    [data],
   )
 
   const [showedCategories, setShowedCategories] = useState<string[]>(allCategories)
@@ -175,9 +136,7 @@ const Skills: React.FC = () => {
     if (categoryIndex === -1) {
       setShowedCategories([...showedCategories, category])
     } else {
-      setShowedCategories(
-        showedCategories.filter(showedCategory => showedCategory !== category)
-      )
+      setShowedCategories(showedCategories.filter(showedCategory => showedCategory !== category))
     }
   }
 
@@ -186,8 +145,7 @@ const Skills: React.FC = () => {
     setIsShowingNoCategories(showedCategories.length === 0)
   }, [showedCategories, allCategories])
 
-  const isCategoryShowed = (category: string) =>
-    showedCategories.indexOf(category) !== -1
+  const isCategoryShowed = (category: string) => showedCategories.indexOf(category) !== -1
   return (
     <Box className={styles.container}>
       <Box className={styles.action_buttons}>
@@ -217,12 +175,14 @@ const Skills: React.FC = () => {
       <SkillStack
         skillStack={data.TECH_SKILLS}
         toggleShowedCategory={toggleShowedCategory}
-        isCategoryShowed={isCategoryShowed}/>
+        isCategoryShowed={isCategoryShowed}
+      />
       <Divider variant='middle' className={styles.divider} />
       <SkillStack
         skillStack={data.SOFT_SKILLS}
         toggleShowedCategory={toggleShowedCategory}
-        isCategoryShowed={isCategoryShowed}/>
+        isCategoryShowed={isCategoryShowed}
+      />
     </Box>
   )
 }

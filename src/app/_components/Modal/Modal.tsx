@@ -11,13 +11,7 @@ import Typography from '@mui/material/Typography'
 // Styles
 import styles from './Modal.module.css'
 
-const Modal: React.FC<ModalProps> = ({
-  open = true,
-  onClose,
-  icon,
-  title,
-  description,
-}) => {
+const Modal: React.FC<ModalProps> = ({open = true, onClose, icon, title, description}) => {
   const [modalOpen, setModalOpen] = useState<boolean>(open)
 
   useEffect(() => {
@@ -30,16 +24,14 @@ const Modal: React.FC<ModalProps> = ({
   }
 
   return (
-    <ModalMUI
-      open={modalOpen}
-      onClose={onCloseModal}
-      className={styles.container}>
+    <ModalMUI open={modalOpen} onClose={onCloseModal} className={styles.container}>
       <Box>
         <Paper className={styles.paper}>
           <Typography variant='h4' color='primary' className={styles.title}>
-            {icon && createElement(getIcon(icon), {
-              className: styles.icon,
-            })}
+            {icon &&
+              createElement(getIcon(icon), {
+                className: styles.icon,
+              })}
             {title}
           </Typography>
           <Typography>{description}</Typography>

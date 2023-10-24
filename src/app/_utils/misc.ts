@@ -1,10 +1,5 @@
 export const getKeyFromLabel: GetKeyFromLabel = label =>
-  label
-    .toLowerCase()
-    .split(' ')
-    .join('_')
-    .replace(/-/g, '_')
-    .replace(/#/g, 'sharp')
+  label.toLowerCase().split(' ').join('_').replace(/-/g, '_').replace(/#/g, 'sharp')
 
 export const rbgToRgba: RbgToRgba = (rgbColor, alpha) => {
   const [r, g, b] = rgbColor

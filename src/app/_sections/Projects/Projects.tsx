@@ -27,11 +27,7 @@ const InfinityCarousel: React.FC<InfinityCarouselProps> = ({children}) => {
     return {repetition, offset}
   }, [children.length])
 
-  const Container: React.FC<ContainerProps> = ({
-    children,
-    offset,
-    className,
-  }) => {
+  const Container: React.FC<ContainerProps> = ({children, offset, className}) => {
     const animation = (offset: number) =>
       keyframes`
       0% { transform: translateX(0); }
@@ -50,9 +46,7 @@ const InfinityCarousel: React.FC<InfinityCarouselProps> = ({children}) => {
   return (
     <Box className={styles.infinityCarousel}>
       <Box className={styles.infinityCarousel_mask}></Box>
-      <Container
-        className={styles.infinityCarousel_container}
-        offset={offset || 0}>
+      <Container className={styles.infinityCarousel_container} offset={offset || 0}>
         {Array.from({length: repetition}).map(() => children)}
       </Container>
     </Box>
@@ -75,7 +69,7 @@ const Project: React.FC<ProjectProps> = ({project}) => {
         <Box className={styles.iconBar}>
           <InfinityCarousel>
             {project.stack.sort(randomSort).map((tech, index) =>
-              (getDevIconSrc(tech) ? (
+              getDevIconSrc(tech) ? (
                 <Image
                   key={index}
                   src={getDevIconSrc(tech)}
@@ -90,7 +84,7 @@ const Project: React.FC<ProjectProps> = ({project}) => {
                   className: styles.infinityCarousel_icon,
                   key: index,
                 })
-              ))
+              ),
             )}
           </InfinityCarousel>
         </Box>
@@ -105,12 +99,7 @@ const Project: React.FC<ProjectProps> = ({project}) => {
         </Button>
       </Box>
       <Box className={styles.project_image_container}>
-        <Image
-          src={project.image}
-          fill
-          priority
-          alt={project.label}
-          className={styles.project_image}/>
+        <Image src={project.image} fill priority alt={project.label} className={styles.project_image} />
       </Box>
     </Paper>
   )

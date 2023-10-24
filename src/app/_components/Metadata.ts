@@ -34,8 +34,7 @@ const metadata: Metadata = {
     title: data.PERSONAL.meta_title,
     description: data.PERSONAL.meta_description,
     url: data.PERSONAL.url,
-    emails:
-      data.CONTACTS.find(c => c.label.toLowerCase() === 'email')?.name || '',
+    emails: data.CONTACTS.find(c => c.label.toLowerCase() === 'email')?.name || '',
     type: 'website',
     siteName: data.PERSONAL.name,
     images: [

@@ -15,24 +15,13 @@ import {getIcon} from '@/utils/icons'
 import styles from './Hobbies.module.css'
 
 const Hobbies: React.FC<HobbiesProps> = ({section}) => {
-  const alternateGradient: AlternateGradient = index =>
-    (index % 2 === 0 ? '-45deg' : '135deg')
+  const alternateGradient: AlternateGradient = index => (index % 2 === 0 ? '-45deg' : '135deg')
 
-  const alternateFlexDirection: AlternateFlexDirection = index =>
-    (index % 2 === 0 ? 'row' : 'row-reverse')
+  const alternateFlexDirection: AlternateFlexDirection = index => (index % 2 === 0 ? 'row' : 'row-reverse')
 
-  const SocialIconButtons: React.FC<SocialIconButtonsProps> = ({
-    subSection,
-  }) => {
-    const SocialIconButton: React.FC<SocialIconButtonProps> = ({
-      label,
-      url,
-      iconKey,
-    }) => (
-      <IconButton
-        aria-label={label}
-        color='secondary'
-        onClick={() => openInNewTab(url)}>
+  const SocialIconButtons: React.FC<SocialIconButtonsProps> = ({subSection}) => {
+    const SocialIconButton: React.FC<SocialIconButtonProps> = ({label, url, iconKey}) => (
+      <IconButton aria-label={label} color='secondary' onClick={() => openInNewTab(url)}>
         {createElement(getIcon(iconKey), {
           className: styles.social_icon,
         })}
@@ -44,22 +33,13 @@ const Hobbies: React.FC<HobbiesProps> = ({section}) => {
     return (
       <Box className={styles.social_container}>
         {subSection.social.youtube && (
-          <SocialIconButton
-            label='Youtube'
-            url={subSection.social.youtube}
-            iconKey='Youtube'/>
+          <SocialIconButton label='Youtube' url={subSection.social.youtube} iconKey='Youtube' />
         )}
         {subSection.social?.facebook && (
-          <SocialIconButton
-            label='Facebook'
-            url={subSection.social.facebook}
-            iconKey='Facebook'/>
+          <SocialIconButton label='Facebook' url={subSection.social.facebook} iconKey='Facebook' />
         )}
         {subSection.social?.instagram && (
-          <SocialIconButton
-            label='Youtube'
-            url={subSection.social.instagram}
-            iconKey='Instagram'/>
+          <SocialIconButton label='Youtube' url={subSection.social.instagram} iconKey='Instagram' />
         )}
       </Box>
     )
@@ -80,13 +60,9 @@ const Hobbies: React.FC<HobbiesProps> = ({section}) => {
           key={index}
           className={styles.subsection}
           sx={{
-            background: `linear-gradient(${alternateGradient(
-              index
-            )},rgba(255, 255, 255, 1) 0%,rgba(0, 0, 0, 0.5) 40%)`,
+            background: `linear-gradient(${alternateGradient(index)},rgba(255, 255, 255, 1) 0%,rgba(0, 0, 0, 0.5) 40%)`,
           }}>
-          <Box
-            className={styles.subsection_container}
-            flexDirection={alternateFlexDirection(index)}>
+          <Box className={styles.subsection_container} flexDirection={alternateFlexDirection(index)}>
             <Box className={styles.subsection_info}>
               <Typography variant='h4' color='primary' className={styles.title}>
                 {subSection.title}
