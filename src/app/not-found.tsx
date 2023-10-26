@@ -17,10 +17,6 @@ import styles from './notFound.module.css'
 
 export const metadata = {...appMetadata, title: '404 | ¯\\_(ツ)_/¯'}
 
-// TODO: Waiting for vercel to recognize not-found as default 404 page
-// for the whole application as it's indicated in the docs:
-// https://nextjs.org/docs/app/api-reference/file-conventions/not-found
-
 const NotFound: React.FC<{language: LANGUAGES}> = ({language}) => {
   const buttonText = Misc(language).goBackHome as string
 

@@ -92,8 +92,7 @@ const SkillStack: React.FC<SkillStackProps> = ({skillStack, toggleShowedCategory
             key={cIndex}
             onHover={() => setZoomedCategory(category.key)}
             onLeave={() => setZoomedCategory('')}
-            onClick={() => toggleShowedCategory(category.key)}
-          />
+            onClick={() => toggleShowedCategory(category.key)}/>
           {category.skills.map((skill, sIndex) => (
             <Box
               key={`${cIndex}-${sIndex}`}
@@ -103,7 +102,7 @@ const SkillStack: React.FC<SkillStackProps> = ({skillStack, toggleShowedCategory
                 sx={{
                   background: `linear-gradient(70deg, ${rbgToRgba(
                     category.rgbColor,
-                    0.7,
+                    0.7
                   )}, rgba(0,0,0,0) 70%, rgba(0,0,0,0.2) 95%)`,
                 }}>
                 <CategoryIconBackground Icon={getIcon(category.key)} />
@@ -124,7 +123,7 @@ const Skills: React.FC = () => {
   const {data, misc} = useContext(DataContext)
   const allCategories = useMemo(
     () => [...data.TECH_SKILLS.map(category => category.key), ...data.SOFT_SKILLS.map(category => category.key)],
-    [data],
+    [data]
   )
 
   const [showedCategories, setShowedCategories] = useState<string[]>(allCategories)
@@ -175,14 +174,12 @@ const Skills: React.FC = () => {
       <SkillStack
         skillStack={data.TECH_SKILLS}
         toggleShowedCategory={toggleShowedCategory}
-        isCategoryShowed={isCategoryShowed}
-      />
+        isCategoryShowed={isCategoryShowed}/>
       <Divider variant='middle' className={styles.divider} />
       <SkillStack
         skillStack={data.SOFT_SKILLS}
         toggleShowedCategory={toggleShowedCategory}
-        isCategoryShowed={isCategoryShowed}
-      />
+        isCategoryShowed={isCategoryShowed}/>
     </Box>
   )
 }

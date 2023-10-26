@@ -1,4 +1,5 @@
-type Icon = any
+// TODO: Look for a better way to type this
+type Icon = any // eslint-disable-line @typescript-eslint/no-explicit-any
 
 interface GetDevIconURL {
   (url: string): string

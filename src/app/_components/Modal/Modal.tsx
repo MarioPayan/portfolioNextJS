@@ -28,10 +28,9 @@ const Modal: React.FC<ModalProps> = ({open = true, onClose, icon, title, descrip
       <Box>
         <Paper className={styles.paper}>
           <Typography variant='h4' color='primary' className={styles.title}>
-            {icon &&
-              createElement(getIcon(icon), {
-                className: styles.icon,
-              })}
+            {icon && createElement(getIcon(icon), {
+              className: styles.icon,
+            })}
             {title}
           </Typography>
           <Typography>{description}</Typography>

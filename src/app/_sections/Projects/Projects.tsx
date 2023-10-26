@@ -69,7 +69,7 @@ const Project: React.FC<ProjectProps> = ({project}) => {
         <Box className={styles.iconBar}>
           <InfinityCarousel>
             {project.stack.sort(randomSort).map((tech, index) =>
-              getDevIconSrc(tech) ? (
+              (getDevIconSrc(tech) ? (
                 <Image
                   key={index}
                   src={getDevIconSrc(tech)}
@@ -84,7 +84,7 @@ const Project: React.FC<ProjectProps> = ({project}) => {
                   className: styles.infinityCarousel_icon,
                   key: index,
                 })
-              ),
+              ))
             )}
           </InfinityCarousel>
         </Box>

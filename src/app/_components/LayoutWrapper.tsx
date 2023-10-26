@@ -58,13 +58,13 @@ export const DataContext = createContext<{
   setLanguage: (language: LANGUAGES) => void
   data: Data
   misc: Misc
-}>({
-  language: LANGUAGES.EN,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  setLanguage: (language: LANGUAGES) => {},
-  data: Data(LANGUAGES.EN),
-  misc: Misc(LANGUAGES.EN),
-})
+    }>({
+      language: LANGUAGES.EN,
+      // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+      setLanguage: (language: LANGUAGES) => {},
+      data: Data(LANGUAGES.EN),
+      misc: Misc(LANGUAGES.EN),
+    })
 
 const LayoutWrapper: React.FC<{children: React.ReactNode}> = ({children}) => {
   const [language, setLanguage] = useState<LANGUAGES>(LANGUAGES.EN)

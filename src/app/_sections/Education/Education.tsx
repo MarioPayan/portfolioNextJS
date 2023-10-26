@@ -29,7 +29,7 @@ const Card: React.FC<EducationCardProps> = ({education}) => {
       sx={{
         background: `linear-gradient(-15deg, ${rbgToRgba(
           education.rgbColor,
-          0.7,
+          0.7
         )}, rgba(0,0,0,1) 80%, rgba(0,0,0,0.2) 95%)`,
       }}>
       <Box className={styles.card_header}>

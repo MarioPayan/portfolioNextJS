@@ -3,7 +3,6 @@
 import {createElement, useEffect, useState, useContext} from 'react'
 // NextJS
 import {useRouter} from 'next/navigation'
-import Link from 'next/link'
 // Components
 import {DataContext} from '@/components/LayoutWrapper'
 // Data
@@ -12,7 +11,6 @@ import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import EventIcon from '@mui/icons-material/Event'
 import Fade from '@mui/material/Fade'
 import TranslateIcon from '@mui/icons-material/Translate'
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy'
@@ -71,7 +69,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
     setChangingLanguage(true)
     const queryParams = getQueryParamsStr({mode, section})
     if (language === LANGUAGES.ES) {
-      router.replace(`/${LANGUAGES.EN.toLowerCase()}/${queryParams}`)
+      router.replace(`/${queryParams}`)
     } else if (language === LANGUAGES.EN || !language) {
       router.replace(`/${LANGUAGES.ES.toLowerCase()}/${queryParams}`)
     }
@@ -87,8 +85,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
           className={`${styles.card_background_image} ${animationTrigger ? styles.fade_animation : ''}`}
           fill
           priority
-          alt='Background'
-        />
+          alt='Background'/>
       </Box>
 
       {/* Profile */}
@@ -100,8 +97,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
                 src={images.profile}
                 className={styles.card_profile_avatar_container_img}
                 alt={data.PERSONAL.name}
-                variant='circular'
-              />
+                variant='circular'/>
             </Fade>
           </Box>
           <Box className={styles.card_profile_avatar_container}>
@@ -110,8 +106,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
                 src={images.profilePixel}
                 className={styles.card_profile_avatar_container_img}
                 alt={data.PERSONAL.name}
-                variant='circular'
-              />
+                variant='circular'/>
             </Fade>
           </Box>
         </Box>
@@ -139,11 +134,6 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
           onAnimationEnd={() => setChangingLanguage(false)}>
           <TranslateIcon fontSize='large' color='primary' />
         </IconButton>
-        <Link href='/agenda'>
-          <IconButton>
-            <EventIcon fontSize='large' color='primary' />
-          </IconButton>
-        </Link>
       </Box>
 
       {/* Tabs */}
@@ -173,8 +163,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
                 className: styles.card_tabs_tab_icon,
               })}
               iconPosition='start'
-              className={styles.card_tabs_tab}
-            />
+              className={styles.card_tabs_tab}/>
           ))}
         </Tabs>
       </Box>
