@@ -77,7 +77,7 @@ const About: React.FC<AboutProps> = ({mode}) => {
         </Box>
 
         <Box className={styles.image}>
-          <Image src={profileImages[mode]} fill priority alt='Profile' />
+          <Image src={profileImages[mode]} fill alt='Profile' />
         </Box>
       </Paper>
     </Box>

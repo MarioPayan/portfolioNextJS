@@ -24,7 +24,7 @@ const NotFound: React.FC<{language: LANGUAGES}> = ({language}) => {
     <LayoutWrapper>
       <Box className={styles.container}>
         <Box className={styles.imageContainer}>
-          <Image src={image404} fill priority alt='404 | Not found' />
+          <Image src={image404} fill alt='404 | Not found' />
         </Box>
         <Link href='/'>
           <Button variant='contained' color='primary' endIcon={<HomeIcon />}>

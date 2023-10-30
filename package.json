@@ -9,7 +9,8 @@
     "lint": "next lint",
     "lint-fix": "npm run prettier && npm run eslint 2>/dev/null",
     "prettier": "node ./node_modules/prettier/bin/prettier.cjs --write **/*.{ts,tsx,css,json}",
-    "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.mjs,.jsx,.ts,.tsx . --fix"
+    "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.mjs,.jsx,.ts,.tsx . --fix",
+    "blur": "node ./src/scripts/generateBlurImages.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -19,22 +20,23 @@
     "@vercel/analytics": "^1.1.1",
     "embla-carousel-autoplay": "^8.0.0-rc14",
     "embla-carousel-react": "^8.0.0-rc14",
-    "next": "13.5.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.2.2"
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.5.6",
-    "@types/node": "20.8.8",
-    "@types/react": "18.2.31",
-    "@types/react-dom": "18.2.14",
+    "@types/node": "^20.8.8",
+    "@types/react": "^18.2.31",
+    "@types/react-dom": "^18.2.14",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "eslint": "^8.52.0",
-    "eslint-config-next": "13.5.6",
+    "eslint-config-next": "^13.5.6",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "jimp": "^0.22.10",
     "prettier": "^3.0.3"
   }
 }

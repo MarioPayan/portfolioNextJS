@@ -1,5 +1,5 @@
 // NextJS
-import {Metadata} from 'next'
+import {Metadata, Viewport} from 'next'
 // Data
 import Data from '@/data/data'
 
@@ -19,10 +19,8 @@ const metadata: Metadata = {
   applicationName: data.PERSONAL.name,
   keywords: data.PERSONAL.keywords.join(', '),
   authors: [{name: data.PERSONAL.name, url: data.PERSONAL.url}],
-  colorScheme: 'dark',
   creator: data.PERSONAL.name,
   publisher: data.PERSONAL.name,
-  themeColor: 'black',
 
   icons: {
     icon: images.favicon,
@@ -78,6 +76,11 @@ const metadata: Metadata = {
       notranslate: false,
     },
   },
+}
+
+export const viewport: Viewport = {
+  colorScheme: 'dark',
+  themeColor: 'black',
 }
 
 export default metadata

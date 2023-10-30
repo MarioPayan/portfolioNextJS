@@ -84,7 +84,6 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
           src={coverImage}
           className={`${styles.card_background_image} ${animationTrigger ? styles.fade_animation : ''}`}
           fill
-          priority
           alt='Background'/>
       </Box>
 

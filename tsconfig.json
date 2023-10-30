@@ -27,6 +27,13 @@
       "@/data/*": ["./src/app/_data/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.js",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/scripts/generateBlurImages.js"
+  ],
   "exclude": ["node_modules"]
 }

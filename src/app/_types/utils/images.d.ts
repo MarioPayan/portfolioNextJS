@@ -12,4 +12,9 @@ interface ImageProps {
   priority?: boolean
   title?: string
   className?: string
+  loading?: 'eager' | 'lazy' | undefined
+}
+
+interface GetBlurDataURL {
+  (src: string): string
 }

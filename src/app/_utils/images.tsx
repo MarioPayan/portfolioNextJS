@@ -34,7 +34,17 @@ export const images: Images = {
   },
 }
 
+const getBlurDataURL: GetBlurDataURL = src => `blurred_images/${src}`
+
 export const Image = (props: ImageProps) => {
   const [error, setError] = useState(false)
-  return <NextImage {...props} src={error ? image404 : props.src} onError={() => setError(true)}></NextImage>
+  return (
+    <NextImage
+      {...props}
+      src={error ? image404 : props.src}
+      loading='lazy'
+      placeholder='blur'
+      blurDataURL={getBlurDataURL(props.src)}
+      onError={() => setError(true)}></NextImage>
+  )
 }
