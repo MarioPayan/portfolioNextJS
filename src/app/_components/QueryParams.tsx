@@ -29,24 +29,25 @@ const queryParamMap: QueryParamsMap = [
   {value: SECTIONS.RANDOM, key: 'n'},
 ]
 
+export const codeParams: CodeQueryParams = (mode: string, section: string) => {
+  const modeParam = queryParamMap.find(p => p.value === mode)?.key
+  const sectionParam = queryParamMap.find(p => p.value === section)?.key
+  return `${modeParam}${sectionParam}`
+}
+
+export const decodeParams: DecodeQueryParams = (params: string) => {
+  if (params?.length !== 2) return {mode: null, section: null}
+  const [modeParam, sectionParam] = [params?.charAt(0), params?.charAt(1)]
+  const mode = queryParamMap.find(p => p.key === modeParam)?.value
+  const section = queryParamMap.find(p => p.key === sectionParam)?.value
+  return {mode, section}
+}
+
+export const queryParamsKey = 'q'
+
 const QueryParams: React.FC<QueryParamsProps> = ({mode, setMode, section, setSection}) => {
   const searchParams = useSearchParams()
   const {data} = useContext(DataContext)
-  const queryParamsKey = 'q'
-
-  const codeParams: CodeQueryParams = (mode: string, section: string) => {
-    const modeParam = queryParamMap.find(p => p.value === mode)?.key
-    const sectionParam = queryParamMap.find(p => p.value === section)?.key
-    return `${modeParam}${sectionParam}`
-  }
-
-  const decodeParams: DecodeQueryParams = (params: string) => {
-    if (params?.length !== 2) return {mode: null, section: null}
-    const [modeParam, sectionParam] = [params?.charAt(0), params?.charAt(1)]
-    const mode = queryParamMap.find(p => p.key === modeParam)?.value
-    const section = queryParamMap.find(p => p.key === sectionParam)?.value
-    return {mode, section}
-  }
 
   useEffect(() => {
     const setExperience = (mode: MODES, section: SECTIONS) => {

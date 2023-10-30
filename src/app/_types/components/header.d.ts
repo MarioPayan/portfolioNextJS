@@ -4,3 +4,8 @@ interface HeadProps {
   onChangeSection: (section: SECTIONS) => void
   onChangeMode: (section: MODES) => void
 }
+
+interface LinkProps {
+  href: string
+  locale: LANGUAGES
+}

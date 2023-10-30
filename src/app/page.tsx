@@ -34,7 +34,7 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
   const [swipeAnimation, setSwipeAnimation] = useState<-1 | 0 | 1>(0)
 
   useEffect(() => {
-    setLanguage(urlLanguage as LANGUAGES)
+    setLanguage(urlLanguage || (LANGUAGES.EN as LANGUAGES))
 
     const cookieKey = {EN: COOKIES.WIP_EN, ES: COOKIES.WIP_ES}[urlLanguage]
     setShowWIP(!getCookie(cookieKey))

@@ -2,9 +2,10 @@
 // React
 import {createElement, useEffect, useState, useContext} from 'react'
 // NextJS
-import {useRouter} from 'next/navigation'
+import Link from 'next/link'
 // Components
 import {DataContext} from '@/components/LayoutWrapper'
+import {codeParams, queryParamsKey} from '@/components/QueryParams'
 // Data
 import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
 // Material UI
@@ -21,7 +22,6 @@ import Typography from '@mui/material/Typography'
 // Utils
 import {getIcon} from '@/utils/icons'
 import {Image, images} from '@/utils/images'
-import {getQueryParamsStr} from '@/utils/misc'
 // Styles
 import styles from './Header.module.css'
 
@@ -33,8 +33,11 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
   const [changingMode, setChangingMode] = useState<boolean>(false)
   const [changingLanguage, setChangingLanguage] = useState<boolean>(false)
   const [animationTrigger, setAnimationTrigger] = useState<boolean>(false)
-
-  const router = useRouter()
+  const [languageLinkProps, setLanguageLinkProps] = useState<LinkProps>({
+    href: '/',
+    locale: LANGUAGES.EN,
+  })
+  const fadeTransitionTime = 600
 
   useEffect(() => {
     const animationTime = animationTrigger ? 250 : 0
@@ -57,22 +60,27 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
     }
   }, [data, section, mode, animationTrigger])
 
+  useEffect(() => {
+    const queryParams = codeParams(mode, section)
+    const changeLanguageObj: {[key in LANGUAGES]: LANGUAGES} = {
+      EN: LANGUAGES.ES,
+      ES: LANGUAGES.EN,
+    }
+    const nextLanguage = (changeLanguageObj[language] || LANGUAGES.EN).toLowerCase()
+    if (language) {
+      setLanguageLinkProps({
+        href: `/${nextLanguage}?${queryParamsKey}=${queryParams}`,
+        locale: nextLanguage as LANGUAGES,
+      })
+    }
+  }, [language, mode, section])
+
   const changeMode = () => {
     const newMode = mode === MODES.BUSINESS ? MODES.CHILL : MODES.BUSINESS
     setAnimationTrigger(true)
     onChangeMode(newMode)
     onChangeSection(newMode === MODES.BUSINESS ? SECTIONS.ABOUT_ME_BUSINESS : SECTIONS.ABOUT_ME_CHILL)
     setChangingMode(true)
-  }
-
-  const changeLanguage = () => {
-    setChangingLanguage(true)
-    const queryParams = getQueryParamsStr({mode, section})
-    if (language === LANGUAGES.ES) {
-      router.replace(`/${queryParams}`)
-    } else if (language === LANGUAGES.EN || !language) {
-      router.replace(`/${LANGUAGES.ES.toLowerCase()}/${queryParams}`)
-    }
   }
 
   return (
@@ -91,7 +99,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
       <Box className={styles.card_profile}>
         <Box className={styles.card_profile_avatar}>
           <Box className={styles.card_profile_avatar_container}>
-            <Fade in={mode === MODES.BUSINESS} timeout={600}>
+            <Fade in={mode === MODES.BUSINESS} timeout={fadeTransitionTime}>
               <Avatar
                 src={images.profile}
                 className={styles.card_profile_avatar_container_img}
@@ -100,7 +108,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
             </Fade>
           </Box>
           <Box className={styles.card_profile_avatar_container}>
-            <Fade in={mode === MODES.CHILL} timeout={600}>
+            <Fade in={mode === MODES.CHILL} timeout={fadeTransitionTime}>
               <Avatar
                 src={images.profilePixel}
                 className={styles.card_profile_avatar_container_img}
@@ -127,12 +135,14 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
           onAnimationEnd={() => setChangingMode(false)}>
           <TheaterComedyIcon fontSize='large' color='primary' className={styles.mode_icon} />
         </IconButton>
-        <IconButton
-          onClick={() => changeLanguage()}
-          className={`${changingLanguage ? styles.flip_animation : ''}`}
-          onAnimationEnd={() => setChangingLanguage(false)}>
-          <TranslateIcon fontSize='large' color='primary' />
-        </IconButton>
+        <Link {...languageLinkProps}>
+          <IconButton
+            onClick={() => setChangingLanguage(true)}
+            className={`${changingLanguage ? styles.flip_animation : ''}`}
+            onAnimationEnd={() => setChangingLanguage(false)}>
+            <TranslateIcon fontSize='large' color='primary' />
+          </IconButton>
+        </Link>
       </Box>
 
       {/* Tabs */}

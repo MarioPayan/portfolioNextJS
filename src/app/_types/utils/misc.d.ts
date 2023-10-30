@@ -13,7 +13,3 @@ interface OpenInNewTab {
 interface RandomSort {
   (): number
 }
-
-interface GetQueryParamsStr {
-  (params: {mode: string; section: string}): string
-}

@@ -8,7 +8,7 @@ interface QueryParamsProps {
 type QueryParamsMap = {value: MODES | SECTIONS; key: string}[]
 
 interface CodeQueryParams {
-  (mode: string, section: string): string
+  (mode: MODES, section: SECTIONS): string
 }
 
 interface DecodeQueryParams {
