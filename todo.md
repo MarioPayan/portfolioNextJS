@@ -5,4 +5,3 @@ ImageError: "url" parameter is valid but upstream response is invalid
 Check if viewport is working
 Fixing language in prod
 Fixing blur in prod
-Ingeniero Principal en Redux?

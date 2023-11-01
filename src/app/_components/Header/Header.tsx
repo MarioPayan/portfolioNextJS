@@ -132,14 +132,16 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
         <IconButton
           onClick={() => changeMode()}
           className={`${changingMode ? styles.rotate_animation : ''}`}
-          onAnimationEnd={() => setChangingMode(false)}>
+          onAnimationEnd={() => setChangingMode(false)}
+          aria-label='Change experience'>
           <TheaterComedyIcon fontSize='large' color='primary' className={styles.mode_icon} />
         </IconButton>
-        <Link {...languageLinkProps}>
+        <Link {...languageLinkProps} aria-label='Change language'>
           <IconButton
             onClick={() => setChangingLanguage(true)}
             className={`${changingLanguage ? styles.flip_animation : ''}`}
-            onAnimationEnd={() => setChangingLanguage(false)}>
+            onAnimationEnd={() => setChangingLanguage(false)}
+            aria-label="Change language">
             <TranslateIcon fontSize='large' color='primary' />
           </IconButton>
         </Link>
@@ -172,7 +174,8 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
                 className: styles.card_tabs_tab_icon,
               })}
               iconPosition='start'
-              className={styles.card_tabs_tab}/>
+              className={styles.card_tabs_tab}
+              aria-label={tab.label}/>
           ))}
         </Tabs>
       </Box>

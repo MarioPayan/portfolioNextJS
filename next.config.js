@@ -1,19 +1,15 @@
 /** @type {import('next').NextConfig} */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config()
+
+const prod = process.env.PRODUCTION === 'TRUE'
 const nextConfig = {
   i18n: {
-    locales: ['en', 'es'],
+    locales: ['en', prod ? 'es' : 'es-CO'],
     defaultLocale: 'en',
   },
   trailingSlash: true,
-  async rewrites() {
-    return [
-      {
-        source: '/es/:path*',
-        destination: '/esp/:path*',
-        locale: false,
-      },
-    ]
-  },
+
 }
 
 module.exports = nextConfig
