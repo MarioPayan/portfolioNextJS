@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 // Styles
 import styles from './CopyRight.module.css'
 
-const UnderDevModal: React.FC = () => {
+const CopyRight: React.FC = () => {
   const text = `© ${Data().PERSONAL.name} ${new Date().getFullYear()}`
 
   return (
@@ -16,4 +16,4 @@ const UnderDevModal: React.FC = () => {
   )
 }
 
-export default UnderDevModal
+export default CopyRight

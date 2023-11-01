@@ -25,6 +25,7 @@
     "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sharp": "^0.32.6",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
@@ -39,7 +40,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "jimp": "^0.22.10",
+    "jimp": "^0.3.5",
     "npm-check-updates": "^16.14.6",
     "prettier": "^3.0.3"
   }
