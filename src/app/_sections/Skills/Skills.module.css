@@ -165,6 +165,10 @@
   margin: 16px 10%;
 }
 
+.buttons {
+  font-weight: 700;
+}
+
 @media (max-width: 900px) {
   .container {
     justify-content: center;

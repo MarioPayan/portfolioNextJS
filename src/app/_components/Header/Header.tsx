@@ -141,7 +141,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
             onClick={() => setChangingLanguage(true)}
             className={`${changingLanguage ? styles.flip_animation : ''}`}
             onAnimationEnd={() => setChangingLanguage(false)}
-            aria-label="Change language">
+            aria-label='Change language'>
             <TranslateIcon fontSize='large' color='primary' />
           </IconButton>
         </Link>
