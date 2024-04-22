@@ -1,12 +1,13 @@
 const eslintConfig = {
   extends: [
-    'prettier',
-    'next/core-web-vitals',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@next/next/recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    'next/core-web-vitals',
+    'prettier',
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
