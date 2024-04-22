@@ -3,7 +3,8 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import {flushSync} from 'react-dom'
 // Embla
-import useEmblaCarousel, {EmblaOptionsType} from 'embla-carousel-react'
+import useEmblaCarousel from 'embla-carousel-react'
+import {EmblaOptionsType} from 'embla-carousel'
 import Autoplay, {AutoplayOptionsType} from 'embla-carousel-autoplay'
 // Material UI
 import Box from '@mui/material/Box'
