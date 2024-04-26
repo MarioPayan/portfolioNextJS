@@ -13,7 +13,11 @@ const qualityFactor = 25
 
 const createMainDirectory = () => {
   if (fs.existsSync(outputDirectory)) {
-    fs.rm(outputDirectory, {recursive: true})
+    fs.rm(outputDirectory, {recursive: true}, (error)=>{
+      if (error){
+        console.log("Error: ", error)
+      }
+    })
   } 
   fs.mkdirSync(outputDirectory, {recursive: true})
 }
@@ -38,7 +42,14 @@ const blurImagesInDirectory = async directory => {
     } else if (file.match(/\.(jpg|JPG|webp|jpeg|png)$/)) { // TODO: Svg?
       try {
         const image = await Jimp.read(filePath)
-        const lowQualityImage = image.quality(qualityFactor)
+        let resizedImage = undefined
+        const {height, width} = image.bitmap
+        if (height > width) {
+          resizedImage = image.resize(Jimp.AUTO, 250)
+        } else {
+          resizedImage = image.resize(Jimp.AUTO, 250)
+        }
+        const lowQualityImage = resizedImage.quality(qualityFactor)
         const blurredImage = lowQualityImage.blur(blurFactor)
         const subPath = filePath.split('/').slice(2).join('/')
         createDirectories(subPath)
