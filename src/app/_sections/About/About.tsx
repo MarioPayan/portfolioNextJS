@@ -84,3 +84,5 @@ const About: React.FC<AboutProps> = ({mode}) => {
 }
 
 export default About
+
+// TODO: Mejorar botones

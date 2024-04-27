@@ -55,6 +55,11 @@ export enum LANGUAGES {
   ES = 'ES',
 }
 
+export enum PALETTE {
+  LIGHT = 'light',
+  DARK = 'dark',
+}
+
 export const Misc = (language: LANGUAGES = LANGUAGES.EN): Misc => ({
   intro: {EN: 'Hi, I\'m', ES: 'Hola, soy'}[language],
   underDevelopment: {
@@ -63,6 +68,14 @@ export const Misc = (language: LANGUAGES = LANGUAGES.EN): Misc => ({
     description: {
       EN: 'Welcome to my website! I appreciate your visit. While the site is currently under development, feel free to explore and check back anytime you\'d like',
       ES: '¡Bienvenido a mi sitio web! Aprecio tu visita. Aunque el sitio está actualmente en desarrollo, siéntete libre de explorar y vuelve cuando quieras',
+    }[language],
+  },
+  featureUnderDevelopment: {
+    icon: 'under_development',
+    title: {EN: 'Under development', ES: 'En desarrollo'}[language],
+    description: {
+      EN: 'Hey, sorry! This feature is still under development, but Mario was already notified so he will prioritize this',
+      ES: 'Hola, ¡Lo lamento! Esta funcionalidad todavía se encuentra en desarrollo, pero Mario ya fue notificado para que priorize esta funcionalidad',
     }[language],
   },
   workInProgress: {
@@ -1222,3 +1235,4 @@ export default Data
 // TODO: Reduce the number of images in some sections
 // TODO: Separate Redux Clients
 // TODO: Add TeamSense Project
+// TODO: Change enum strings to numbers

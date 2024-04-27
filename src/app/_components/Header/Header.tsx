@@ -6,16 +6,19 @@ import Link from 'next/link'
 // Components
 import {DataContext} from '@/components/LayoutWrapper'
 import {codeParams, queryParamsKey} from '@/components/QueryParams'
+import Modal from '@/components/Modal/Modal'
 // Data
-import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
+import {SECTIONS, MODES, LANGUAGES, PALETTE} from '@/data/data'
 // Material UI
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
+import DarkMode from '@mui/icons-material/DarkMode'
 import Fade from '@mui/material/Fade'
 import TranslateIcon from '@mui/icons-material/Translate'
 import TheaterComedyIcon from '@mui/icons-material/TheaterComedy'
 import IconButton from '@mui/material/IconButton'
+import LightMode from '@mui/icons-material/LightMode'
 import Tab from '@mui/material/Tab'
 import Tabs from '@mui/material/Tabs'
 import Typography from '@mui/material/Typography'
@@ -26,12 +29,14 @@ import {Image, images} from '@/utils/images'
 import styles from './Header.module.css'
 
 const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMode}) => {
-  const {data, language} = useContext(DataContext)
+  const {data, misc, language, palette, setPalette} = useContext(DataContext)
   const [tabSections, setTabSections] = useState<Section[]>(data.BUSINESS_SECTIONS)
   const [tab, setTab] = useState<string>(data.BUSINESS_SECTIONS[0].key)
   const [coverImage, setCoverImage] = useState<string>(images.businessCover)
   const [changingMode, setChangingMode] = useState<boolean>(false)
   const [changingLanguage, setChangingLanguage] = useState<boolean>(false)
+  const [changingPalette, setChangingPalette] = useState<boolean>(false)
+  const [clickedPaletteButton, setClickedPaletteButton] = useState<boolean>(false)
   const [animationTrigger, setAnimationTrigger] = useState<boolean>(false)
   const [languageLinkProps, setLanguageLinkProps] = useState<LinkProps>({
     href: '/',
@@ -83,6 +88,20 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
     setChangingMode(true)
   }
 
+  const changePalette = () => {
+    if (PALETTE.LIGHT === palette) {
+      // This if will prevent changing the palette until
+      // this feature is fully implemented
+      setChangingPalette(true)
+      const changePaletteObj: {[key in PALETTE]: PALETTE} = {
+        light: PALETTE.DARK,
+        dark: PALETTE.LIGHT,
+      }
+      setPalette(changePaletteObj[palette])
+    }
+    setClickedPaletteButton(true)
+  }
+
   return (
     <Card className={styles.card}>
       {/* Background */}
@@ -119,7 +138,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
           </Box>
         </Box>
         <Box className={styles.card_profile_text}>
-          <Typography variant='h4' color='whitesmoke'>
+          <Typography variant='h4' color='whitesmoke' fontWeight='bold'>
             {data.PERSONAL.name}
           </Typography>
           <Typography variant='h5' color='whitesmoke' className={styles.card_profile_text_role}>
@@ -146,10 +165,19 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
             <TranslateIcon fontSize='large' color='primary' />
           </IconButton>
         </Link>
+        <IconButton
+          onClick={() => changePalette()}
+          className={`${changingPalette ? styles.rotate_animation : ''}`}
+          // TODO: Change animation
+          onAnimationEnd={() => setChangingPalette(false)}
+          aria-label='Change theme'>
+          {palette === PALETTE.DARK && <LightMode fontSize='large' color='primary' />}
+          {palette === PALETTE.LIGHT && <DarkMode fontSize='large' color='primary' />}
+        </IconButton>
       </Box>
 
       {/* Tabs */}
-      <Box className={styles.card_tabs}>
+      <Box className={`${styles.card_tabs} ${{dark: styles.card_tabs_dark, light: styles.card_tabs_light}[palette]}`}>
         <Tabs
           allowScrollButtonsMobile
           variant='scrollable'
@@ -180,6 +208,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
           ))}
         </Tabs>
       </Box>
+      {clickedPaletteButton && <Modal {...(misc.featureUnderDevelopment as unknown as ModalProps)} />}
     </Card>
   )
 }
@@ -188,3 +217,5 @@ export default Header
 
 // TODO: Fix transition background image
 // TODO: Add transition for texts (Just a random guy in the role)
+// TODO: Change header background images
+// TODO: Avatar image and about image should not be the same
