@@ -12,6 +12,7 @@ interface ImageProps {
   priority?: boolean
   title?: string
   className?: string
+  keepRatio?: boolean
   loading?: 'eager' | 'lazy' | undefined
 }
 

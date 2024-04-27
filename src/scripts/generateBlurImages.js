@@ -13,9 +13,9 @@ const qualityFactor = 25
 
 const createMainDirectory = () => {
   if (fs.existsSync(outputDirectory)) {
-    fs.rm(outputDirectory, {recursive: true}, (error)=>{
+    fs.rm(outputDirectory, {recursive: true}, error => {
       if (error){
-        console.log("Error: ", error)
+        console.log('Error: ', error)
       }
     })
   } 

@@ -81,3 +81,5 @@ const Hobbies: React.FC<HobbiesProps> = ({section}) => {
 }
 
 export default Hobbies
+
+// TODO: First card should not be a card but a banner

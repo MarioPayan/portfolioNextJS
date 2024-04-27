@@ -19,6 +19,7 @@ const nunito = Nunito({
 
 const theme = createTheme({
   typography: {
+    fontSize: 16,
     fontFamily: nunito.style.fontFamily,
     fontWeightRegular: 400,
   },
@@ -30,7 +31,7 @@ const theme = createTheme({
     secondary: {
       main: '#9f69e7',
     },
-    background: {default: 'rgb(22, 28, 36)', paper: 'rgb(33, 43, 54)'},
+    background: {default: 'rgb(22, 28, 36)'},
   },
   components: {
     MuiPaper: {
@@ -89,3 +90,5 @@ const LayoutWrapper: React.FC<{children: React.ReactNode}> = ({children}) => {
 }
 
 export default LayoutWrapper
+
+// TODO: Change the background color to black for consistency

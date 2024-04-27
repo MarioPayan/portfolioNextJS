@@ -423,7 +423,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       where: 'Redux',
       from: '2021-07',
       to: '',
-      position: {EN: 'Principal Engineer', ES: 'Ingeniero Principal'}[language],
+      position: {EN: 'Principal Software Engineer', ES: 'Ingeniero Principal de Software'}[language],
       rgbColor: rgbColors.experience.redux,
       image: '/images/jobs/redux.svg',
       achievements: [
@@ -674,6 +674,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
           '/images/hobbies/music/solo/img_10.jpg',
           '/images/hobbies/music/solo/img_11.jpg',
           '/images/hobbies/music/solo/img_12.jpg',
+          // TODO: Add slack cover
         ],
       },
       {
@@ -1217,3 +1218,7 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
 })
 
 export default Data
+
+// TODO: Reduce the number of images in some sections
+// TODO: Separate Redux Clients
+// TODO: Add TeamSense Project

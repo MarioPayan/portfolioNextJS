@@ -34,7 +34,7 @@ const About: React.FC<AboutProps> = ({mode}) => {
     <Box>
       <Paper className={styles.container}>
         <Box className={styles.info}>
-          <Typography variant='h4' color='primary' className={styles.title}>
+          <Typography variant='h4' color='primary' fontWeight='bold'>
             {`${misc.intro} ${data.PERSONAL.name}`}
           </Typography>
           <Typography>{data.PERSONAL.description[mode]}</Typography>
@@ -43,25 +43,24 @@ const About: React.FC<AboutProps> = ({mode}) => {
               <>
                 <WorkIcon color='secondary' />
                 <Typography>
-                  {`${data.EXPERIENCE.sort(sortFrom)[0].position} ${misc.at} ${
-                    data.EXPERIENCE.sort(sortFrom)[0].where
-                  }`}
+                  <b>{data.EXPERIENCE.sort(sortFrom)[0].position}</b> {`${misc.at}`}{' '}
+                  <b>{data.EXPERIENCE.sort(sortFrom)[0].where}</b>
                 </Typography>
               </>
             )}
             {mode === MODES.CHILL && (
               <>
                 <FormatQuote color='secondary' />
-                <Typography>{`"${data.PERSONAL.quote}"`}</Typography>
+                <Typography fontWeight='bold'>&quot;{data.PERSONAL.quote}&quot;</Typography>
               </>
             )}
           </Box>
           <Box className={styles.inline}>
             <LocationOnIcon color='secondary' />
-            <Typography>{data.PERSONAL.location}</Typography>
+            <Typography fontWeight='bold'>{data.PERSONAL.location}</Typography>
           </Box>
 
-          <Typography variant='h5' className={styles.title}>
+          <Typography variant='h5' fontWeight='bold'>
             {`${misc.contact}`}
           </Typography>
           {data.CONTACTS.filter(c => c.mode === mode).map((contact, index) => (
@@ -69,7 +68,7 @@ const About: React.FC<AboutProps> = ({mode}) => {
               <ButtonBase onClick={() => openInNewTab(contact.url)} sx={{width: 'fit-content'}}>
                 <Inline>
                   {createElement(getIcon(contact.label), {color: 'secondary'})}
-                  <Typography>{contact.name}</Typography>
+                  <Typography fontWeight='bold'>{contact.name}</Typography>
                 </Inline>
               </ButtonBase>
             </Box>

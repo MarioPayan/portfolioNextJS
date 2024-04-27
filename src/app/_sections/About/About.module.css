@@ -1,27 +1,23 @@
 .inline {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .container {
   display: flex;
-  gap: 16px;
+  gap: 1rem;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  padding: 16px;
+  padding: 1rem;
   background: linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, transparent 40%);
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   width: 70%;
-}
-
-.title {
-  font-weight: 700;
 }
 
 .image {

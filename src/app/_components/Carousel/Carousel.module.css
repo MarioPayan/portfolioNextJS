@@ -7,7 +7,7 @@
   --slide-spacing: 15px;
   --slide-size: 400px;
   --slide-height: 300px;
-  padding: 20px;
+  padding: 1.25rem;
   width: 100%;
 }
 
@@ -70,7 +70,7 @@
   align-items: center;
   position: absolute;
   height: 100%;
-  margin: 0 20px;
+  margin: 0 1.25rem;
 }
 
 .left_arrow {

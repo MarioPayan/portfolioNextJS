@@ -73,8 +73,8 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
       <h1 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h1>
       <h2 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h2>
       <h3 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h3>
+      <Header section={section} onChangeSection={onChangeSection} mode={mode} onChangeMode={setMode} />
       <Box className={styles.container}>
-        <Header section={section} onChangeSection={onChangeSection} mode={mode} onChangeMode={setMode} />
         <Box className={getSwipeAnimation()} onAnimationEnd={() => setSwipeAnimation(0)}>
           {/* Business sections */}
           {section === SECTIONS.ABOUT_ME_BUSINESS && <About mode={MODES.BUSINESS} />}

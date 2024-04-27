@@ -6,6 +6,7 @@
   height: 1;
   width: 1;
   position: relative;
+  border-radius: 0;
 }
 
 .card_background {
@@ -28,7 +29,7 @@
     50%,
     transparent calc(100% - 140px),
     rgba(0, 0, 0, 0.8) calc(100% - 90px),
-    black calc(100% - 20px)
+    black calc(100% - 1.25rem)
   );
 }
 
@@ -47,7 +48,7 @@
 .card_profile_avatar {
   display: grid;
   height: fit-content;
-  padding: 16px;
+  padding: 1rem;
   align-self: flex-end;
   padding-top: 24px;
   padding-bottom: 24px;
@@ -129,13 +130,13 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 0;
-  padding-left: 8px;
-  margin-top: 4px;
+  padding-left: 0.5rem;
+  margin-top: 0.25rem;
 }
 
 .card_tabs_tab {
   font-weight: 800;
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   min-height: unset;
   min-width: auto;
 }
@@ -150,7 +151,7 @@
   position: absolute;
   right: 0;
   top: 0;
-  padding: 8px;
+  padding: 0.5rem;
 }
 
 @keyframes rotate {
@@ -219,8 +220,8 @@
 
   .card_profile_avatar {
     align-self: center;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   .card_profile_avatar_container_img {

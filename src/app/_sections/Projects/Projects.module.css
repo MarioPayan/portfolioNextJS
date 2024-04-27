@@ -11,8 +11,8 @@
 }
 
 .infinityCarousel_icon {
-  height: 20px;
-  width: 20px;
+  height: 1.25rem;
+  width: 1.25rem;
   filter: contrast(50%) brightness(110%) saturate(200%);
 }
 
@@ -28,9 +28,9 @@
 
 .container {
   display: flex;
-  gap: 12px;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .project {
@@ -38,14 +38,12 @@
   width: fit-content;
   flex-direction: row;
   justify-content: unset;
-  height: 230px;
   padding-left: 24px;
   background: linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 40%);
-  padding-top: 8px;
-  padding-right: 8px;
-  padding-bottom: 8px;
-  gap: 16px;
-  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  gap: 1rem;
   box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.2);
 }
 
@@ -54,7 +52,7 @@
   flex-direction: column;
   width: 250px;
   justify-content: space-evenly;
-  gap: 8px;
+  gap: 0.75rem;
 }
 
 .project_text {
@@ -70,29 +68,27 @@
 }
 
 .project_image {
-  border-radius: 12px;
+  border-radius: 0.75rem;
 }
 
 .iconBar {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .project {
     flex-direction: column-reverse;
     justify-content: space-evenly;
-    height: 450px;
-    padding-left: 8px;
+    padding-left: 0.5rem;
     background: linear-gradient(160deg, rgba(255, 255, 255, 1) 0%, transparent 40%);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .project {
     flex-direction: row;
     justify-content: unset;
-    height: 230px;
     padding-left: 24px;
     background: linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 40%);
   }
@@ -101,16 +97,5 @@
 @media (max-width: 550px) {
   .project_image_container {
     width: 150px;
-    height: 150px;
-  }
-}
-
-@media (max-width: 500px) {
-  .project {
-    flex-direction: column-reverse;
-    justify-content: space-evenly;
-    height: 450px;
-    padding-left: 8px;
-    background: linear-gradient(160deg, rgba(255, 255, 255, 1) 0%, transparent 40%);
   }
 }

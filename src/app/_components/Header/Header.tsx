@@ -92,6 +92,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
           src={coverImage}
           className={`${styles.card_background_image} ${animationTrigger ? styles.fade_animation : ''}`}
           fill
+          keepRatio={false}
           alt='Background'/>
       </Box>
 
@@ -184,3 +185,6 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
 }
 
 export default Header
+
+// TODO: Fix transition background image
+// TODO: Add transition for texts (Just a random guy in the role)

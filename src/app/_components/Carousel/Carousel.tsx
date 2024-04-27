@@ -103,6 +103,7 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
                       fill
                       quality={1}
                       loading='lazy'
+                      keepRatio={false}
                       className={`${styles.embla__slide__img} ${styles.embla__parallax__img} ${styles.backgroundImage}`}
                       alt='background photo'/>
                   </div>

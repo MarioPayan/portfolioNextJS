@@ -4,10 +4,10 @@ require('dotenv').config()
 
 const prod = process.env.PRODUCTION === 'TRUE'
 const nextConfig = {
-  i18n: {
-    locales: ['en', prod ? 'es' : 'es-CO'],
+  i18n: prod ? {
+    locales: ['en', 'es'],
     defaultLocale: 'en',
-  },
+  } : undefined,
   trailingSlash: true,
 
 }

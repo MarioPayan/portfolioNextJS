@@ -50,7 +50,7 @@ const Card: React.FC<ExperienceCardProps> = ({experience}) => {
         {experience.achievements.map((achievement: string, index: number) => (
           <ListItem key={index} disablePadding disableGutters>
             <ListItemIcon className={styles.card_achievementIcon}>
-              <StarRateIcon />
+              <StarRateIcon color='secondary' />
             </ListItemIcon>
             <ListItemText primary={achievement} />
           </ListItem>
@@ -84,3 +84,5 @@ const Experience: React.FC = () => {
 }
 
 export default Experience
+
+// TODO: Add courses or something, idk, it seems too empty

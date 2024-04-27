@@ -1,8 +1,8 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -17,9 +17,9 @@
 .container {
   display: flex;
   width: 100%;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   align-self: flex-start;
 }
 

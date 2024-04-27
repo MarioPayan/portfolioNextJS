@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 1rem;
   justify-content: center;
 }
 
@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 400px;
   min-width: 290px;
-  padding: 16px;
+  padding: 1rem;
 }
 
 .card_header {
@@ -54,6 +54,7 @@
 }
 
 .card_date {
+  padding-top: 0.25rem;
   position: relative;
   height: 100%;
 }

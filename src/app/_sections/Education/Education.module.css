@@ -2,14 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   width: auto;
-  padding: 16px;
+  padding: 1rem;
   position: relative;
 }
 
@@ -20,7 +20,7 @@
   justify-content: center;
   flex-wrap: nowrap;
   height: 130px;
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
 }
 
 .card_background {
@@ -57,8 +57,8 @@
   flex-direction: column;
   height: 100%;
   gap: 0.25rem;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .card_achievementIcon {
