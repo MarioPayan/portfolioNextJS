@@ -1,6 +1,7 @@
 import {getKeyFromLabel} from '@/utils/misc'
 
-const getDevIconURL: GetDevIconURL = url => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${url}`
+const getDevIconURL: GetDevIconURL = url =>
+  `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${url}`
 
 import BugReport from '@mui/icons-material/BugReport'
 import Code from '@mui/icons-material/Code'

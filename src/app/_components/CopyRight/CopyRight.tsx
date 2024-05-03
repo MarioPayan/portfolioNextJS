@@ -16,7 +16,10 @@ const CopyRight: React.FC = () => {
   const text = `© ${Data().PERSONAL.name} ${new Date().getFullYear()}`
 
   return (
-    <Typography variant='h5' color={{dark: 'primary', light: 'secondary'}[palette]} className={styles.copyRight}>
+    <Typography
+      variant='h5'
+      color={{dark: 'primary', light: 'secondary'}[palette]}
+      className={styles.copyRight}>
       {text}
     </Typography>
   )

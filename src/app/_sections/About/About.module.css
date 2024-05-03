@@ -10,7 +10,7 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   padding: 1rem;
-  background: linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, transparent 40%);
+  background: linear-gradient(-45deg, whitesmoke 0%, transparent 40%);
 }
 
 .info {

@@ -38,7 +38,12 @@ const SkillIconCard: React.FC<SkillIconCardProps> = ({skill, grow = false}) => (
   </Box>
 )
 
-const CategoryIconCard: React.FC<CategoryIconCardProps> = ({category, onHover, onLeave, onClick}) => {
+const CategoryIconCard: React.FC<CategoryIconCardProps> = ({
+  category,
+  onHover,
+  onLeave,
+  onClick,
+}) => {
   const categoryBackgroundColor = rbgToRgba(category.rgbColor, 0.7)
   return (
     <Paper
@@ -66,6 +71,10 @@ const CategoryIconCard: React.FC<CategoryIconCardProps> = ({category, onHover, o
             {category.title}
           </Typography>
         </Box>
+        {/* TODO: Finish */}
+        {/* <Box position="absolute" top="5px" right="10px">
+          <UnfoldLessIcon />
+        </Box> */}
       </ButtonBase>
     </Paper>
   )
@@ -79,7 +88,11 @@ const CategoryIconBackground: React.FC<CategoryIconBackgroundProps> = ({Icon}) =
   </Box>
 )
 
-const SkillStack: React.FC<SkillStackProps> = ({skillStack, toggleShowedCategory, isCategoryShowed}) => {
+const SkillStack: React.FC<SkillStackProps> = ({
+  skillStack,
+  toggleShowedCategory,
+  isCategoryShowed,
+}) => {
   const [zoomedCategory, setZoomedCategory] = useState<string>('')
 
   return (
@@ -107,7 +120,11 @@ const SkillStack: React.FC<SkillStackProps> = ({skillStack, toggleShowedCategory
                 }}>
                 <CategoryIconBackground Icon={getIcon(category.key)} />
                 <SkillIconCard skill={skill} grow={category.key === zoomedCategory} />
-                <Typography className={styles.category_title} variant='subtitle1' textTransform='capitalize' noWrap>
+                <Typography
+                  className={styles.category_title}
+                  variant='subtitle1'
+                  textTransform='capitalize'
+                  noWrap>
                   {category.title}
                 </Typography>
               </Paper>
@@ -122,7 +139,10 @@ const SkillStack: React.FC<SkillStackProps> = ({skillStack, toggleShowedCategory
 const Skills: React.FC = () => {
   const {data, misc} = useContext(DataContext)
   const allCategories = useMemo(
-    () => [...data.TECH_SKILLS.map(category => category.key), ...data.SOFT_SKILLS.map(category => category.key)],
+    () => [
+      ...data.TECH_SKILLS.map(category => category.key),
+      ...data.SOFT_SKILLS.map(category => category.key),
+    ],
     [data]
   )
 

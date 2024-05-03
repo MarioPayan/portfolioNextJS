@@ -99,7 +99,12 @@ const Project: React.FC<ProjectProps> = ({project}) => {
         </Button>
       </Box>
       <Box className={styles.project_image_container}>
-        <Image src={project.image} fill loading='lazy' alt={project.label} className={styles.project_image} />
+        <Image
+          src={project.image}
+          fill
+          loading='lazy'
+          alt={project.label}
+          className={styles.project_image}/>
       </Box>
     </Paper>
   )

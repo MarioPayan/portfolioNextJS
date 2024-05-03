@@ -49,7 +49,10 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
   }, [mode, section, defaultMode, defaultSection])
 
   const onChangeSection: OnChangeSection = newSection => {
-    const sectionKeys = [...data.BUSINESS_SECTIONS.map(s => s.key), ...data.CHILL_SECTIONS.map(s => s.key)]
+    const sectionKeys = [
+      ...data.BUSINESS_SECTIONS.map(s => s.key),
+      ...data.CHILL_SECTIONS.map(s => s.key),
+    ]
     const newSectionIdx = sectionKeys.findIndex(s => s === newSection)
     const currentSectionIdx = sectionKeys.findIndex(s => s === section)
     const goLeft = newSectionIdx > currentSectionIdx
@@ -73,7 +76,11 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
       <h1 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h1>
       <h2 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h2>
       <h3 className={styles.hiddenTitle}>{data.PERSONAL.meta_title}</h3>
-      <Header section={section} onChangeSection={onChangeSection} mode={mode} onChangeMode={setMode} />
+      <Header
+        section={section}
+        onChangeSection={onChangeSection}
+        mode={mode}
+        onChangeMode={setMode}/>
       <Box className={styles.container}>
         <Box className={getSwipeAnimation()} onAnimationEnd={() => setSwipeAnimation(0)}>
           {/* Business sections */}

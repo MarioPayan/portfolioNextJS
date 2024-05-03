@@ -97,5 +97,3 @@ const LayoutWrapper: React.FC<{children: React.ReactNode}> = ({children}) => {
 }
 
 export default LayoutWrapper
-
-// TODO: Change the background color to black for consistency

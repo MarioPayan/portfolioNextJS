@@ -17,7 +17,8 @@ import styles from './Hobbies.module.css'
 const Hobbies: React.FC<HobbiesProps> = ({section}) => {
   const alternateGradient: AlternateGradient = index => (index % 2 === 0 ? '-45deg' : '135deg')
 
-  const alternateFlexDirection: AlternateFlexDirection = index => (index % 2 === 0 ? 'row' : 'row-reverse')
+  const alternateFlexDirection: AlternateFlexDirection = index =>
+    (index % 2 === 0 ? 'row' : 'row-reverse')
 
   const SocialIconButtons: React.FC<SocialIconButtonsProps> = ({subSection}) => {
     const SocialIconButton: React.FC<SocialIconButtonProps> = ({label, url, iconKey}) => (
@@ -47,14 +48,12 @@ const Hobbies: React.FC<HobbiesProps> = ({section}) => {
 
   return (
     <Box className={styles.container}>
-      <Paper className={styles.section}>
-        <Box className={styles.section_info}>
-          <Typography variant='h4' color='primary' className={styles.title}>
-            {section.title}
-          </Typography>
-          <Typography>{section.description}</Typography>
-        </Box>
-      </Paper>
+      <Box className={styles.section_info}>
+        <Typography variant='h4' color='primary' className={styles.title}>
+          {section.title}
+        </Typography>
+        <Typography>{section.description}</Typography>
+      </Box>
       {section.sections.map((subSection, index) => (
         <Paper
           key={index}
@@ -62,7 +61,9 @@ const Hobbies: React.FC<HobbiesProps> = ({section}) => {
           sx={{
             background: `linear-gradient(${alternateGradient(index)},rgba(255, 255, 255, 1) 0%,rgba(0, 0, 0, 0.5) 40%)`,
           }}>
-          <Box className={styles.subsection_container} flexDirection={alternateFlexDirection(index)}>
+          <Box
+            className={styles.subsection_container}
+            flexDirection={alternateFlexDirection(index)}>
             <Box className={styles.subsection_info}>
               <Typography variant='h4' color='primary' className={styles.title}>
                 {subSection.title}
@@ -81,5 +82,3 @@ const Hobbies: React.FC<HobbiesProps> = ({section}) => {
 }
 
 export default Hobbies
-
-// TODO: First card should not be a card but a banner

@@ -276,7 +276,13 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
     {
       key: 'Testing',
       title: {EN: 'Testing', ES: 'Pruebas'}[language],
-      skills: [{title: 'Cypress'}, {title: 'Jasmine'}, {title: 'Puppeteer'}, {title: 'Appium'}, {title: 'Selenium'}],
+      skills: [
+        {title: 'Cypress'},
+        {title: 'Jasmine'},
+        {title: 'Puppeteer'},
+        {title: 'Appium'},
+        {title: 'Selenium'},
+      ],
       rgbColor: rgbColors.techSkill.testing,
     },
     {
@@ -436,7 +442,9 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
       where: 'Redux',
       from: '2021-07',
       to: '',
-      position: {EN: 'Principal Software Engineer', ES: 'Ingeniero Principal de Software'}[language],
+      position: {EN: 'Principal Software Engineer', ES: 'Ingeniero Principal de Software'}[
+        language
+      ],
       rgbColor: rgbColors.experience.redux,
       image: '/images/jobs/redux.svg',
       achievements: [
@@ -546,7 +554,18 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
         ES: 'Un sitio web creado para disfrute personal y para mostrar proyectos',
       }[language],
       image: '/images/profile_pixel.png',
-      stack: ['React', 'NextJS', 'TypeScript', 'Material UI', 'Flexbox', 'HTML5', 'CSS3', 'SASS', 'Git', 'GitHub'],
+      stack: [
+        'React',
+        'NextJS',
+        'TypeScript',
+        'Material UI',
+        'Flexbox',
+        'HTML5',
+        'CSS3',
+        'SASS',
+        'Git',
+        'GitHub',
+      ],
       link: 'https://www.mariopayan.com/',
     },
     {
@@ -576,7 +595,17 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
         ES: 'Una aplicación web para clientes de Alert Logic',
       }[language],
       image: '/images/projects/alert_logic_web.png',
-      stack: ['jQuery', 'AngularJS', 'Bootstrap', 'PHP', 'HTML5', 'CSS3', 'Git', 'GitHub', 'PostgreSQL'],
+      stack: [
+        'jQuery',
+        'AngularJS',
+        'Bootstrap',
+        'PHP',
+        'HTML5',
+        'CSS3',
+        'Git',
+        'GitHub',
+        'PostgreSQL',
+      ],
       // link: 'https://alertlogic.com/',
     },
     {
@@ -643,7 +672,17 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
         ES: 'Una herramienta sencilla creada durante el tiempo libre para ayudar a otros a entender cómo funciona SVG',
       }[language],
       image: '/images/projects/svg.png',
-      stack: ['React', 'Javascript', 'HTML5', 'CSS3', 'SASS', 'Git', 'GitHub', 'Typescript', 'Material UI'],
+      stack: [
+        'React',
+        'Javascript',
+        'HTML5',
+        'CSS3',
+        'SASS',
+        'Git',
+        'GitHub',
+        'Typescript',
+        'Material UI',
+      ],
       link: 'https://mariopayan.github.io/SvgLearningTool/',
     },
     {
@@ -656,7 +695,17 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
         ES: 'Responsable de dar soporte y mantener varios servicios internos en Alert Logic',
       }[language],
       image: '/images/projects/alert_logic_heimdall.jpg',
-      stack: ['AngularJS', 'Bootstrap', 'PHP', 'Chef', 'Linux', 'Bash', 'Git', 'GitHub', 'PostgreSQL'],
+      stack: [
+        'AngularJS',
+        'Bootstrap',
+        'PHP',
+        'Chef',
+        'Linux',
+        'Bash',
+        'Git',
+        'GitHub',
+        'PostgreSQL',
+      ],
       // link: 'https://alertlogic.com/',
     },
   ],
@@ -1003,7 +1052,10 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
           EN: 'Cycling has been a significant part of my life since my university days. I would hop on my bike and embark on thrilling adventures, exploring new places no matter how far they were. The freedom, the sense of exploration, and the joy of pedaling through picturesque landscapes made cycling an exhilarating experience',
           ES: 'El ciclismo ha sido una parte significativa de mi vida desde mis días universitarios. Subiría a mi bicicleta y me embarcaría en emocionantes aventuras, explorando nuevos lugares sin importar cuán lejos estuvieran. La libertad, el sentido de la exploración y la alegría de pedalear por paisajes pintorescos hicieron del ciclismo una experiencia emocionante',
         }[language],
-        images: ['/images/hobbies/sports/cycling/img_1.jpg', '/images/hobbies/sports/cycling/img_2.jpg'],
+        images: [
+          '/images/hobbies/sports/cycling/img_1.jpg',
+          '/images/hobbies/sports/cycling/img_2.jpg',
+        ],
       },
       {
         title: {EN: 'Paintball', ES: 'Paintball'}[language],
@@ -1034,7 +1086,10 @@ const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
           EN: 'Skateboarding was once my greatest passion during my school days. I spent countless hours with my friends, honing our skills and practicing tricks. The skateboarding community, the exhilaration of nailing a new trick, and the creative expression through freestyle maneuvers made skateboarding an unforgettable part of my life',
           ES: 'Patineta fue una vez mi mayor pasión durante mis días escolares. Pasé innumerables horas con mis amigos, perfeccionando nuestras habilidades y practicando trucos. La comunidad de skate, la emoción de clavar un nuevo truco y la expresión creativa a través de maniobras de estilo libre hicieron del skateboarding una parte inolvidable de mi vida',
         }[language],
-        images: ['/images/hobbies/sports/skate_boarding/img_1.jpg', '/images/hobbies/sports/skate_boarding/img_2.jpg'],
+        images: [
+          '/images/hobbies/sports/skate_boarding/img_1.jpg',
+          '/images/hobbies/sports/skate_boarding/img_2.jpg',
+        ],
       },
       {
         title: {EN: 'Soccer', ES: 'Fútbol'}[language],

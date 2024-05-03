@@ -42,7 +42,7 @@ const eslintConfig = {
     'max-len': [
       'warn',
       {
-        'code': 120,
+        'code': 100,
         'ignoreStrings': true,
       },
     ],

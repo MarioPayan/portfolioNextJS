@@ -64,14 +64,19 @@ const Card: React.FC<EducationCardProps> = ({education}) => {
           </Typography>
         </Box>
       </Box>
-      <Image src={education.image} alt={education.where} fill className={styles.card_backgroundImg}></Image>
+      <Image
+        src={education.image}
+        alt={education.where}
+        fill
+        className={styles.card_backgroundImg}></Image>
     </Paper>
   )
 }
 
 const Education: React.FC = () => {
   const {data} = useContext(DataContext)
-  const sortFrom = (a: Education, b: Education): number => new Date(b.from).getTime() - new Date(a.from).getTime()
+  const sortFrom = (a: Education, b: Education): number =>
+    new Date(b.from).getTime() - new Date(a.from).getTime()
 
   return (
     <Box className={styles.container}>

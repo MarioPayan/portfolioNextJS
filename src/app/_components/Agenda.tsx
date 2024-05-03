@@ -9,6 +9,8 @@ const styles = {
   frameborder: 0,
 }
 
-const Agenda: React.FC = () => <iframe src={`${agendaURL}/${agendaID}?${agendaParams}`} style={styles}></iframe>
+const Agenda: React.FC = () => (
+  <iframe src={`${agendaURL}/${agendaID}?${agendaParams}`} style={styles}></iframe>
+)
 
 export default Agenda

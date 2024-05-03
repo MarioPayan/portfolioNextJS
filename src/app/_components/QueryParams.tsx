@@ -93,3 +93,5 @@ const QueryParams: React.FC<QueryParamsProps> = ({mode, setMode, section, setSec
 }
 
 export default QueryParams
+
+// TODO: Add languages and improve encoding

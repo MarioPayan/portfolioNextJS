@@ -21,7 +21,9 @@ import {Image, images} from '@/utils/images'
 // Styles
 import styles from './About.module.css'
 
-const Inline: React.FC<InlineProps> = ({children}) => <Box className={styles.inline}>{children}</Box>
+const Inline: React.FC<InlineProps> = ({children}) => (
+  <Box className={styles.inline}>{children}</Box>
+)
 
 const About: React.FC<AboutProps> = ({mode}) => {
   const {data, misc} = useContext(DataContext)

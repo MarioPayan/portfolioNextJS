@@ -29,6 +29,7 @@ import {Image, images} from '@/utils/images'
 import styles from './Header.module.css'
 
 const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMode}) => {
+  const ANIMATION_TIME = 500
   const {data, misc, language, palette, setPalette} = useContext(DataContext)
   const [tabSections, setTabSections] = useState<Section[]>(data.BUSINESS_SECTIONS)
   const [tab, setTab] = useState<string>(data.BUSINESS_SECTIONS[0].key)
@@ -37,33 +38,14 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
   const [changingLanguage, setChangingLanguage] = useState<boolean>(false)
   const [changingPalette, setChangingPalette] = useState<boolean>(false)
   const [clickedPaletteButton, setClickedPaletteButton] = useState<boolean>(false)
-  const [animationTrigger, setAnimationTrigger] = useState<boolean>(false)
   const [languageLinkProps, setLanguageLinkProps] = useState<LinkProps>({
     href: '/',
     locale: LANGUAGES.EN,
   })
-  const fadeTransitionTime = 600
 
-  useEffect(() => {
-    const animationTime = animationTrigger ? 250 : 0
-    if (mode === MODES.BUSINESS) {
-      setTimeout(() => setTabSections(data.BUSINESS_SECTIONS), animationTime)
-      const idx = data.BUSINESS_SECTIONS.findIndex(s => s.key === section)
-      const defKey = data.BUSINESS_SECTIONS[0].key
-      setTab(idx !== -1 ? data.BUSINESS_SECTIONS[idx].key : defKey)
-      setTimeout(() => setCoverImage(images.businessCover), animationTime)
-    } else if (mode === MODES.CHILL) {
-      setTimeout(() => setTabSections(data.CHILL_SECTIONS), animationTime)
-      const idx = data.CHILL_SECTIONS.findIndex(s => s.key === section)
-      const defKey = data.CHILL_SECTIONS[0].key
-      setTab(idx !== -1 ? data.CHILL_SECTIONS[idx].key : defKey)
-      setTimeout(() => setCoverImage(images.chillCover), animationTime)
-    } else {
-      setTabSections([])
-      setTab('')
-      setCoverImage(images.notFound)
-    }
-  }, [data, section, mode, animationTrigger])
+  const atAnimationHalf = (callback: () => void) => {
+    setTimeout(() => callback(), ANIMATION_TIME / 2)
+  }
 
   useEffect(() => {
     const queryParams = codeParams(mode, section)
@@ -82,23 +64,40 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
 
   const changeMode = () => {
     const newMode = mode === MODES.BUSINESS ? MODES.CHILL : MODES.BUSINESS
-    setAnimationTrigger(true)
     onChangeMode(newMode)
-    onChangeSection(newMode === MODES.BUSINESS ? SECTIONS.ABOUT_ME_BUSINESS : SECTIONS.ABOUT_ME_CHILL)
+    onChangeSection(
+      newMode === MODES.BUSINESS ? SECTIONS.ABOUT_ME_BUSINESS : SECTIONS.ABOUT_ME_CHILL
+    )
     setChangingMode(true)
+    atAnimationHalf(() => {
+      if (newMode === MODES.BUSINESS) {
+        setTabSections(data.BUSINESS_SECTIONS)
+        setTab(data.BUSINESS_SECTIONS[0].key)
+        setCoverImage(images.businessCover)
+      } else if (newMode === MODES.CHILL) {
+        setTabSections(data.CHILL_SECTIONS)
+        setTab(data.CHILL_SECTIONS[0].key)
+        setCoverImage(images.chillCover)
+      } else {
+        setTabSections([])
+        setTab('')
+        setCoverImage(images.notFound)
+      }
+    })
   }
 
   const changePalette = () => {
-    if (PALETTE.LIGHT === palette) {
-      // This if will prevent changing the palette until
+    if (PALETTE.DARK === palette) {
+      // TODO: This if will prevent changing the palette until
       // this feature is fully implemented
-      setChangingPalette(true)
-      const changePaletteObj: {[key in PALETTE]: PALETTE} = {
-        light: PALETTE.DARK,
-        dark: PALETTE.LIGHT,
-      }
-      setPalette(changePaletteObj[palette])
+      // return
     }
+    setChangingPalette(true)
+    const changePaletteObj: {[key in PALETTE]: PALETTE} = {
+      light: PALETTE.DARK,
+      dark: PALETTE.LIGHT,
+    }
+    atAnimationHalf(() => setPalette(changePaletteObj[palette]))
     setClickedPaletteButton(true)
   }
 
@@ -109,7 +108,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
         <Box className={styles.card_background_filter} />
         <Image
           src={coverImage}
-          className={`${styles.card_background_image} ${animationTrigger ? styles.fade_animation : ''}`}
+          className={`${styles.card_background_image} ${changingMode ? styles.fade_animation : ''}`}
           fill
           keepRatio={false}
           alt='Background'/>
@@ -119,7 +118,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
       <Box className={styles.card_profile}>
         <Box className={styles.card_profile_avatar}>
           <Box className={styles.card_profile_avatar_container}>
-            <Fade in={mode === MODES.BUSINESS} timeout={fadeTransitionTime}>
+            <Fade in={mode === MODES.BUSINESS} timeout={ANIMATION_TIME}>
               <Avatar
                 src={images.profile}
                 className={styles.card_profile_avatar_container_img}
@@ -128,7 +127,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
             </Fade>
           </Box>
           <Box className={styles.card_profile_avatar_container}>
-            <Fade in={mode === MODES.CHILL} timeout={fadeTransitionTime}>
+            <Fade in={mode === MODES.CHILL} timeout={ANIMATION_TIME}>
               <Avatar
                 src={images.profilePixel}
                 className={styles.card_profile_avatar_container_img}
@@ -168,7 +167,6 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
         <IconButton
           onClick={() => changePalette()}
           className={`${changingPalette ? styles.rotate_animation : ''}`}
-          // TODO: Change animation
           onAnimationEnd={() => setChangingPalette(false)}
           aria-label='Change theme'>
           {palette === PALETTE.DARK && <LightMode fontSize='large' color='primary' />}
@@ -177,7 +175,8 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
       </Box>
 
       {/* Tabs */}
-      <Box className={`${styles.card_tabs} ${{dark: styles.card_tabs_dark, light: styles.card_tabs_light}[palette]}`}>
+      <Box
+        className={`${styles.card_tabs} ${{dark: styles.card_tabs_dark, light: styles.card_tabs_light}[palette]}`}>
         <Tabs
           allowScrollButtonsMobile
           variant='scrollable'
@@ -187,8 +186,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
             setTab(tab)
             onChangeSection(tab)
           }}
-          onAnimationEnd={() => setAnimationTrigger(false)}
-          className={`${styles.card_tabs_container} ${animationTrigger ? styles.slide_animation : ''}`}>
+          className={`${styles.card_tabs_container} ${changingMode ? styles.slide_animation : ''}`}>
           {tabSections.map((tab, i) => (
             <Tab
               disableRipple
@@ -208,14 +206,15 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
           ))}
         </Tabs>
       </Box>
-      {clickedPaletteButton && <Modal {...(misc.featureUnderDevelopment as unknown as ModalProps)} />}
+      {clickedPaletteButton && (
+        <Modal {...(misc.featureUnderDevelopment as unknown as ModalProps)} />
+      )}
     </Card>
   )
 }
 
 export default Header
 
-// TODO: Fix transition background image
 // TODO: Add transition for texts (Just a random guy in the role)
 // TODO: Change header background images
 // TODO: Avatar image and about image should not be the same

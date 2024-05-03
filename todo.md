@@ -6,3 +6,4 @@ Check if viewport is working
 Fixing language in prod
 Fixing blur in prod
 Skydiving photos
+Re rendering when changing language

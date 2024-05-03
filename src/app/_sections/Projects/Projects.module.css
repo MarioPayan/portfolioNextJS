@@ -39,7 +39,7 @@
   flex-direction: row;
   justify-content: unset;
   padding-left: 24px;
-  background: linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 40%);
+  background: linear-gradient(-45deg, whitesmoke 0%, rgba(255, 255, 255, 0) 40%);
   padding-top: 0.5rem;
   padding-right: 0.5rem;
   padding-bottom: 0.5rem;
@@ -81,7 +81,7 @@
     flex-direction: column-reverse;
     justify-content: space-evenly;
     padding-left: 0.5rem;
-    background: linear-gradient(160deg, rgba(255, 255, 255, 1) 0%, transparent 40%);
+    background: linear-gradient(160deg, whitesmoke 0%, transparent 40%);
   }
 }
 
@@ -90,7 +90,7 @@
     flex-direction: row;
     justify-content: unset;
     padding-left: 24px;
-    background: linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 40%);
+    background: linear-gradient(-45deg, whitesmoke 0%, rgba(255, 255, 255, 0) 40%);
   }
 }
 
