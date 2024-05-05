@@ -51,8 +51,8 @@ export enum MODES {
 }
 
 export enum LANGUAGES {
-  EN = 'EN',
-  ES = 'ES',
+  ENGLISH = 'EN',
+  SPANISH = 'ES',
 }
 
 export enum PALETTE {
@@ -60,7 +60,7 @@ export enum PALETTE {
   DARK = 'dark',
 }
 
-export const Misc = (language: LANGUAGES = LANGUAGES.EN): Misc => ({
+export const Misc = (language: LANGUAGES = LANGUAGES.ENGLISH): Misc => ({
   intro: {EN: 'Hi, I\'m', ES: 'Hola, soy'}[language],
   underDevelopment: {
     icon: 'under_development',
@@ -94,12 +94,16 @@ export const Misc = (language: LANGUAGES = LANGUAGES.EN): Misc => ({
   goBackHome: {EN: 'Go back home', ES: 'Volver al inicio'}[language],
 })
 
-const Data = (language: LANGUAGES = LANGUAGES.EN): Data => ({
+const Data = (language: LANGUAGES = LANGUAGES.ENGLISH): Data => ({
   PERSONAL: {
     name: 'Mario Payan',
     role: {
       EN: 'Full Stack Principal Software Developer',
       ES: 'Desarrollador de Software Principal Full Stack',
+    }[language],
+    chill_role: {
+      EN: 'Just a random guy',
+      ES: 'Un tipo cualquiera, solo eso',
     }[language],
     url: 'https://www.mariopayan.com/',
     quote: {

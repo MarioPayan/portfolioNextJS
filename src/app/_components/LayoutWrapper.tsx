@@ -63,21 +63,21 @@ export const DataContext = createContext<{
   data: Data
   misc: Misc
     }>({
-      language: LANGUAGES.EN,
+      language: LANGUAGES.ENGLISH,
       // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
       setLanguage: (language: LANGUAGES) => {},
       palette: PALETTE.DARK,
       // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
       setPalette: (palette: PALETTE) => {},
-      data: Data(LANGUAGES.EN),
-      misc: Misc(LANGUAGES.EN),
+      data: Data(LANGUAGES.ENGLISH),
+      misc: Misc(LANGUAGES.ENGLISH),
     })
 
 const LayoutWrapper: React.FC<{children: React.ReactNode}> = ({children}) => {
-  const [language, setLanguage] = useState<LANGUAGES>(LANGUAGES.EN)
+  const [language, setLanguage] = useState<LANGUAGES>(LANGUAGES.ENGLISH)
   const [palette, setPalette] = useState<PALETTE>(PALETTE.DARK)
-  const [data, setData] = useState<Data>(Data(LANGUAGES.EN))
-  const [misc, setMisc] = useState<Misc>(Misc(LANGUAGES.EN))
+  const [data, setData] = useState<Data>(Data(LANGUAGES.ENGLISH))
+  const [misc, setMisc] = useState<Misc>(Misc(LANGUAGES.ENGLISH))
 
   useEffect(() => {
     setData(Data(language))

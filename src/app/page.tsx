@@ -24,7 +24,7 @@ import {getCookie, setCookie, COOKIES} from '@/utils/cookies'
 import styles from '@/app/page.module.css'
 
 const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
-  const {data, misc, setLanguage} = useContext(DataContext)
+  const {data, misc, language, setLanguage} = useContext(DataContext)
 
   const defaultSection = SECTIONS.ABOUT_ME_BUSINESS
   const defaultMode = MODES.BUSINESS
@@ -34,7 +34,7 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
   const [swipeAnimation, setSwipeAnimation] = useState<-1 | 0 | 1>(0)
 
   useEffect(() => {
-    setLanguage(urlLanguage || (LANGUAGES.EN as LANGUAGES))
+    setLanguage(urlLanguage || (LANGUAGES.ENGLISH as LANGUAGES))
 
     const cookieKey = {EN: COOKIES.WIP_EN, ES: COOKIES.WIP_ES}[urlLanguage]
     setShowWIP(!getCookie(cookieKey))
@@ -104,7 +104,13 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
       {showWIP && <Modal {...(misc.underDevelopment as unknown as ModalProps)} />}
       <CopyRight />
       <Suspense fallback={<></>}>
-        <QueryParams mode={mode} setMode={setMode} section={section} setSection={setSection} />
+        <QueryParams
+          language={language}
+          setLanguage={setLanguage}
+          mode={mode}
+          setMode={setMode}
+          section={section}
+          setSection={setSection}/>
       </Suspense>
     </main>
   )

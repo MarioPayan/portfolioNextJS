@@ -8,6 +8,7 @@ interface Section {
 interface Personal {
   name: string
   role: string
+  chill_role: string
   url: string
   quote: string
   location: string

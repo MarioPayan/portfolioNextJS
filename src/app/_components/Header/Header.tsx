@@ -1,11 +1,8 @@
 'use client'
 // React
-import {createElement, useEffect, useState, useContext} from 'react'
-// NextJS
-import Link from 'next/link'
+import {createElement, useState, useContext, useEffect} from 'react'
 // Components
 import {DataContext} from '@/components/LayoutWrapper'
-import {codeParams, queryParamsKey} from '@/components/QueryParams'
 import Modal from '@/components/Modal/Modal'
 // Data
 import {SECTIONS, MODES, LANGUAGES, PALETTE} from '@/data/data'
@@ -30,7 +27,7 @@ import styles from './Header.module.css'
 
 const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMode}) => {
   const ANIMATION_TIME = 500
-  const {data, misc, language, palette, setPalette} = useContext(DataContext)
+  const {data, misc, language, palette, setPalette, setLanguage} = useContext(DataContext)
   const [tabSections, setTabSections] = useState<Section[]>(data.BUSINESS_SECTIONS)
   const [tab, setTab] = useState<string>(data.BUSINESS_SECTIONS[0].key)
   const [coverImage, setCoverImage] = useState<string>(images.businessCover)
@@ -38,31 +35,42 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
   const [changingLanguage, setChangingLanguage] = useState<boolean>(false)
   const [changingPalette, setChangingPalette] = useState<boolean>(false)
   const [clickedPaletteButton, setClickedPaletteButton] = useState<boolean>(false)
-  const [languageLinkProps, setLanguageLinkProps] = useState<LinkProps>({
-    href: '/',
-    locale: LANGUAGES.EN,
-  })
+  const [role, setRole] = useState<string>(data.PERSONAL.role)
+  const [hasBeenManuallyUpdated, sethasBeenManuallyUpdated] = useState<boolean>(false)
+
+  useEffect(() => {
+    const changePropertiesObj = {
+      [MODES.BUSINESS]: {
+        sections: data.BUSINESS_SECTIONS,
+        cover: images.businessCover,
+        role: data.PERSONAL.role,
+      },
+      [MODES.CHILL]: {
+        sections: data.CHILL_SECTIONS,
+        cover: images.chillCover,
+        role: data.PERSONAL.chill_role,
+      },
+    }[mode as MODES]
+    const isDiff = tabSections !== changePropertiesObj.sections || coverImage !== changePropertiesObj.cover || role !== changePropertiesObj.role
+    if (!hasBeenManuallyUpdated && isDiff) {
+      console.log('DEBUG B', section, mode, language, palette)
+      atAnimationHalf(() => {
+        setTabSections(changePropertiesObj.sections)
+        setTab(section)
+        setCoverImage(changePropertiesObj.cover)
+        setRole(changePropertiesObj.role)
+      })
+      sethasBeenManuallyUpdated(true)
+      return
+    }
+  }, [section, mode, language, palette])
 
   const atAnimationHalf = (callback: () => void) => {
     setTimeout(() => callback(), ANIMATION_TIME / 2)
   }
 
-  useEffect(() => {
-    const queryParams = codeParams(mode, section)
-    const changeLanguageObj: {[key in LANGUAGES]: LANGUAGES} = {
-      EN: LANGUAGES.ES,
-      ES: LANGUAGES.EN,
-    }
-    const nextLanguage = (changeLanguageObj[language] || LANGUAGES.EN).toLowerCase()
-    if (language) {
-      setLanguageLinkProps({
-        href: `/${nextLanguage}?${queryParamsKey}=${queryParams}`,
-        locale: nextLanguage as LANGUAGES,
-      })
-    }
-  }, [language, mode, section])
-
   const changeMode = () => {
+    sethasBeenManuallyUpdated(true)
     const newMode = mode === MODES.BUSINESS ? MODES.CHILL : MODES.BUSINESS
     onChangeMode(newMode)
     onChangeSection(
@@ -74,19 +82,36 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
         setTabSections(data.BUSINESS_SECTIONS)
         setTab(data.BUSINESS_SECTIONS[0].key)
         setCoverImage(images.businessCover)
+        setRole(data.PERSONAL.role)
       } else if (newMode === MODES.CHILL) {
         setTabSections(data.CHILL_SECTIONS)
         setTab(data.CHILL_SECTIONS[0].key)
         setCoverImage(images.chillCover)
+        setRole(data.PERSONAL.chill_role)
       } else {
         setTabSections([])
         setTab('')
         setCoverImage(images.notFound)
+        setRole('')
       }
     })
   }
 
+  const changeLanguage = () => {
+    sethasBeenManuallyUpdated(true)
+    setChangingLanguage(true)
+    const changeLanguageObj: {[key in LANGUAGES]: LANGUAGES} = {
+      EN: LANGUAGES.SPANISH,
+      ES: LANGUAGES.ENGLISH,
+    }
+    const newLanguage = changeLanguageObj[language]
+    setLanguage(newLanguage)
+    setTabSections(mode === MODES.CHILL ? data.CHILL_SECTIONS : data.BUSINESS_SECTIONS)
+    setRole(data.PERSONAL.role)
+  }
+
   const changePalette = () => {
+    sethasBeenManuallyUpdated(true)
     if (PALETTE.DARK === palette) {
       // TODO: This if will prevent changing the palette until
       // this feature is fully implemented
@@ -141,7 +166,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
             {data.PERSONAL.name}
           </Typography>
           <Typography variant='h5' color='whitesmoke' className={styles.card_profile_text_role}>
-            {data.PERSONAL.role}
+            {role}
           </Typography>
         </Box>
       </Box>
@@ -155,15 +180,13 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
           aria-label='Change experience'>
           <TheaterComedyIcon fontSize='large' color='primary' className={styles.mode_icon} />
         </IconButton>
-        <Link {...languageLinkProps} aria-label='Change language'>
-          <IconButton
-            onClick={() => setChangingLanguage(true)}
-            className={`${changingLanguage ? styles.flip_animation : ''}`}
-            onAnimationEnd={() => setChangingLanguage(false)}
-            aria-label='Change language'>
-            <TranslateIcon fontSize='large' color='primary' />
-          </IconButton>
-        </Link>
+        <IconButton
+          onClick={() => changeLanguage()}
+          className={`${changingLanguage ? styles.flip_animation : ''}`}
+          onAnimationEnd={() => setChangingLanguage(false)}
+          aria-label='Change language'>
+          <TranslateIcon fontSize='large' color='primary' />
+        </IconButton>
         <IconButton
           onClick={() => changePalette()}
           className={`${changingPalette ? styles.rotate_animation : ''}`}

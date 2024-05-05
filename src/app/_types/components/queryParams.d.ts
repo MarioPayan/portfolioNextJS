@@ -1,4 +1,6 @@
 interface QueryParamsProps {
+  language: LANGUAGES
+  setLanguage: (language: LANGUAGES) => void
   mode: MODES
   setMode: (mode: MODES) => void
   section: SECTIONS
@@ -8,9 +10,9 @@ interface QueryParamsProps {
 type QueryParamsMap = {value: MODES | SECTIONS; key: string}[]
 
 interface CodeQueryParams {
-  (mode: MODES, section: SECTIONS): string
+  (mode: MODES, section: SECTIONS, language: LANGUAGES): string
 }
 
 interface DecodeQueryParams {
-  (params: string): {mode?: MODES; section?: SECTIONS}
+  (params: string): {language?: LANGUAGES; mode?: MODES; section?: SECTIONS}
 }

@@ -1,6 +1,7 @@
 export enum COOKIES {
   WIP_ES = 'wip_es',
   WIP_EN = 'wip_en',
+  LANGUAGE = 'language',
   MODE = 'mode',
   SECTION = 'section',
 }
