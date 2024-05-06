@@ -13,6 +13,7 @@ interface ImageProps {
   title?: string
   className?: string
   keepRatio?: boolean
+  noPlaceHolder?: boolean
   loading?: 'eager' | 'lazy' | undefined
 }
 

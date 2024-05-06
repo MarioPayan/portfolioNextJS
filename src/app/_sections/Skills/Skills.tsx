@@ -205,3 +205,5 @@ const Skills: React.FC = () => {
 }
 
 export default Skills
+
+// TODO: Category icons outside the containers when grow

@@ -38,13 +38,13 @@ const getBlurDataURL: GetBlurDataURL = src => `blurred_images/${src}`
 
 export const Image = (imageProps: ImageProps) => {
   const [error, setError] = useState(false)
-  const {keepRatio, ...props} = imageProps
+  const {keepRatio, noPlaceHolder, ...props} = imageProps
   return (
     <NextImage
       {...props}
       src={error ? image404 : props.src}
       loading='lazy'
-      placeholder='blur'
+      placeholder={!noPlaceHolder ? 'blur' : 'empty'}
       blurDataURL={getBlurDataURL(props.src)}
       style={{objectFit: keepRatio === undefined || keepRatio ? 'contain' : 'cover'}}
       onError={() => setError(true)}></NextImage>

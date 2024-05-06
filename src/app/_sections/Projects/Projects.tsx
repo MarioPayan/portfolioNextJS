@@ -77,6 +77,7 @@ const Project: React.FC<ProjectProps> = ({project}) => {
                   alt={tech}
                   height={20}
                   width={20}
+                  noPlaceHolder
                   className={styles.infinityCarousel_icon}></Image>
               ) : (
                 createElement(getIcon(tech), {

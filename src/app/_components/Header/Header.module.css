@@ -146,11 +146,11 @@
   padding: 0.75rem 1rem;
   min-height: unset;
   min-width: auto;
+  color: whitesmoke;
 }
 
 .card_tabs_tab_icon {
   margin: 0px !important;
-  color: whitesmoke;
 }
 
 .mode_container {

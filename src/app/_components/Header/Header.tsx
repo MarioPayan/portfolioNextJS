@@ -234,6 +234,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
               }
               icon={createElement(getIcon(tab.key), {
                 className: styles.card_tabs_tab_icon,
+                color: 'primary',
               })}
               iconPosition='start'
               className={styles.card_tabs_tab}
