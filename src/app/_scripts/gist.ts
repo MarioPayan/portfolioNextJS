@@ -30,7 +30,7 @@ const STATUS = {
 }
 
 const GistClient = class {
-  urls: {[key: string]: () => string} | {[key: string]: (id: string) => string} // TODO: Fix this
+  urls: {[key: string]: () => string} | {[key: string]: (id?: string) => string}
   username: string
   token: string
   constructor() {
@@ -38,7 +38,7 @@ const GistClient = class {
     this.token = process.env.GIST_TOKEN || ''
     this.urls = {
       userGists: () => `https://api.github.com/users/${this.username}/gists`,
-      gistId: (id: string) => `https://api.github.com/gists/${id}`,
+      gistId: (id: string = '') => `https://api.github.com/gists/${id}`,
       gist: () => 'https://api.github.com/gists',
     }
   }

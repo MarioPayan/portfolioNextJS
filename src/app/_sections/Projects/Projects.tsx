@@ -124,4 +124,4 @@ const Projects: React.FC = () => {
 
 export default Projects
 
-// TODO: add descriptions for moving skills
+// TODO: add collapsable with all skills with naes

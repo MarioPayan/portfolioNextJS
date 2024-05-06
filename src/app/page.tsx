@@ -34,19 +34,17 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
   const [swipeAnimation, setSwipeAnimation] = useState<-1 | 0 | 1>(0)
 
   useEffect(() => {
-    setLanguage(urlLanguage || (LANGUAGES.ENGLISH as LANGUAGES))
-
+    setLanguage(urlLanguage || LANGUAGES.ENGLISH)
     const cookieKey = {EN: COOKIES.WIP_EN, ES: COOKIES.WIP_ES}[urlLanguage]
     setShowWIP(!getCookie(cookieKey))
     setCookie(cookieKey)
   }, [urlLanguage, setLanguage])
 
   useEffect(() => {
-    if (mode !== defaultMode && section !== defaultSection) {
-      setCookie(COOKIES.MODE, mode)
-      setCookie(COOKIES.SECTION, section)
-    }
-  }, [mode, section, defaultMode, defaultSection])
+    setCookie(COOKIES.MODE, mode)
+    setCookie(COOKIES.SECTION, section)
+    setCookie(COOKIES.LANGUAGE, language)
+  }, [language, mode, section])
 
   const onChangeSection: OnChangeSection = newSection => {
     const sectionKeys = [

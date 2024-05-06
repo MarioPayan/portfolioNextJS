@@ -133,14 +133,16 @@ const Data = (language: LANGUAGES = LANGUAGES.ENGLISH): Data => ({
           true
         )} of experience with focus on software development, \
           algorithms design, software as a service and clean code. \
-          Challenge driven, always willing to learn, passionate about new technologies, teamwork and code writing`,
+          Challenge driven, always willing to learn, \
+          passionate about new technologies, teamwork and code writing`,
         ES: `Desarrollador de Software Principal Full Stack con ${dateDiff(
           '2017-10',
           '',
           true
         )} de experiencia con enfoque en desarrollo de software, \
           diseño de algoritmos, software como servicio y código limpio. \
-          Motivado por desafíos, siempre dispuesto a aprender, apasionado por las nuevas tecnologías, \
+          Motivado por desafíos, siempre dispuesto a aprender, \
+          apasionado por las nuevas tecnologías, \
           el trabajo en equipo y la escritura de código`,
       }[language],
       CHILL: {

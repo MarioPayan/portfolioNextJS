@@ -64,11 +64,13 @@ export const DataContext = createContext<{
   misc: Misc
     }>({
       language: LANGUAGES.ENGLISH,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-      setLanguage: (language: LANGUAGES) => {},
+      setLanguage: (language: LANGUAGES) => {
+        language
+      },
       palette: PALETTE.DARK,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-      setPalette: (palette: PALETTE) => {},
+      setPalette: (palette: PALETTE) => {
+        palette
+      },
       data: Data(LANGUAGES.ENGLISH),
       misc: Misc(LANGUAGES.ENGLISH),
     })

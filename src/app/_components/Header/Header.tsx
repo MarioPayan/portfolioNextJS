@@ -39,7 +39,8 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
   const [hasBeenManuallyUpdated, sethasBeenManuallyUpdated] = useState<boolean>(false)
 
   useEffect(() => {
-    const changePropertiesObj = {
+    const cpo = {
+      // changePropertiesObject
       [MODES.BUSINESS]: {
         sections: data.BUSINESS_SECTIONS,
         cover: images.businessCover,
@@ -51,19 +52,28 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
         role: data.PERSONAL.chill_role,
       },
     }[mode as MODES]
-    const isDiff = tabSections !== changePropertiesObj.sections || coverImage !== changePropertiesObj.cover || role !== changePropertiesObj.role
+    const isDiff = tabSections !== cpo.sections || coverImage !== cpo.cover || role !== cpo.role
     if (!hasBeenManuallyUpdated && isDiff) {
-      console.log('DEBUG B', section, mode, language, palette)
       atAnimationHalf(() => {
-        setTabSections(changePropertiesObj.sections)
+        setTabSections(cpo.sections)
         setTab(section)
-        setCoverImage(changePropertiesObj.cover)
-        setRole(changePropertiesObj.role)
+        setCoverImage(cpo.cover)
+        setRole(cpo.role)
       })
       sethasBeenManuallyUpdated(true)
       return
     }
-  }, [section, mode, language, palette])
+  }, [
+    section,
+    mode,
+    language,
+    palette,
+    data,
+    tabSections,
+    coverImage,
+    role,
+    hasBeenManuallyUpdated,
+  ])
 
   const atAnimationHalf = (callback: () => void) => {
     setTimeout(() => callback(), ANIMATION_TIME / 2)
@@ -115,7 +125,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
     if (PALETTE.DARK === palette) {
       // TODO: This if will prevent changing the palette until
       // this feature is fully implemented
-      // return
+      return
     }
     setChangingPalette(true)
     const changePaletteObj: {[key in PALETTE]: PALETTE} = {
@@ -199,7 +209,9 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
 
       {/* Tabs */}
       <Box
-        className={`${styles.card_tabs} ${{dark: styles.card_tabs_dark, light: styles.card_tabs_light}[palette]}`}>
+        className={`
+        ${styles.card_tabs} 
+        ${{dark: styles.card_tabs_dark, light: styles.card_tabs_light}[palette]}`}>
         <Tabs
           allowScrollButtonsMobile
           variant='scrollable'
@@ -238,6 +250,5 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
 
 export default Header
 
-// TODO: Add transition for texts (Just a random guy in the role)
 // TODO: Change header background images
 // TODO: Avatar image and about image should not be the same

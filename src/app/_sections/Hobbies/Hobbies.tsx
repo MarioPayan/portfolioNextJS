@@ -59,7 +59,8 @@ const Hobbies: React.FC<HobbiesProps> = ({section}) => {
           key={index}
           className={styles.subsection}
           sx={{
-            background: `linear-gradient(${alternateGradient(index)},rgba(255, 255, 255, 1) 0%,rgba(0, 0, 0, 0.5) 40%)`,
+            background: `linear-gradient(${alternateGradient(index)}
+            ,rgba(255, 255, 255, 1) 0%,rgba(0, 0, 0, 0.5) 40%)`,
           }}>
           <Box
             className={styles.subsection_container}

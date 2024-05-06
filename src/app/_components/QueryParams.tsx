@@ -9,6 +9,7 @@ import {DataContext} from '@/components/LayoutWrapper'
 import {SECTIONS, MODES, LANGUAGES} from '@/data/data'
 // Utils
 import {getCookie, COOKIES} from '@/utils/cookies'
+import {getBrowserLanguage, getBrowserURL} from '@/utils/window'
 
 const queryParamMap: QueryParamsMap = [
   // Language
@@ -93,7 +94,11 @@ const QueryParams: React.FC<QueryParamsProps> = ({
     const modeCookie = getCookie(COOKIES.MODE)
     const sectionCookie = getCookie(COOKIES.SECTION)
 
-    const defaultLanguage = LANGUAGES.ENGLISH // TODO: Detect
+    const navigatorLanguage = getBrowserLanguage().split('-')[0].toUpperCase() || ''
+    const defaultLanguage = {
+      [LANGUAGES.ENGLISH]: LANGUAGES.ENGLISH,
+      [LANGUAGES.SPANISH]: LANGUAGES.SPANISH,
+    }[navigatorLanguage] || LANGUAGES.ENGLISH
     const defaultMode = MODES.BUSINESS
     const defaultSection = SECTIONS.ABOUT_ME_BUSINESS
 
@@ -105,8 +110,7 @@ const QueryParams: React.FC<QueryParamsProps> = ({
   }, [data, searchParams, setLanguage, setMode, setSection])
 
   useEffect(() => {
-    // TODO: Bad practices, NextJS 13 doesn't support updating the URL on the client side
-    const currentURL = window.location.href.split('?')[0]
+    const currentURL = getBrowserURL().split('?')[0]
     const newURL = `${currentURL}?${queryParamsKey}=${codeParams(language, mode, section)}`
     window.history.replaceState(null, '', newURL)
   }, [language, mode, section])

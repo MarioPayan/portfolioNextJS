@@ -96,7 +96,10 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
                       width={400}
                       height={300}
                       loading='lazy'
-                      className={`${styles.embla__slide__img} ${styles.embla__parallax__img} ${styles.frontImage}`}
+                      className={`
+                      ${styles.embla__slide__img} 
+                      ${styles.embla__parallax__img} 
+                      ${styles.frontImage}`}
                       alt='photo'/>
                     <Image
                       src={image}
@@ -104,7 +107,10 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
                       quality={1}
                       loading='lazy'
                       keepRatio={false}
-                      className={`${styles.embla__slide__img} ${styles.embla__parallax__img} ${styles.backgroundImage}`}
+                      className={`
+                      ${styles.embla__slide__img} 
+                      ${styles.embla__parallax__img} 
+                      ${styles.backgroundImage}`}
                       alt='background photo'/>
                   </div>
                 </div>

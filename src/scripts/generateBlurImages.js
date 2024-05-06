@@ -39,7 +39,7 @@ const blurImagesInDirectory = async directory => {
     const filePath = path.join(directory, file)
     if (fs.lstatSync(filePath).isDirectory()) {
       await blurImagesInDirectory(filePath)
-    } else if (file.match(/\.(jpg|JPG|webp|jpeg|png)$/)) { // TODO: Svg?
+    } else if (file.match(/\.(jpg|JPG|webp|jpeg|png)$/)) {
       try {
         const image = await Jimp.read(filePath)
         let resizedImage = undefined
