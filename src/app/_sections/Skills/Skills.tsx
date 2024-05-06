@@ -115,7 +115,7 @@ const SkillStack: React.FC<SkillStackProps> = ({
                 sx={{
                   background: `linear-gradient(70deg, ${rbgToRgba(
                     category.rgbColor,
-                    0.7
+                    0.7,
                   )}, rgba(0,0,0,0) 70%, rgba(0,0,0,0.2) 95%)`,
                 }}>
                 <CategoryIconBackground Icon={getIcon(category.key)} />
@@ -143,7 +143,7 @@ const Skills: React.FC = () => {
       ...data.TECH_SKILLS.map(category => category.key),
       ...data.SOFT_SKILLS.map(category => category.key),
     ],
-    [data]
+    [data],
   )
 
   const [showedCategories, setShowedCategories] = useState<string[]>(allCategories)

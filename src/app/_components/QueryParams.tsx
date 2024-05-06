@@ -95,10 +95,11 @@ const QueryParams: React.FC<QueryParamsProps> = ({
     const sectionCookie = getCookie(COOKIES.SECTION)
 
     const navigatorLanguage = getBrowserLanguage().split('-')[0].toUpperCase() || ''
-    const defaultLanguage = {
-      [LANGUAGES.ENGLISH]: LANGUAGES.ENGLISH,
-      [LANGUAGES.SPANISH]: LANGUAGES.SPANISH,
-    }[navigatorLanguage] || LANGUAGES.ENGLISH
+    const defaultLanguage =
+      {
+        [LANGUAGES.ENGLISH]: LANGUAGES.ENGLISH,
+        [LANGUAGES.SPANISH]: LANGUAGES.SPANISH,
+      }[navigatorLanguage] || LANGUAGES.ENGLISH
     const defaultMode = MODES.BUSINESS
     const defaultSection = SECTIONS.ABOUT_ME_BUSINESS
 

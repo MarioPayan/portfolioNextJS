@@ -62,18 +62,18 @@ export const DataContext = createContext<{
   setPalette: (palette: PALETTE) => void
   data: Data
   misc: Misc
-    }>({
-      language: LANGUAGES.ENGLISH,
-      setLanguage: (language: LANGUAGES) => {
-        language
-      },
-      palette: PALETTE.DARK,
-      setPalette: (palette: PALETTE) => {
-        palette
-      },
-      data: Data(LANGUAGES.ENGLISH),
-      misc: Misc(LANGUAGES.ENGLISH),
-    })
+}>({
+  language: LANGUAGES.ENGLISH,
+  setLanguage: (language: LANGUAGES) => {
+    language
+  },
+  palette: PALETTE.DARK,
+  setPalette: (palette: PALETTE) => {
+    palette
+  },
+  data: Data(LANGUAGES.ENGLISH),
+  misc: Misc(LANGUAGES.ENGLISH),
+})
 
 const LayoutWrapper: React.FC<{children: React.ReactNode}> = ({children}) => {
   const [language, setLanguage] = useState<LANGUAGES>(LANGUAGES.ENGLISH)

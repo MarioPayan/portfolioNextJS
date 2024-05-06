@@ -18,7 +18,7 @@ const Hobbies: React.FC<HobbiesProps> = ({section}) => {
   const alternateGradient: AlternateGradient = index => (index % 2 === 0 ? '-45deg' : '135deg')
 
   const alternateFlexDirection: AlternateFlexDirection = index =>
-    (index % 2 === 0 ? 'row' : 'row-reverse')
+    index % 2 === 0 ? 'row' : 'row-reverse'
 
   const SocialIconButtons: React.FC<SocialIconButtonsProps> = ({subSection}) => {
     const SocialIconButton: React.FC<SocialIconButtonProps> = ({label, url, iconKey}) => (

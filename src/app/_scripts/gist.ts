@@ -71,7 +71,7 @@ const GistClient = class {
     id: string,
     filename: string,
     content: string,
-    description: string
+    description: string,
   ): Promise<Gist> =>
     this.call(HttpMethod.PUT, this.urls.gistId(id), {
       description: description,
@@ -133,7 +133,7 @@ const updateIndexGist = async () => {
         return a[1].project.localeCompare(b[1].project)
       }
       return a[1].status.localeCompare(b[1].status)
-    })
+    }),
   )
   const mdTable = getMarkdownTable(sortedGistData)
   createOrUpdateIndexGist(mdTable)

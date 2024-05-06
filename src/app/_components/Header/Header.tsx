@@ -84,7 +84,7 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
     const newMode = mode === MODES.BUSINESS ? MODES.CHILL : MODES.BUSINESS
     onChangeMode(newMode)
     onChangeSection(
-      newMode === MODES.BUSINESS ? SECTIONS.ABOUT_ME_BUSINESS : SECTIONS.ABOUT_ME_CHILL
+      newMode === MODES.BUSINESS ? SECTIONS.ABOUT_ME_BUSINESS : SECTIONS.ABOUT_ME_CHILL,
     )
     setChangingMode(true)
     atAnimationHalf(() => {

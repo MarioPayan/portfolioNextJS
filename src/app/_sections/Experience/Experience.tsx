@@ -29,7 +29,7 @@ const Card: React.FC<ExperienceCardProps> = ({experience}) => {
       sx={{
         background: `linear-gradient(-15deg, ${rbgToRgba(
           experience.rgbColor,
-          0.7
+          0.7,
         )}, transparent 80%, rgba(0,0,0,0.2) 95%)`,
       }}>
       <Box className={styles.card_header}>
