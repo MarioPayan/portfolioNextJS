@@ -10,7 +10,9 @@
     "lint-fix": "npm run prettier && npm run eslint 2>/dev/null",
     "prettier": "node ./node_modules/prettier/bin/prettier.cjs --write **/*.{ts,tsx,css,json}",
     "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.mjs,.jsx,.ts,.tsx . --fix",
-    "blur": "node ./src/scripts/generateBlurImages.js",
+    "images-blur": "node ./src/scripts/generateBlurImages.js",
+    "images-dimensions": "node ./src/scripts/generateImagesDimensions.js",
+    "processing-images": "npm run images-blur && npm run images-dimensions",
     "dep-update": "ncu -u"
   },
   "dependencies": {
@@ -43,6 +45,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "jimp": "^0.22.12",
     "npm-check-updates": "^16.14.20",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "sharp": "^0.33.3"
   }
 }

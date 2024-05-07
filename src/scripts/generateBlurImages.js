@@ -55,12 +55,12 @@ const blurImagesInDirectory = async directory => {
         createDirectories(subPath)
         await blurredImage.write(`./${publicBlurImagesPath}/${subPath}`)
         process.stdout.write('.')
+        console.log('DONE');
       } catch (error) {
         console.error(`Error processing ${file}: ${error}`)
       }
     }
   }
-
 }
 
 const main = () => {
