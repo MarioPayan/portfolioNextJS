@@ -105,7 +105,8 @@ const SkillStack: React.FC<SkillStackProps> = ({
             key={cIndex}
             onHover={() => setZoomedCategory(category.key)}
             onLeave={() => setZoomedCategory('')}
-            onClick={() => toggleShowedCategory(category.key)}/>
+            onClick={() => toggleShowedCategory(category.key)}
+          />
           {category.skills.map((skill, sIndex) => (
             <Box
               key={`${cIndex}-${sIndex}`}
@@ -194,12 +195,14 @@ const Skills: React.FC = () => {
       <SkillStack
         skillStack={data.TECH_SKILLS}
         toggleShowedCategory={toggleShowedCategory}
-        isCategoryShowed={isCategoryShowed}/>
+        isCategoryShowed={isCategoryShowed}
+      />
       <Divider variant='middle' className={styles.divider} />
       <SkillStack
         skillStack={data.SOFT_SKILLS}
         toggleShowedCategory={toggleShowedCategory}
-        isCategoryShowed={isCategoryShowed}/>
+        isCategoryShowed={isCategoryShowed}
+      />
     </Box>
   )
 }

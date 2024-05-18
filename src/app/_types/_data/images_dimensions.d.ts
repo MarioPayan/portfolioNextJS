@@ -1,3 +1,3 @@
 interface ImagesDimensions {
-    [key: string]: {width: number, height:number}
+  [key: string]: {width: number; height: number}
 }

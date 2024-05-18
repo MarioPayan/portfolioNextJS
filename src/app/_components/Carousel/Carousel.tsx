@@ -100,7 +100,8 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
                       ${styles.embla__slide__img} 
                       ${styles.embla__parallax__img} 
                       ${styles.frontImage}`}
-                      alt='photo'/>
+                      alt='photo'
+                    />
                     <Image
                       src={image}
                       fill
@@ -111,7 +112,8 @@ const Carousel: React.FC<CarouselProps> = ({images, random = false}) => {
                       ${styles.embla__slide__img} 
                       ${styles.embla__parallax__img} 
                       ${styles.backgroundImage}`}
-                      alt='background photo'/>
+                      alt='background photo'
+                    />
                   </div>
                 </div>
               </div>

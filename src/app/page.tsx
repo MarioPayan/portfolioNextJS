@@ -78,7 +78,8 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
         section={section}
         onChangeSection={onChangeSection}
         mode={mode}
-        onChangeMode={setMode}/>
+        onChangeMode={setMode}
+      />
       <Box className={styles.container}>
         <Box className={getSwipeAnimation()} onAnimationEnd={() => setSwipeAnimation(0)}>
           {/* Business sections */}
@@ -108,7 +109,8 @@ const Home: React.FC<{language: LANGUAGES}> = ({language: urlLanguage}) => {
           mode={mode}
           setMode={setMode}
           section={section}
-          setSection={setSection}/>
+          setSection={setSection}
+        />
       </Suspense>
     </main>
   )

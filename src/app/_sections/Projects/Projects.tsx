@@ -105,7 +105,8 @@ const Project: React.FC<ProjectProps> = ({project}) => {
           fill
           loading='lazy'
           alt={project.label}
-          className={styles.project_image}/>
+          className={styles.project_image}
+        />
       </Box>
     </Paper>
   )

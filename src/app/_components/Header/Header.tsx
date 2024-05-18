@@ -146,7 +146,8 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
           className={`${styles.card_background_image} ${changingMode ? styles.fade_animation : ''}`}
           fill
           keepRatio={false}
-          alt='Background'/>
+          alt='Background'
+        />
       </Box>
 
       {/* Profile */}
@@ -158,7 +159,8 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
                 src={images.profile}
                 className={styles.card_profile_avatar_container_img}
                 alt={data.PERSONAL.name}
-                variant='circular'/>
+                variant='circular'
+              />
             </Fade>
           </Box>
           <Box className={styles.card_profile_avatar_container}>
@@ -167,7 +169,8 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
                 src={images.profilePixel}
                 className={styles.card_profile_avatar_container_img}
                 alt={data.PERSONAL.name}
-                variant='circular'/>
+                variant='circular'
+              />
             </Fade>
           </Box>
         </Box>
@@ -238,7 +241,8 @@ const Header: React.FC<HeadProps> = ({section, mode, onChangeSection, onChangeMo
               })}
               iconPosition='start'
               className={styles.card_tabs_tab}
-              aria-label={tab.label}/>
+              aria-label={tab.label}
+            />
           ))}
         </Tabs>
       </Box>
