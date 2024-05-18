@@ -1,39 +1,42 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+import fs from 'fs'
+import {promises as fsp} from 'fs'
 
-const fs = require('fs')
-const path = require('path') 
-const Jimp = require('jimp')
+import path from 'path'
+import Jimp from 'jimp'
 
-const publicImagesPath = 'public/images'
-const publicBlurImagesPath = 'public/blurred_images'
-const inputDirectory = `./${publicImagesPath}/`
-const outputDirectory = `./${publicBlurImagesPath}/`
+const INPUT_DIR = './public/images/'
+const OUTPUT_DIR = './public/blurred_images/'
 const blurFactor = 50
 const qualityFactor = 25
 
-const createMainDirectory = () => {
-  if (fs.existsSync(outputDirectory)) {
-    fs.rm(outputDirectory, {recursive: true}, error => {
-      if (error){
-        console.log('Error: ', error)
-      }
-    })
-  } 
-  fs.mkdirSync(outputDirectory, {recursive: true})
+const createMainDirectory = async () => {
+  try {
+    if (
+      await fsp
+        .access(OUTPUT_DIR)
+        .then(() => true)
+        .catch(() => false)
+    ) {
+      await fsp.rm(OUTPUT_DIR, {recursive: true})
+    }
+    await fsp.mkdir(OUTPUT_DIR, {recursive: true})
+  } catch (error) {
+    console.error('Error: ', error)
+  }
 }
 
-const createDirectories = filePath => {
+const createDirectories = (filePath: string) => {
   const directories = `${filePath}`.split('/').slice(0, -1)
 
   for (let i = 0; i < directories.length; i++) {
-    let currentDirectory = `./${publicBlurImagesPath}/${directories.slice(0, i + 1).join('/')}`
+    const currentDirectory = `${OUTPUT_DIR}${directories.slice(0, i + 1).join('/')}`
     if (!fs.existsSync(currentDirectory)) {
       fs.mkdirSync(currentDirectory)
     }
-  }  
+  }
 }
 
-const blurImagesInDirectory = async directory => {
+const blurImagesInDirectory = async (directory: string) => {
   const files = fs.readdirSync(directory)
   for (const file of files) {
     const filePath = path.join(directory, file)
@@ -53,9 +56,8 @@ const blurImagesInDirectory = async directory => {
         const blurredImage = lowQualityImage.blur(blurFactor)
         const subPath = filePath.split('/').slice(2).join('/')
         createDirectories(subPath)
-        await blurredImage.write(`./${publicBlurImagesPath}/${subPath}`)
+        await blurredImage.write(`${OUTPUT_DIR}${subPath}`)
         process.stdout.write('.')
-        console.log('DONE');
       } catch (error) {
         console.error(`Error processing ${file}: ${error}`)
       }
@@ -63,9 +65,11 @@ const blurImagesInDirectory = async directory => {
   }
 }
 
-const main = () => {
-  createMainDirectory()
-  blurImagesInDirectory(inputDirectory)
+const main = async () => {
+  console.log('------------------------ BLURRING IMAGES ------------------------')
+  await createMainDirectory()
+  await blurImagesInDirectory(INPUT_DIR)
+  console.log('------------------------ BLURRED IMAGES DONE --------------------')
 }
 
 main()

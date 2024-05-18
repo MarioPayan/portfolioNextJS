@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,22 +11,24 @@
     "lint-fix": "npm run prettier && npm run eslint 2>/dev/null",
     "prettier": "node ./node_modules/prettier/bin/prettier.cjs --write **/*.{ts,tsx,css,json}",
     "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.mjs,.jsx,.ts,.tsx . --fix",
-    "images-blur": "node ./src/scripts/generateBlurImages.js",
-    "images-dimensions": "node ./src/scripts/generateImagesDimensions.js",
+    "images-blur": "./node_modules/.bin/tsx ./src/scripts/generateBlurImages.ts",
+    "images-dimensions": "./node_modules/.bin/tsx ./src/scripts/generateImagesDimensions.js",
     "processing-images": "npm run images-blur && npm run images-dimensions",
-    "dep-update": "ncu -u"
+    "static-data": "./node_modules/.bin/tsx ./src/scripts/generateStaticData.ts",
+    "dep-update": "ncu -u -t minor",
+    "pre-deploy": "npm run dep-update && npm run processing-images && npm run static-data && npm run lint-fix"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@mui/icons-material": "^5.15.16",
-    "@mui/material": "^5.15.16",
+    "@mui/icons-material": "^5.15.18",
+    "@mui/material": "^5.15.18",
     "@mui/system": "^5.15.15",
     "@vercel/analytics": "^1.2.2",
     "dotenv": "^16.4.5",
-    "embla-carousel": "^8.0.4",
-    "embla-carousel-autoplay": "^8.0.4",
-    "embla-carousel-react": "^8.0.4",
+    "embla-carousel": "^8.1.1",
+    "embla-carousel-autoplay": "^8.1.1",
+    "embla-carousel-react": "^8.1.1",
     "next": "^14.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -33,8 +36,8 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.3",
-    "@types/node": "^20.12.8",
-    "@types/react": "^18.3.1",
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
@@ -46,6 +49,7 @@
     "jimp": "^0.22.12",
     "npm-check-updates": "^16.14.20",
     "prettier": "^3.2.5",
-    "sharp": "^0.33.3"
+    "sharp": "^0.33.4",
+    "tsx": "^4.10.5"
   }
 }
